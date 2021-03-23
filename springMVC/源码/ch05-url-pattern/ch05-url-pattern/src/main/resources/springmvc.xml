@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       https://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/mvc
+       https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!--声明组件扫描器-->
+    <context:component-scan base-package="com.bjpowernode.controller" />
+
+    <!--声明 springmvc框架中的视图解析器， 帮助开发人员设置视图文件的路径-->
+    <bean  class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!--前缀：视图文件的路径-->
+        <property name="prefix" value="/WEB-INF/view/" />
+        <!--后缀：视图文件的扩展名-->
+        <property name="suffix" value=".jsp" />
+    </bean>
+
+    <!--第二种处理静态资源的方式
+        mvc:resources 加入后框架会创建 ResourceHttpRequestHandler这个处理器对象。
+        让这个对象处理静态资源的访问，不依赖tomcat服务器。
+        mapping:访问静态资源的uri地址， 使用通配符 **
+        location：静态资源在你的项目中的目录位置。
+
+        images/**:表示 images/p1.jpg  , images/user/logo.gif , images/order/history/list.png
+    -->
+    <mvc:resources mapping="/images/**" location="/images/" />
+    <mvc:resources mapping="/html/**" location="/html/" />
+    <mvc:resources mapping="/js/**" location="/js/" />
+
+    <!--mvc:resources和@RequestMapping有一定的冲突-->
+    <mvc:annotation-driven />
+
+    <!--使用一个配置语句，指定多种静态资源的访问-->
+    <!--<mvc:resources mapping="/static/**" location="/static/" />-->
+</beans>

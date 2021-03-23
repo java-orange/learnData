@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+    <!--声明，注册springmvc的核心对象DispatcherServlet
+        需要在tomcat服务器启动后，创建DispatcherServlet对象的实例。
+        为什么要创建DispatcherServlet对象的实例呢？
+        因为DispatcherServlet在他的创建过程中， 会同时创建springmvc容器对象，
+        读取springmvc的配置文件，把这个配置文件中的对象都创建好， 当用户发起
+        请求时就可以直接使用对象了。
+
+        servlet的初始化会执行init（）方法。 DispatcherServlet在init（）中{
+           //创建容器，读取配置文件
+           WebApplicationContext ctx = new ClassPathXmlApplicationContext("springmvc.xml");
+           //把容器对象放入到ServletContext中
+           getServletContext().setAttribute(key, ctx);
+        }
+
+
+
+        启动tomcat报错，读取这个文件 /WEB-INF/springmvc-servlet.xml（/WEB-INF/myweb-servlet.xml）
+        springmvc创建容器对象时，读取的配置文件默认是/WEB-INF/<servlet-name>-servlet.xml .
+    -->
+    <servlet>
+        <servlet-name>myweb</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+
+        <!--自定义springmvc读取的配置文件的位置-->
+        <init-param>
+            <!--springmvc的配置文件的位置的属性-->
+            <param-name>contextConfigLocation</param-name>
+            <!--指定自定义文件的位置-->
+            <param-value>classpath:springmvc.xml</param-value>
+        </init-param>
+
+        <!--在tomcat启动后，创建Servlet对象
+            load-on-startup:表示tomcat启动后创建对象的顺序。它的值是整数，数值越小，
+                            tomcat创建对象的时间越早。 大于等于0的整数。
+        -->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>myweb</servlet-name>
+        <!--
+            使用框架的时候， url-pattern可以使用两种值
+            1. 使用扩展名方式， 语法 *.xxxx , xxxx是自定义的扩展名。 常用的方式 *.do, *.action, *.mvc等等
+               不能使用 *.jsp
+               http://localhost:8080/myweb/some.do
+               http://localhost:8080/myweb/other.do
+
+            2.使用斜杠 "/"
+        -->
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+
+
+    <!--注册声明过滤器，解决post请求乱码的问题-->
+    <filter>
+        <filter-name>characterEncodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <!--设置项目中使用的字符编码-->
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>utf-8</param-value>
+        </init-param>
+        <!--强制请求对象（HttpServletRequest）使用encoding编码的值-->
+        <init-param>
+            <param-name>forceRequestEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+        <!--强制应答对象（HttpServletResponse）使用encoding编码的值-->
+        <init-param>
+            <param-name>forceResponseEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>characterEncodingFilter</filter-name>
+        <!--
+           /*:表示强制所有的请求先通过过滤器处理。
+        -->
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+</web-app>

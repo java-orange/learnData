@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!--声明组件扫描器-->
+    <context:component-scan base-package="com.bjpowernode.controller" />
+
+    <!--声明 springmvc框架中的视图解析器， 帮助开发人员设置视图文件的路径-->
+    <bean  class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <!--前缀：视图文件的路径-->
+        <property name="prefix" value="/WEB-INF/view/" />
+        <!--后缀：视图文件的扩展名-->
+        <property name="suffix" value=".jsp" />
+    </bean>
+
+    <!--声明拦截器： 拦截器可以有0或多个-->
+    <mvc:interceptors>
+        <!--声明第一个拦截器-->
+        <mvc:interceptor>
+            <!--指定拦截的请求uri地址
+                path：就是uri地址，可以使用通配符 **
+                      ** ： 表示任意的字符，文件或者多级目录和目录中的文件
+                http://localhost:8080/myweb/user/listUser.do
+                http://localhost:8080/myweb/student/addStudent.do
+            -->
+            <mvc:mapping path="/**"/>
+            <!--声明拦截器对象-->
+            <bean class="com.bjpowernode.handler.MyInterceptor" />
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+</beans>
