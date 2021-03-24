@@ -45,13 +45,46 @@
 * 不修改得情况下,实现增强功能,代码扩展
   * **AOP底层原理**
     * 代理模式, 
+    
     * 分两种: JDK动态代理(有接口),  CGLIB代理(无接口)
+    
     * 动态代理是通过实现接口以增强功能
+    
     * CGLIB代理则是通过类得继承子类以扩展功能
+    
     * JDK动态代理得代码实现,
+    
     * 术语:连接点,切入点,通知(5个),切面
-    * 准备:基于AspectJ配合Spring实现
+    
+    * 准备:**基于AspectJ配合Spring实现**
+    
     * 切入点表达式
+    
+    * @componet, @Aspect
+    
+    * 开启生成代理对象
+    
+      ```xml
+      <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+      ```
+    
+    - 切入点抽取:
+    
+      ```java
+      //相同切入点抽取
+      @Pointcut(value = "execution(* com.atguigu.spring5.aopanno.User.add(..))")
+      public void pointdemo() {}
+      
+      // 引入便只需
+      //@Before注解表示作为前置通知
+      @Before(value = "pointdemo()")
+      public void before() {
+          System.out.println("before.........");
+      }
+      ```
+    
+      
+    
     * 两种实现AOP方式, xml格式(**了解**)与注解模式(**重点**)
       *  before(前置通知),
       * afterReturning(后置通知),
@@ -64,27 +97,53 @@
 ## 1.3 JdbcTemplate
 
 * 相关配置,druid连接池,jdbcTemplate对象,组件扫描,注入对象
+
 * jdbcTemplate入门案例
   * 增删改                               update
   * 查询返回某个值                queryForObject
   * 查询返回对象                    queryForObject
   * 查询返回集合                     query
+  
 * jdbcTemplate批量操作数据库(**CRUD**)                 ->**batchUpdate**
+
 * 事务相关ACID
   * 原子性: 不可分割,要么都成功,一个失败都失败
   * 一致性: 操作之前与操作之后的总量是不变的
   * 隔离性: 多事务之间操作不会有影响
   * 持久性: 提交则记录至硬盘中
+  
 * 转账事务测试
+
 * 声明式事务管理(底层是AOP)
-  * 创建事务管理器<bean/>
+
+  *  配置事务管理器
+
+    ```xml
+    <!--创建事务管理器-->
+    <bean id="transactionManager"  class="org.springframework.jdbc.datasource.DataSourceTransactionManager"><!--注入数据源-->
+        <property name="dataSource" ref="dataSource"></property>
+    </bean>
+    ```
+
+    
+
+  * ```xml
+    （2）开启事务注解
+    <!--开启事务注解-->
+    <tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>
+    ```
+
   * 开启事务注解
-  * 添加注解@transactional
+
+  * 添加注解@transactional, 再@service层
+
 * 声明式事务管理参数配置
   * 事务传播行为
   * 事务隔离级别
   * 超时时间
+  
 * xml格式配置事务(**了解**)
+
 * 完全注解开发
 
 ## 1.4 Spring5新功能
