@@ -584,6 +584,12 @@
       <context:component-scan base-package="com.bjpowernode.service" />
   
       <!--事务配置：注解的配置， aspectj的配置-->
+      <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+          <property name="dataSource" ref="dataSource"/>
+      </bean>
+  
+  <!--    开启注解驱动事务 -->
+      <tx:annotation-driven />
   
   </beans>
   ```
@@ -702,6 +708,45 @@
   * 记录日志,异常错误内容,发生时间,发生的具体方法
   * 通知相关管理人员,发送消息
   * 给用户友好提示
+  
+*  
+
+  
+
+*  ```java
+  package com.bjpowernode.handler;
+  
+  import com.bjpowernode.exception.UserException;
+  import org.springframework.web.bind.annotation.ControllerAdvice;
+  import org.springframework.web.bind.annotation.ExceptionHandler;
+  import org.springframework.web.servlet.ModelAndView;
+  
+  @ControllerAdvice
+  public class GlobalExceptrionHandler {
+  
+      // 指定userException 的异常处理器
+      @ExceptionHandler(UserException.class)
+      public ModelAndView handleUserName(Exception e) {
+          ModelAndView modelAndView = new ModelAndView();
+          modelAndView.addObject("msg", e.getMessage());
+          modelAndView.setViewName("error");
+          return modelAndView;
+      }
+      
+      // 其余所有错误的异常处理器
+      @ExceptionHandler()
+      public ModelAndView all(Exception e) {
+          ModelAndView modelAndView = new ModelAndView();
+          modelAndView.addObject("msg", e.getMessage());
+          modelAndView.setViewName("error");
+          return modelAndView;
+      }
+  
+  }
+  
+   ```
+
+  
 
 ## 6.拦截器
 
@@ -774,7 +819,64 @@
   8.拦截器拦截普通类方法执行，过滤器过滤servlet请求响应
   ```
 
+  ```java
+  package com.bjpowernode.interceptor;
   
+  
+  import lombok.extern.java.Log;
+  import lombok.extern.log4j.Log4j;
+  import org.springframework.web.servlet.HandlerInterceptor;
+  import org.springframework.web.servlet.ModelAndView;
+  
+  import javax.servlet.http.HttpServletRequest;
+  import javax.servlet.http.HttpServletResponse;
+  
+  /**
+   * 拦截器
+   */
+  @Log
+  public class MyInterceptor implements HandlerInterceptor {
+  
+      @Override
+      public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+          log.info("进入前置处理器");
+          // 使用重定向即可, 若使用false 拦截, 使用重定向设置位置
+  //        request.getRequestDispatcher("register").forward(request,response);
+          return true;
+      }
+  
+      @Override
+      public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+          log.info("进入后置处理器");
+  
+      }
+  
+      @Override
+      public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
+          log.info("进入final处理器");
+  
+      }
+  }
+  
+  ```
+
+
+
+springmvc.xml
+
+```xml
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <bean class="com.bjpowernode.interceptor.MyInterceptor" />
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+
+```
+
+
 
 ​	
 
