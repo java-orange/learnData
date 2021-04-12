@@ -233,7 +233,7 @@ public class MainApplication {
 }
 ```
 
-### 9.常用的组件扫描注解
+### 9.常用的组件扫描注解（所有注解解释）
 
 - ###### @Bean（常规bean标签）
 
@@ -318,7 +318,7 @@ public class MainApplication {
 
   - 若文件中resource中存在大量的xml配置的bean标签，则使用该注解进行加入容器， 
 
-  - 在任意一个配置类上注解即可
+  - 在任意一个**配置类**上注解即可
 
   - ```xml
     ======================beans.xml=========================
@@ -341,6 +341,7 @@ public class MainApplication {
 
   - ```java
     @ImportResource("classpath:beans.xml")
+    @Configuration
     public class MyConfig {}
     
     ======================测试=================
@@ -400,9 +401,107 @@ public class MainApplication {
 
 ​	多看几遍，会用之后，回来
 
+​	
 
 
 
+### 最佳实践
+
+- 引入场景依赖
+
+- - https://docs.spring.io/spring-boot/docs/current/reference/html/using-spring-boot.html#using-boot-starter
+
+- 查看自动配置了哪些（选做）
+
+- - 自己分析，引入场景对应的自动配置一般都生效了
+  - 配置文件中debug=true开启自动配置报告。Negative（不生效）\Positive（生效）
+
+- 是否需要修改
+
+- - 参照文档修改配置项
+
+- - - https://docs.spring.io/spring-boot/docs/current/reference/html/appendix-application-properties.html#common-application-properties
+
+    - 自己分析。xxxxProperties绑定了配置文件的哪些。
+
+    - 使用
+
+      ```xml
+      spring.banner.image.location = classpath:banner.gif/png/jpg 
+      可该换启动图标
+      ```
+
+- - 自定义加入或者替换组件
+
+- - - @Bean、@Component。。。
+
+- - 自定义器  **XXXXXCustomizer**；
+  - ......
+
+
+
+### 	Lombok
+
+#### 			常用注解
+
+```java
+@Data      			// 注入get,set方法
+@ToString   		// 声明toString方法
+@AllArgsConstructor	// 全参构造器
+@NoArgsConstructor	// 无参构造器
+@EqualsAndHashCode	// 重写equals hashcode方法
+对于自定义的构造器就自己写
+    
+@Slf4j  			// 注入log，用于日志
+```
+
+​	
+
+### 	Dev-Tools
+
+​	引入依赖
+
+```xml
+<dependency>
+	<groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-devtools</artifactId>
+    <optional>true</optional>
+</dependency>
+```
+
+​	热部署，修改代码，按下ctrl+F9 重新build project项目
+
+
+
+### 	Initailizr 初始化springboot项目
+
+
+
+---
+
+---
+
+---
+
+
+
+# Springboot核心技术
+
+
+
+### 1. yml语法
+
+- 基本语法
+  - key: value；kv之间有空格
+  - 大小写敏感
+  - 使用缩进表示层级关系
+  - 缩进不允许使用tab，只允许空格
+  - 缩进的空格数不重要，只要相同层级的元素左对齐即可
+  - '#'表示注释
+  - 字符串无需加引号，如果要加，''与""表示字符串内容 会被 转义/不转义
+
+- 数据类型
+  - 
 
 
 
