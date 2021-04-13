@@ -90,7 +90,7 @@
       }
   ```
 
-* ***接收参数:*** 
+* #### ***接收参数:*** 
 
   * **逐个参数接收**
 
@@ -176,18 +176,35 @@
 
     * *使用对象接收参数,对象的类中的属性值名称需与提交的name值相同, 则SpringMVC自动调用该类的无参构造方法,根据传递的参数调用对应的set方法用以赋值,完成对象传参.*
 
-  * **处理器的返回值**
+  * **resful 风格传参**
 
+    * 使用@PathVariable 注解用来接收
+
+      ```java
+    @GetMapping("/{id}/{name}")
+      public void getPage(@PathVariable Integer id, @PathVariable String name){
+          
+      }
+    ```
+  
+  ---
+  
+  ---
+  
+  
+  
+* #### ***处理器的返回值***
+  
     * **ModelAndView** 		-> 				数据model 视图view
-
+  
     * **String**                         ->                  只跳转页面,不传递数据 
 
       * 若配置了视图解析器, 则直接返回的 "show" 代表的是 该视图,
-      * 若想要在String中也返回数据, 则可以通过httpServletRequest 作为参数,用来传递参数
+    * 若想要在String中也返回数据, 则可以通过httpServletRequest 作为参数,用来传递参数
         * request.setAttribute("myName", name) 
 
     * **void**                            ->                 没用, 既不处理数据, 也不跳转页面, 可以处理ajax请求
-
+  
     * **Object**                       ->                  只处理数据, 精准处理ajax请求
 
       * 1. **增加json的工具库依赖, 默认使用jackson**
@@ -195,44 +212,44 @@
         2. **在springmvc.xml 中增加注解驱动** 
 
            ```xml
-           <mvc:annotation-driven/>
+         <mvc:annotation-driven/>
            需要加的是: http://www.springframework.org/schema/mvc 对应的
-           ```
-
-        3. **在处理方法上增加@ResponseBody注解**
-
+         ```
+  
+      3. **在处理方法上增加@ResponseBody注解**
+  
     * springMVC处理器返回object, 可以转为json输出至浏览器,响应ajax的内部原理
-
-      * 添加依赖, json工具包
+  
+    * 添加依赖, json工具包
       * 注解驱动 	完成java对象转json格式
-      * @responseBody  完成数据的写入response中
-
-  * **处理器返回List集合**
-
-    * 也相当于object类型, 将List格式转为Json数组进行返回
-
+    * @responseBody  完成数据的写入response中
+  
+* **处理器返回List集合**
+  
+  * 也相当于object类型, 将List格式转为Json数组进行返回
+  
   * **对于返回String类型数据** 若含有@requestBody注解, 则返回为数据, 若不含, 则是视图
-
+  
     * 直接返回String,会存在中文乱码, 因为浏览器传递默认使用编码ISO-8859-1格式,
-
-    * 需要在@requestMapping中添加属性,produces
-
-    * ```java
+  
+  * 需要在@requestMapping中添加属性,produces
+  
+  * ```java
       @RequestMapping(value = "/returnString.do", produces="text/plain;charset=utf-8")
-      ```
-
+    ```
+  
   * **对于url-pattern中, 若配置为"/" 则静态资源不能访问**
-
+  
     * 解决方式1: 添加默认处理器, **缺陷**: 依赖tomcat的默认处理器
-
+  
       * 在Springmvc.xml 中增加
-
+  
         ```xml
-        <mvc:default-servlet-handler />
+      <mvc:default-servlet-handler />
         // 也需添加注解驱动
-        <mvc:annotation-driven />
+      <mvc:annotation-driven />
         ```
-
+  
     * 解决方式2: 添加i资源处理器(**重点**)
 
       * 在springmvc.xml中添加
@@ -240,24 +257,24 @@
         ```xml
         <mvc:resources mapping="/img/**" location="/img/" />
         <mvc:resources mapping="/css/**" location="/css/" />
-        <mvc:resources mapping="/js/**" location="/js/" />
+      <mvc:resources mapping="/js/**" location="/js/" />
         
         //也需添加注解驱动
         <mvc:annotation-driven />
         ```
-
+  
         * 因为若静态资源过多, 配置过多, **将所有静态资源放入 static 的文件夹内,static 位于webapp下, **指定一个静态资源处理器即可
-
+  
         ```xml
         <mvc:resources mapping="/static/**" location="/static/" />
         ```
-
+  
     **在html中, 跳转链接  地址中加不加 "/"**
-
+  
     * 若不加"/" 则根据当前页的地址,后面直接拼接该路径
     
     * 若加"/" 则根据当前服务器的ip+端口直接拼接路径
-
+  
     * **故在jsp页面中不用加"/"**  **controller中一定要+**
       
       * 需要在之前再增加${pageContext.request.contextPath}才能访问
@@ -744,7 +761,7 @@
   
   }
   
-   ```
+  ```
 
   
 
@@ -880,4 +897,4 @@ springmvc.xml
 
 ​	
 
-​	
+​	@

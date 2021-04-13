@@ -440,7 +440,7 @@ public void before() {
 
 #### 	拦截器配置
 
-1. 定制类, 并实现HandlerInterceptor 接口
+1. 定制类, 并实现**HandlerInterceptor** 接口
 
 2. 重写对应的方法
 
@@ -474,6 +474,6 @@ public void before() {
 #### 	异常处理 
 
 1. 在**springMVC.xml**文件中配置需要扫描到该类的包
-2. 定义类, 并在上面增加@controllerAdvice 注解
+2. 定义类, 并在上面增加@**controllerAdvice** 注解
 3. 对于不同的异常, 可在对应方法上面使用@ExceptionHandler 进行注解配置需要捕获的异常类
 4. 对于其他异常,则只需注明@ExceptionHandler即可
