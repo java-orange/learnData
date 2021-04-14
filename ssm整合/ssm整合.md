@@ -444,9 +444,9 @@ public void before() {
 
 2. 重写对应的方法
 
-* preHandle 预处理方法, 在controller之前执行, **门神**
-* postHandle 后处理方法, 在controller返回之后拦截,用于信息二次处理,加密等
-* afterCompletion 最后执行的方法, 视图处理完成后进行,一般用于释放资源等
+* **preHandle** 预处理方法, 在controller之前执行, **门神**
+* **postHandle** 后处理方法, 在controller返回之后拦截,用于信息二次处理,加密等
+* **afterCompletion** 最后执行的方法, 视图处理完成后进行,一般用于释放资源等
 
 3. 在**springmvc.xml**中声明拦截器
 

@@ -394,6 +394,166 @@ public class MainApplication {
 
 
 
+### 10.SpringBoot中的切面使用
+
+使用**@Aspect** 指定为切面
+
+使用**@Component** 加入到spring容器中
+
+
+
+```java
+
+/**
+ * 日志拦截器，使用切面记录为日志形式
+ */
+
+@Aspect
+@Component
+@Slf4j
+public class LogAspect {
+
+    // 切点的配置
+    @Pointcut("execution(* com.xiaohua.blog.web.*.*(..))")
+    public void log(){}
+
+
+    @Before("log()")
+    public void doBefore(JoinPoint joinPoint){
+        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = attributes.getRequest();
+        String requestURL = request.getRequestURL().toString();
+        String ip = request.getRemoteAddr();
+        String classMethod = joinPoint.getSignature().getDeclaringTypeName() + "." + joinPoint.getSignature().getName();
+        Object[] args = joinPoint.getArgs();
+        RequestLog requestLog = new RequestLog(requestURL,ip,classMethod,args);
+
+        // 记录请求信息
+        log.info("Request : {}", requestLog);
+
+    }
+
+    @AfterReturning(returning = "result", pointcut = "log()")
+    public void doAfterReturn(Object result){
+        // 记录返回信息
+        log.info("Result : {} ", result);
+    }
+
+
+    // 内部类，方便封装信息
+    @AllArgsConstructor
+    @Data
+    private class RequestLog{
+        private String url;
+        private String ip;
+        private String classMethod;
+        private Object[] args;
+
+        @Override
+        public String toString() {
+            return "{" +
+                    "url='" + url + '\'' +
+                    ", ip='" + ip + '\'' +
+                    ", classMethod='" + classMethod + '\'' +
+                    ", args=" + Arrays.toString(args) +
+                    '}';
+        }
+    }
+
+}
+
+```
+
+
+
+### 11.异常处理器
+
+使用**@ControllerAdvice** 指定为异常处理器
+
+使用**@ExceptionHandler** 指定对应的异常类，
+
+```java
+
+@Log4j2
+@ControllerAdvice
+public class ControllerExceptionHandler {
+
+    @ExceptionHandler(Exception.class)
+    public ModelAndView getException(HttpServletRequest request, Exception e) throws Exception {
+        log.error("Request URL : {}, Exception: {}", request.getRequestURL(), e);
+        // 用于判断异常类上是否存在状态码判断， 若存在，则抛给springboot框架处理
+        if (AnnotationUtils.findAnnotation(e.getClass(), ResponseStatus.class) != null) {
+            throw e;
+        }
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("url", request.getRequestURL());
+        mv.addObject("exception", e);
+        mv.setViewName("error/error");
+        return mv;
+    }
+}
+
+```
+
+
+
+### 12.拦截器
+
+直接继承**HandlerInterceptor** 即可, 重写其中对应的方法
+
+```java
+/**
+ * 登录拦截器
+ */
+
+public class LoginInterceptor implements HandlerInterceptor {
+
+    @Override
+    public boolean preHandle(HttpServletRequest request,
+                             HttpServletResponse response,
+                             Object handler) throws Exception {
+        if (request.getSession().getAttribute("user") == null) {
+            response.sendRedirect("/admin");
+            return false;
+        }
+        return true;
+
+    }
+}
+
+```
+
+同时增加相应的配置，加入到springMVC容器， 并指定拦截路径
+实现 **WebMvcConfigurer** 重写对应的方法
+
+```java
+
+/**
+ * 拦截器配置
+ */
+
+@Configuration
+public class WebConfig implements WebMvcConfigurer {
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(new LoginInterceptor())
+                .addPathPatterns("/admin/**")
+                .excludePathPatterns("/admin")
+                .excludePathPatterns("/admin/login");
+    }
+}
+
+```
+
+
+
+
+
+
+
+
+
 
 ---
 
