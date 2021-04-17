@@ -79,7 +79,7 @@ https://docs.spring.io/spring-boot/docs/current/reference/html/using-spring-boot
 /**
  * 主程序类
  * @SpringBootApplication：这是一个SpringBoot应用
- 	@SpringBootApplication 是一个复合注解，
+   @SpringBootApplication 是一个复合注解，
  		底层是@SpringBootConfiguation
  			 @EnableAutoConfiguration
  			 @ComponentScan 
@@ -138,8 +138,7 @@ public class HelloController {
 ​	无需以前的包扫描配置
 
 ```java
-@SpringBootApplication
-@ComponentScan("com.atguigu.boot")	// 指定扫描包
+@SpringBootApplication(scanBasePackages = "com.atguigu")     // 扩大基础扫描包
 ```
 
 ### 8.容器功能-组件添加
