@@ -227,7 +227,7 @@ class A {
     //1.实例化ReentrantLock对象
     private final ReenTrantLock lock = new ReenTrantLook();
     public void m (){
-        lock.lock//2.先加锁
+        lock.lock()//2.先加锁
         try{
             //保证线程同步的代码
         }finally{

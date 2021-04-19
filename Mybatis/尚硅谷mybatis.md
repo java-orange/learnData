@@ -176,12 +176,11 @@
 > 引入外部properties配置文件的内容
 >
 > ```xml
-> 
 > <!--    引入properties 文件-->
->     <properties resource="db.properties" ></properties>
-> ```
->
+>  <properties resource="db.properties" ></properties>
+>    ```
 > 
+>
 
 ### Settings 全局设置标签
 
