@@ -231,14 +231,15 @@
 ### mappers 指定sql映射文件
 
 > ```xml
->   <mappers>
->       <!--批量注册,必须将该接口与xml文件放在同一个包之下 -->
->         <package name="com.atguigu.mapper"/>
+> <mappers>
+>    <!--批量注册,必须将该接口与xml文件放在同一个包之下 -->
+>      <package name="com.atguigu.mapper"/>
 > <!-- 注册接口,方式一:  必须将该接口与xml文件放在同一个包之下 
->            方式二(不推荐):  直接写接口, 不要xml配置文件, 在接口方法之上使用@select,@insert,@delete等方式写入sql语句	--> 
+>     方式二(不推荐):  直接写接口, 不要xml配置文件, 在接口方法之上使用@select,@insert,@delete等方式写入sql语句	-->
+>     使用class属性是写接口。 
 > <!--        <mapper class="com.atguigu.mapper.EmployeeMapper"/>-->
 > <!--        <mapper resource="com/atguigu/mapper/EmployeeMapper.xml" />-->
->     </mappers>
+>  </mappers>
 > ```
 
 
