@@ -1,0 +1,4 @@
+com\itheima\advice\HandlerControllerException.class
+com\itheima\config\WebSecurityConfig.class
+com\itheima\controller\ProductController.class
+com\itheima\SpringSecurityApplication.class

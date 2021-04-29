@@ -439,7 +439,6 @@
 
 > ```xml
 >   <resultMap id="myMap" type="com.atguigu.pojo.Employee">
->       
 >         <id column="id" property="id" />
 >         <result column="email" property="email" />
 >         <result column="last_name" property="lastName"/>
@@ -448,18 +447,18 @@
 >     <select id="getEmpById" resultMap="myMap">
 >         select * from tbl_employee where id = #{id};
 >     </select>
-> ```
+>    ```
+> 
 >
 >  
->
->  **关于多表查询的环境搭建**
->
-> ```sql
+>**关于多表查询的环境搭建**
+>  
+>```sql
 > # 创建部门表
 > create table tbl_dept(
->  id int(11) primary key auto_increment,
+> id int(11) primary key auto_increment,
 >  dept_name varchar(200)
-> )
+>  )
 > 
 > #修改员工表, 添加字段
 > alter table tbl_employee add column d_id int(11);
@@ -468,16 +467,16 @@
 > alter table tbl_employee add constraint fk_emp_dept foreign key(d_id) references tbl_dept(id)
 > 
 > ```
+> 
 >
 >  
 >
 >  
->
->  **查询一个员工, 附带其部门信息, 多表查询**
->
-> ```xml
->  <resultMap id="myDifMap" type="com.atguigu.pojo.Employee">
->         <id column="id" property="id" />
+>**查询一个员工, 附带其部门信息, 多表查询**
+>  
+>```xml
+> <resultMap id="myDifMap" type="com.atguigu.pojo.Employee">
+>       <id column="id" property="id" />
 >         <result column="email" property="email" />
 >         <result column="last_name" property="lastName"/>
 >         <result column="gender" property="gender" />
@@ -486,24 +485,24 @@
 >     </resultMap>
 >     <select id="getEmpAndDept" resultMap="myDifMap">
 >         select e.id id, e.last_name last_name, e.email email, e.gender gender, d.id did , d.dept_name dept_name
-> 	 from tbl_employee e, tbl_dept d
+>    	 from tbl_employee e, tbl_dept d
 > 	 where e.id = d.id and e.id = #{id}
->     </select>
-> ```
->
-> ```java
+>  </select>
+>    ```
+> 
+>```java
 > @Data
 > public class Employee {
->     private Integer id;
+>  private Integer id;
 >     private String lastName;
 >     private Character gender;
 >     private String email;
 >     private Dept dept;
-> }
+>    }
 > 
 > ```
+> 
 >
->  
 
 ### association 联合属性
 

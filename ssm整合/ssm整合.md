@@ -477,3 +477,32 @@ public void before() {
 2. 定义类, 并在上面增加@**controllerAdvice** 注解
 3. 对于不同的异常, 可在对应方法上面使用@ExceptionHandler 进行注解配置需要捕获的异常类
 4. 对于其他异常,则只需注明@ExceptionHandler即可
+
+
+
+
+
+## 容器简述
+
+![](.\spring容器.png)
+
+
+
+**servletContext**容器就是tomcat容器，最大的容器，里面有常用的**filter**,**listener**,**servlet**组件
+
+**springIOC**容器就是**spring**的父容器，用来存储各种对象，**service**层，**dao**层都是属于这里
+
+**springMVC**容器属于**spring**的子容器，只用来存储**controller**层，
+
+因为子容器可以访问父容器，父容器不可访问子容器，
+
+所以对外只暴露出**controller**的容器，外界便只能通过**http**请求来进入容器，便进入业务了。
+
+对于**springSecurity**，将此容器放在**spring**容器中，与**springmvc**容器并列，通过注解进行权限控制，最好在**service**层，而处在**controller**层也无妨。
+
+**小Tips:**
+
+> 对于其中的事务管理注解，若开启在spring容器中，则可以添加在service层，
+>
+> 同理，若springSecurity的权限注解管理，若开启在spring容器中，则对应在service中，若开启在springmvc中，则对应在controller中
+

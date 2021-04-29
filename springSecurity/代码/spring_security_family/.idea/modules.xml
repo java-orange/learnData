@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/springboot_security_jwt_rsa_parent/heima_auth_server/heima_auth_server.iml" filepath="$PROJECT_DIR$/springboot_security_jwt_rsa_parent/heima_auth_server/heima_auth_server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot_security_jwt_rsa_parent/heima_common/heima_common.iml" filepath="$PROJECT_DIR$/springboot_security_jwt_rsa_parent/heima_common/heima_common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot_security_oauth/heima_oauth_server/heima_oauth_server.iml" filepath="$PROJECT_DIR$/springboot_security_oauth/heima_oauth_server/heima_oauth_server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot_security_oauth/heima_oauth_source/heima_oauth_source.iml" filepath="$PROJECT_DIR$/springboot_security_oauth/heima_oauth_source/heima_oauth_source.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot_security_jwt_rsa_parent/heima_source_product/heima_source_product.iml" filepath="$PROJECT_DIR$/springboot_security_jwt_rsa_parent/heima_source_product/heima_source_product.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot_security_jsp/springboot_security_jsp.iml" filepath="$PROJECT_DIR$/springboot_security_jsp/springboot_security_jsp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot_security_jwt_rsa_parent/springboot_security_jwt_rsa_parent.iml" filepath="$PROJECT_DIR$/springboot_security_jwt_rsa_parent/springboot_security_jwt_rsa_parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot_security_oauth/springboot_security_oauth.iml" filepath="$PROJECT_DIR$/springboot_security_oauth/springboot_security_oauth.iml" />
+    </modules>
+  </component>
+</project>

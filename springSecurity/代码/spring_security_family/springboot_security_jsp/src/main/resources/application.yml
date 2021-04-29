@@ -1,0 +1,19 @@
+server:
+  port: 8080
+spring:
+  mvc:
+    view:
+      prefix: /pages/
+      suffix: .jsp
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql:///security_authority
+    username: root
+    password: root
+mybatis:
+  type-aliases-package: com.itheima.domain
+  configuration:
+    map-underscore-to-camel-case: true
+logging:
+  level:
+    com.itheima: debug

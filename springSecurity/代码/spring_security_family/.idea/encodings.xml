@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" native2AsciiForPropertiesFiles="true" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$/springboot_security_jsp" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot_security_jwt_rsa" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot_security_jwt_rsa/itheima_common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot_security_jwt_rsa_parent" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot_security_jwt_rsa_parent/heima_auth_server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot_security_jwt_rsa_parent/heima_common" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot_security_jwt_rsa_parent/heima_source_product" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot_security_oauth" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot_security_oauth/heima_oauth_server" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot_security_oauth/heima_oauth_source" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+</project>

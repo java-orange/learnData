@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="heima_oauth_server" />
+        <module name="heima_oauth_source" />
+        <module name="heima_common" />
+        <module name="heima_source_product" />
+        <module name="springboot_security_jsp" />
+        <module name="heima_auth_server" />
+        <module name="itheima_common" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="heima_auth_server" target="1.8" />
+      <module name="heima_common" target="1.8" />
+      <module name="heima_oauth_server" target="1.8" />
+      <module name="heima_oauth_source" target="1.8" />
+      <module name="heima_source_product" target="1.8" />
+      <module name="itheima_common" target="1.8" />
+      <module name="springboot_security_jsp" target="1.8" />
+      <module name="springboot_security_jwt_rsa" target="1.8" />
+      <module name="springboot_security_jwt_rsa_parent" target="1.8" />
+      <module name="springboot_security_oauth" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="heima_auth_server" options="-parameters" />
+      <module name="heima_common" options="-parameters" />
+      <module name="heima_oauth_server" options="-parameters" />
+      <module name="heima_oauth_source" options="-parameters" />
+      <module name="heima_source_product" options="-parameters" />
+      <module name="itheima_common" options="-parameters" />
+      <module name="springboot_security_jsp" options="-parameters" />
+      <module name="springboot_security_jwt_rsa" options="-parameters" />
+      <module name="springboot_security_jwt_rsa_parent" options="-parameters" />
+      <module name="springboot_security_oauth" options="-parameters" />
+    </option>
+  </component>
+</project>

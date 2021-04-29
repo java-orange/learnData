@@ -1,0 +1,19 @@
+server:
+  port: 9001
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql:///security_authority
+    username: root
+    password: root
+mybatis:
+  type-aliases-package: com.itheima.domain
+  configuration:
+    map-underscore-to-camel-case: true
+logging:
+  level:
+    com.itheima: debug
+rsa:
+  key:
+    pubKeyFile: D:\auth_key\id_key_rsa.pub
+    priKeyFile: D:\auth_key\id_key_rsa

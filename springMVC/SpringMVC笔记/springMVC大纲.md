@@ -204,13 +204,14 @@
 
       * 若配置了视图解析器, 则直接返回的 "show" 代表的是 该视图,
     * 若想要在String中也返回数据, 则可以通过httpServletRequest 作为参数,用来传递参数
-        
+    
 * request.setAttribute("myName", name) 
         
+  
   * **void**                            ->                 没用, 既不处理数据, 也不跳转页面, 可以处理ajax请求
-      
+  
 * **Object**                       ->                  只处理数据, 精准处理ajax请求
-    
+  
   * 1. **增加json的工具库依赖, 默认使用jackson**
     
     2. **在springmvc.xml 中增加注解驱动** 
@@ -219,12 +220,15 @@
          <mvc:annotation-driven/>
            需要加的是: http://www.springframework.org/schema/mvc 对应的
          ```
+       
          ```
-      
+    
+         ```
+       
          ```
     
       3. **在处理方法上增加@ResponseBody注解**
-      
+    
     * springMVC处理器返回object, 可以转为json输出至浏览器,响应ajax的内部原理
     
   * 添加依赖, json工具包
@@ -714,10 +718,9 @@
 
 * forward: 转发, **内部跳转并返回**
   * mv.setViewName("forward:视图文件完整路径");
-  * 特性: 可以跨过视图解析器,就当此请求不经过视图解析器
+  * 特性: 可以跨过视图解析器,就当此**请求不经过视图解析器**
 * redirect: 重定向, **返回给客户新的连接,让客户重新请求**, **不能访问WEB-INF**
-  * mv.setViewName("forward:视图文件完整路径");
-  * 特性: 可以跨过视图解析器,就当此请求不经过视图解析器
+  * mv.setViewName("redirect:视图文件完整路径");
 
 ## 5.异常处理
 
@@ -735,8 +738,6 @@
   * 给用户友好提示
   
 *  
-
-  
 
 *  ```java
   package com.bjpowernode.handler;
@@ -756,6 +757,12 @@
           modelAndView.addObject("msg", e.getMessage());
           modelAndView.setViewName("error");
           return modelAndView;
+          
+          //也可以直接写成
+          // return "redirect:/error.jsp"; 重定向
+          // return "forward:/error.jsp";  请求转发
+          // return "error";               跳转至error,经过视图解析器自动补齐前缀后缀。
+          
       }
       
       // 其余所有错误的异常处理器
@@ -764,13 +771,13 @@
           ModelAndView modelAndView = new ModelAndView();
           modelAndView.addObject("msg", e.getMessage());
           modelAndView.setViewName("error");
-          return modelAndView;
+        return modelAndView;
       }
   
   }
   
   ```
-
+  
   
 
 ## 6.拦截器
@@ -1177,7 +1184,7 @@ public class TestController {
 
 再交予**dispatcherServlet**
 
-再进行页面渲染**viewResolver**
+再进行页面处理器**viewResolver**进行渲染
 
 后台自动走**handlerInterceptor** 拦截器的最终拦截（**afterCompletion**方法）  清理资源
 
@@ -1188,6 +1195,10 @@ public class TestController {
 响应页面
 
 ---
+
+
+
+
 
 
 
