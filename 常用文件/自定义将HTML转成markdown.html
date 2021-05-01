@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>将HTML转成markdown</title>
+    <meta name="viewport" content="width=device-width">
+    <style>
+        * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+
+        body {
+            margin: 0 auto;
+            font-family: courier, monospace, sans-serif;
+            line-height: 1.3125;
+            color: #333;
+        }
+
+        header {
+            padding: 0.5em;
+            background-color: #fff;
+            text-align: center;
+        }
+
+        footer {
+            font-size: 0.875em;
+            text-align: center;
+            color: #666;
+        }
+
+        h1,
+        label[for="input"],
+        label[for="output"] {
+            margin: 0;
+            font-size: 1em;
+            font-weight: 700;
+            letter-spacing: 0.0625em;
+            text-transform: uppercase;
+        }
+
+        label[for="input"],
+        label[for="output"] {
+            font-weight: 400;
+        }
+
+        .source-link {
+            font-size: 0.875em;
+        }
+
+        .row:before,
+        .row:after {
+            content: " ";
+            display: table;
+        }
+
+        .row:after {
+            clear: both;
+        }
+
+        .row {
+            *zoom: 1;
+        }
+
+        .col,
+        .form-group {
+            padding: 0 0.5em;
+        }
+
+        @media (min-width: 36em) {
+            .col {
+                float: left;
+                width: 50%;
+            }
+        }
+
+        textarea {
+            width: 100%;
+            height: 36em;
+            margin: 0;
+            padding: 0.5em;
+            overflow: auto;
+            border: 1px solid;
+            background-color: #fff;
+            font-family: inherit;
+            font-size: inherit;
+            line-height: inherit;
+            color: inherit;
+        }
+
+        #input {
+            background-color: #333;
+            color: #fff;
+            border: none;
+        }
+
+        select {
+            display: block;
+            width: 100%;
+            font-size: inherit;
+        }
+
+        .form-group {
+            display: inline-block;
+        }
+
+        .form-group label {
+            font-size: 0.875em;
+        }
+
+        .changeButton {
+            width: 500px;
+            height: 200px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 50px;
+            border-radius: 30px;
+            left: -50%;
+            margin-left: 50%;
+            background: #c5e6c5;
+            border: 1px solid #caf7ca;
+            transition: all .5s ease-in-out;
+        }
+
+        .changeButton:hover {
+            border: 2px solid rgb(8, 255, 8);
+            font-size: 80px;
+        }
+
+        .changeButton:visited, .changeButton:active {
+            border: none;
+        }
+
+        button {
+            outline: none;
+        }
+
+
+        .hasCopy {
+            color: red;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="row">
+    <div class="col">
+        <textarea cols="100" rows=10 id="input"></textarea>
+        <button class="changeButton">转换</button>
+    </div>
+    <div class="col" id="sout">
+        <p>&lt;font face=&quot;Consolas&quot;&gt;</p>
+
+        <p>[toc]</p>
+        <br><br>
+        <div id="outDiv" style="max-height: 400px;overflow-y: auto"></div>
+        <br>
+        &lt;/font&gt;
+    </div>
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.js"></script>
+<script>
+    $(".changeButton").on('click', () => {
+        var _input = $('#input'),
+            _outDiv = $('#outDiv');
+        _outDiv.empty().append($(_input.val()));
+        RecursiveGet();
+    });
+
+    $('#input').on('keydown', () => {
+        $('.changeButton').text("转换").removeClass('hasCopy');
+    })
+
+
+    function RecursiveGet() {
+        var _outDiv = $('#outDiv');
+        _outDiv.children().toArray().forEach(ele => {
+            ele = $(ele);
+            switch (ele[0].tagName.toLowerCase()) {
+                case "h1":
+                case "h2":
+                case "h3":
+                case "h4":
+                case "h5":
+                case "h6":
+                    var _html = ele.html();
+                    ele.after(Array(Number(ele[0].tagName.charAt(1)) + 1).join('#') + " " + _html + "<br><br>");
+                    ele.remove();
+                    break;
+                case "p":
+                    afterThenRemoveEle(ele)
+                    break;
+                case "br":
+                    break;
+                case "table":
+                    let _thead = ele.find('thead'),
+                        _tbody = ele.find('tbody'),
+                        _tableResult = '|';
+                    if (_thead.length) {
+                        let _the = _thead.eq(0);
+                        _tableResult += _the.find('th')
+                            .toArray()
+                            .map(_th => $(_th).html())
+                            .join("|") + '|';
+                        console.log(_tableResult);
+                        _tableResult += '<br>|' + Array(_the.find('th').length).fill(' ---- ').join('|') + '|<br>';
+                    }
+                    if (_tbody.length) {
+                        let _tbo = _tbody.eq(0);
+                        _tbo.find('tr').toArray().forEach(_tr => {
+                            _tr = $(_tr);
+                            _tableResult += '|' + _tr.find('td')
+                                .toArray()
+                                .map(_td => $(_td).html())
+                                .join("|") + '|<br>';
+                        })
+                    }
+                    ele.after('<br><br>' + _tableResult);
+                    ele.remove();
+                    break;
+                case "blockquote":
+                    var t = ele.html();
+                    t = "<br><br>" + (t = (t = t.replace(/^\n+|\n+$/g, "")).replace(/^/gm, "><br>> ")) + "<br><br>";
+                    ele.after(t + "<br><br>");
+                    ele.remove();
+                    break;
+                case "ul":
+                    ele.children('li').toArray().forEach(_li => {
+                        _li = $(_li);
+                        dealRecursiveLi_UL(_li, 3);
+                        _li.after('- ' + _li.html() + "<br><br>");
+                        _li.remove();
+                    });
+                    afterThenRemoveEle(ele);
+                    break;
+                case "ol":
+                    ele.children('li').toArray().forEach((_li, index) => {
+                        _li = $(_li);
+                        dealRecursiveLi_OL(_li, 3);
+                        _li.after((index + 1) + '. ' + _li.html() + "<br><br>");
+                        _li.remove();
+                    });
+                    afterThenRemoveEle(ele);
+                    break;
+                case "hr":
+                    var t = "---";
+                    ele.after(t + "<br><br>");
+                    ele.remove();
+                    break;
+                case "a":
+                    if (ele.text() === 'undefined' || !ele.text()) {
+                        ele.remove();
+                        break;
+                    }
+                    var t = "[" + ele.text() + "](" + ele.attr("href") + "\t\"" + ele.text() + "\")";
+                    ele.after(t);
+                    ele.remove();
+                    break;
+                case "img":
+                    var t = "![" + ele.attr('alt') + "](" + ele.attr("src") + ")";
+                    ele.after(t + "<br><br>");
+                    ele.remove();
+                    break;
+                case "code":
+                    var t = "`" + ele.html() + "`";
+                    ele.after(t);
+                    ele.remove();
+                    break;
+                case "pre":
+                    if (ele.hasClass("pass")) {
+                        break;
+                    }
+                    // 移除ul标签
+                    ele.find("ul").remove();
+                    var t = "<pre class='pass'>```java<br>" + ele.html() + "```</pre>";
+                    ele.after(t + "<br><br>");
+                    ele.remove();
+                    break;
+                case "span":
+                    if (ele.css('color')) {
+                        ele.after('&lt;font color=' + colorRGBtoHex(ele.css('color')) + '&gt;' + ele.html() + '&lt;/font&gt;');
+                    } else {
+                        ele.after(ele.html());
+                    }
+                    ele.remove();
+                    break;
+                case "strong":
+                    var t = "**" + ele.html() + "**";
+                    ele.after(t);
+                    ele.remove();
+                    break;
+                case "pass":
+                    break;
+                case "font":
+                    if (ele.css('color')) {
+                        ele.after('&lt;font color=' + colorRGBtoHex(ele.css('color')) + '&gt;' + ele.html() + '&lt;/font&gt;');
+                    } else {
+                        ele.after(ele.html());
+                    }
+                    ele.remove();
+                    break;
+                default:
+                    afterThenRemoveEle(ele)
+                    break;
+            }
+        });
+        var _lastChild = $('#outDiv').children().toArray().filter(e => {
+            if (e.tagName.toLowerCase() !== 'br' &&
+                e.tagName.toLowerCase() !== 'pass' &&
+                !$(e).hasClass("pass")) {
+                return e;
+            }
+        });
+        if (_lastChild.length) {
+            console.log("这些tag的元素还没被处理:" + Array.from(new Set(_lastChild.map(e => e.tagName))));
+            RecursiveGet();
+        } else {
+            console.log("结束了");
+            var _outDiv = $('#outDiv'),
+                _html = _outDiv.html();
+            // 这一坨是为了整理格式的,不用改,放着就行了
+            _outDiv.html(_html.replace(/\*{3,}/ig, '')// 清理复杂的*号
+                .replace(/<span[^>]*>复制代码.*<\/span>/ig, '')// 清理"复制代码"语句
+                .replace(/<br>[(<br>)\s]*<br>/ig, '<br><br>')// 清理多而乱的<br>
+                .replace(/\s*<br>\s*<br>\s*[^\S]/ig, '<br><br>')// 两个<br>后面跟着换行符,或者一对莫名其妙的符号的情况
+            );
+            // _outDiv.html(_html.replace(/\*{3,}/ig, '')// 清理复杂的*号
+            //     .replace(/<span.*复制代码.*<\/span>/ig, '')// 清理"复制代码"语句
+            //     .replace(/<br>\s*<br>/ig, '<br><br>')
+            //     .replace(/((<br>)+\n){2,}/ig, '<br><br>')
+            //     .replace(/(<br>){2,}/ig, "<br><br>")
+            //     .replace(/((<br>)+\n){2,}/ig, '<br><br>')
+            //     .replace(/((<br>)+\n){1,}(<br>)+/ig, '<br><br>')
+            //     .replace(/(<br>)+\s*/ig, '<br><br>')
+            //     .replace(/(<br>){3,}/ig, '<br><br>')
+            // );
+            // _outDiv.html(_html);
+            // 复制输出结果
+            copyResult();
+
+        }
+    }
+
+    // 复制输出结果
+    function copyResult() {
+        var div = document.getElementById('sout');
+        if (document.body.createTextRange) {
+            var range = document.body.createTextRange();
+            range.moveToElementText(div);
+            range.select();
+        } else if (window.getSelection) {
+            var selection = window.getSelection();
+            var range = document.createRange();
+            range.selectNodeContents(div);
+            selection.removeAllRanges();
+            selection.addRange(range);
+            /*if(selection.setBaseAndExtent){
+                selection.setBaseAndExtent(text, 0, text, 1);
+            }*/
+        } else {
+            console.warn("none");
+        }
+        document.execCommand("Copy"); // 执行浏览器复制命令
+        // alert("已复制好，可贴粘。");
+        $('.changeButton').text("已复制").addClass('hasCopy');
+    }
+
+    // 很基本的操作
+    function afterThenRemoveEle(ele) {
+        ele.after(ele.html() + "<br><br>");
+        ele.remove();
+    }
+
+    // 颜色格式转换
+    function colorRGBtoHex(color) {
+        var rgb = color.split(',');
+        var r = parseInt(rgb[0].split('(')[1]);
+        var g = parseInt(rgb[1]);
+        var b = parseInt(rgb[2].split(')')[0]);
+        var hex = "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+        return hex;
+    }
+
+
+    // 处理有ul的li
+    // 这种递归贼烦
+    function dealRecursiveLi_UL(_li, blankNum) {
+        if (_li.find('ul').length) {
+            _li.find('ul').toArray().forEach(_ul => {
+                _ul = $(_ul);
+                _ul.children('li').toArray().forEach(_li2 => {
+                    _li2 = $(_li2);
+                    dealRecursiveLi_UL(_li2, blankNum + 3);
+                    _li2.after('<br>' + Array(blankNum + 1).join('&nbsp;') + '-&nbsp;' + _li2.html() + "<br><br>");
+                    _li2.remove();
+                });
+                _ul.after(_ul.html() + "<br><br>");
+                _ul.remove();
+            });
+        }
+        if (_li.find('ol').length) {
+            if (_li.find('ol').length) {
+                _li.find('ol').toArray().forEach(_ol => {
+                    _ol = $(_ol);
+                    _ol.children('li').toArray().forEach((_li2, index) => {
+                        _li2 = $(_li2);
+                        dealRecursiveLi_OL(_li2, blankNum + 3);
+                        _li2.after('<br>' + Array(blankNum + 1).join('&nbsp;') + (index + 1) + '.&nbsp;' + _li2.html() + "<br><br>");
+                        _li2.remove();
+                    });
+                    _ol.after(_ol.html() + "<br><br>");
+                    _ol.remove();
+                });
+            }
+        }
+    }
+
+    function dealRecursiveLi_OL(_li, blankNum) {
+        if (_li.find('ol').length) {
+            _li.find('ol').toArray().forEach(_ol => {
+                _ol = $(_ol);
+                _ol.children('li').toArray().forEach((_li2, index) => {
+                    _li2 = $(_li2);
+                    dealRecursiveLi_OL(_li2, blankNum + 3);
+                    _li2.after('<br>' + Array(blankNum + 1).join('&nbsp;') + (index + 1) + '.&nbsp;' + _li2.html() + "<br><br>");
+                    _li2.remove();
+                });
+                _ol.after(_ol.html() + "<br><br>");
+                _ol.remove();
+            });
+        }
+        if (_li.find('ul').length) {
+            _li.find('ul').toArray().forEach(_ul => {
+                _ul = $(_ul);
+                _ul.children('li').toArray().forEach(_li2 => {
+                    _li2 = $(_li2);
+                    dealRecursiveLi_UL(_li2, blankNum + 3);
+                    _li2.after('<br>' + Array(blankNum + 1).join('&nbsp;') + '-&nbsp;' + _li2.html() + "<br><br>");
+                    _li2.remove();
+                });
+                _ul.after(_ul.html() + "<br><br>");
+                _ul.remove();
+            });
+        }
+    }
+
+
+</script>
+</body>
+</html>
