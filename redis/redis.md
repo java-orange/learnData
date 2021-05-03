@@ -219,7 +219,7 @@ Redis有序集合zset与普通集合set非常相似，是一个没有重复元�
 </dependency>
 ```
 
-### SpringBoot整个redis
+### SpringBoot整合redis
 
 ```xml
 <!-- redis -->
