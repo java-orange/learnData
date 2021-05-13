@@ -441,9 +441,9 @@ SpringWebflux请 求 和 响 应 不 再 是ServletRequest和ServletResponse，�
 
 其中的User实体类，Service,ServiceImpl 均完全一致。
 
-controller层废弃，
+**controller层废弃，**
 
-#### 自写Handler
+#### 自写Handler，类似于controller层
 
 ```java
 public class UserHandler {
@@ -461,14 +461,16 @@ public class UserHandler {
         Mono<User> userMono = this.userService.getUserById(userId);
         //把userMono进行转换返回
         //使用Reactor操作符
-        flatMapreturnuserMono.flatMap(person -> 	ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(fromObject(person))).switchIfEmpty(notFound);
+        flatMapreturnuserMono.flatMap(person -> 	ServerResponse.ok().contentType(MediaType.APPLICATION_JSON)
+                                      .body(fromObject(person))).switchIfEmpty(notFound);
     }
     
     //查询所有
     public Mono<ServerResponse> getAllUsers() {
         //调用service得到结果
         Flux<User> users = this.userService.getAllUser();
-        return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON).body(users,User.class);
+        return ServerResponse.ok().contentType(MediaType.APPLICATION_JSON)
+            .body(users,User.class);
     }
     //添加
     public Mono<ServerResponse> saveUser(ServerRequest request) {
@@ -491,7 +493,9 @@ public RouterFunction<ServerResponse> routingFunction() {
     UserService userService = new UserServiceImpl();
     UserHandler handler = new UserHandler(userService);
     //设置路由
-    return RouterFunctions.route(GET("/users/{id}").and(accept(APPLICATION_JSON)),handler::getUserById).andRoute(GET("/users").and(accept(APPLICATION_JSON)),handler::getAllUsers);
+    return RouterFunctions.route(GET("/users/{id}").and(accept(APPLICATION_JSON)),
+                handler::getUserById).andRoute(GET("/users").and(accept(APPLICATION_JSON)),
+                                                                handler::getAllUsers);
 }
 
 //   创建服务器完成适配

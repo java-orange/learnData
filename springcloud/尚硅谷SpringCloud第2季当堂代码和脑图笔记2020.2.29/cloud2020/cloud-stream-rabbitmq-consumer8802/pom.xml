@@ -12,7 +12,6 @@
     <artifactId>cloud-stream-rabbitmq-consumer8802</artifactId>
 
 
-
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>

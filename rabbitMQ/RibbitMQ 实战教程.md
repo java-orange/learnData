@@ -328,7 +328,7 @@
 ```java
 // 通道绑定队列（生产者与消费者要严格一致）  
 channel.queueDeclare("hello",true,false,false,null);
-	'参数1':用来声明通道对应的队列,若队列不存在，则可自动创建
+  '参数1':用来声明通道对应的队列,若队列不存在，则可自动创建
   '参数2':用来指定是否持久化队列，仅持久化队列，mq重启队列依旧存在，但消息全丢失
   '参数3':用来指定是否独占队列，只能被当前通道所使用，其他通道直接报错
   '参数4':用来指定是否自动删除队列，当消费者消费完消息并彻底断开连接后，队列中不存在消息，则自动删除该队列
@@ -763,33 +763,33 @@ spring:
 
 ### 5.1 第一种hello world模型使用
 
-1. ##### 开发生产者
+##### 开发生产者
 
-   ```java
-   @Autowired //添加完依赖，自动加载出rabbitTemplate
-   private RabbitTemplate rabbitTemplate;
-   
-   @Test
-   public void testHello(){
-       // 队列名称， 消息内容
-     rabbitTemplate.convertAndSend("hello","hello world");
-   }
-   ```
+```java
+@Autowired //添加完依赖，自动加载出rabbitTemplate
+private RabbitTemplate rabbitTemplate;
 
-2. ##### 开发消费者
+@Test
+public void testHello(){
+    // 队列名称， 消息内容
+  rabbitTemplate.convertAndSend("hello","hello world");
+}
+```
 
-   ```java
-   @Component // 默认创建持久化，非独占，非自动删除的队列，若改变属性，直接在里面该
-   // @RabbitListener(queuesToDeclare = @Queue("hello",durable="false",auyoDelete="false"))
-   @RabbitListener(queuesToDeclare = @Queue("hello"))
-   public class HelloCustomer {
-   
-       @RabbitHandler
-       public void receive1(String message){
-           System.out.println("message = " + message);
-       }
-   }
-   ```
+##### 开发消费者
+
+```java
+@Component // 默认创建持久化，非独占，非自动删除的队列，若改变属性，直接在里面改
+// @RabbitListener(queuesToDeclare = @Queue("hello",durable="false",auyoDelete="false"))
+@RabbitListener(queuesToDeclare = @Queue("hello"))
+public class HelloCustomer {
+
+    @RabbitHandler
+    public void receive1(String message){
+        System.out.println("message = " + message);
+    }
+}
+```
 
 ### 5.2 第二种work模型使用
 
@@ -824,11 +824,12 @@ spring:
            System.out.println("work message2 = " + message);
        }
    }
-```
-   
+   ```
+
    > `说明:默认在Spring AMQP实现中Work这种方式就是==公平调度==,如果需要实现能者多劳需要额外配置`
 
-### 5.3 Fanout 广播模型
+
+   ### 5.3 Fanout 广播模型
 
 1. ##### 开发生产者
 
@@ -843,8 +844,6 @@ spring:
    }
    ```
 
-   
-
 2. ##### 开发消费者
 
    ```java
@@ -852,7 +851,7 @@ spring:
    public class FanoutCustomer {
    
        @RabbitListener(bindings = @QueueBinding(
-           value = @Queue,	//不指定名称，则为临时队列
+           value = @Queue("a"),	//不指定名称，则为临时队列
            exchange = @Exchange(name="logs",type = "fanout")	//绑定交换机（名称，类型）
        ))
        public void receive1(String message){
