@@ -1813,11 +1813,13 @@ package.json<img src="vue.assets/image-20210512195112724.png" alt="image-2021051
 
 当执行 npm run build 时， 直接运行脚本 webpack ， 完成配置
 
-此时，直接执行 npm run build 就相当于在控制台执行 webpack ， 但有一点不同，使用脚本会使用当前项目的局部webpack ，也就是经常看到的node_modules包中使用的，
+此时，直接执行 npm run build 就相当于在控制台执行 webpack ， **但有一点不同，使用脚本会使用当前项目的局部webpack** ，也就是经常看到的node_modules包中使用的，
 
 当想要在项目中安装webpack时， 使用命令：  npm install webpack@3.6.0 --save-dev 
 
 即可在项目中安装**局部开发的webpack版本**，此时查看package.json 会发现新增相关信息配置。
+
+此时执行npm run build 及使用本地的webpack版本
 
 
 
