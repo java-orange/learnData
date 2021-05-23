@@ -2828,7 +2828,7 @@ const cpn = {
 
 ```html
 <div id="app">
-	<cpn :cMessage="message"></cpn>
+	<cpn :cmssage="message"></cpn>
 </div>
 <script>
 	const app = new Vue({
@@ -6570,7 +6570,7 @@ export default {
 > app.vue 中添加 user 页面的`<router-link>`，并添加 userId 变量
 
 ```vue
-<router-link :to="/user/ + userId">用户</router-link>
+<router-link :to="‘/user/’ + userId">用户</router-link>
 ```
 
 ```js
@@ -7275,7 +7275,7 @@ export default {
 ```vue
 <keep-alive>
       <router-view/>
-    </keep-alive>
+</keep-alive>
 ```
 
 我们将`<router-view/>`包起来，那所有的组件都会缓存，都只会创建一次，如果我们需要某一个组件每次都创建销毁，就需要使用`exclude`属性。
@@ -7841,7 +7841,8 @@ new Promise((resolve, reject) => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {//第二次网络请求
             resolve()
-        }, 1000).then(() => {
+        }, 1000)
+    }).then(() => {
             console.log("hello vuejs")//第二次处理代码
             return new Promise((resolve, reject) => {
                 setTimeout(() => {//第三次网络请求
@@ -7849,9 +7850,7 @@ new Promise((resolve, reject) => {
                 }, 1000)
             }).then(() => {
                 console.log("hello java")//第三次处理代码
-            })
-        })
-    })
+     })
 })
 ```
 
@@ -7861,9 +7860,9 @@ new Promise((resolve, reject) => {
 new Promise((resolve, reject) => {
     setTimeout(() => {
     	resolve('success')
-    }, 1000).then(success => {
+    }, 1000)
+}).then(success => {
     	console.log(success)
-    })
 })
 ```
 
@@ -8026,6 +8025,59 @@ throw 'error message' //抛出异常
 
 
 
+#### Promise语法糖
+
+```javascript
+// Promise 的链式调用
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('hello Vuejs');
+    }, 1000)
+  }).then((data) => {
+    console.log(data);
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve('hello java');
+      }, 1000)
+    }).then((data) => {
+      console.log(data);
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve('hello css');
+        }, 1000)
+      }).then((data) => {
+        console.log(data);
+      })
+    })
+  })
+
+
+  // Promise 语法糖,用于处理下一次数据而不发送请求。
+
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('hello world');
+    }, 1000)
+  }).then(data => {
+    console.log(data);
+    return Promise.resolve(data + '123');         // 链式调用, 不用再new
+  }).then(data => {
+    console.log(data);
+    return data + 'abc';                          // 若调用Promise.resolve 则可以省略不写
+  }).then(data => {
+    console.log(data);
+    // return Promise.reject('error message');
+    throw 'error message';                        // 若调用Promise.reject 则可以使用 throw
+  }).catch(err => {
+    console.log(err);
+  })
+
+```
+
+
+
+
+
 ## 18.5	Promise的all使用
 
 有这样一个情况，一个业务需要请求2个地方（A和B）的数据，只有A和B的数据都拿到才能走下一步。
@@ -8072,10 +8124,10 @@ function callback(){
             resolve(data)
           }
         })
-      }).then(results => {
-        console.log(results)
       })
-    ])
+    ]).then(results => {
+        console.log(results)
+    })
 ```
 
 上面是伪代码，只是包装了ajax，ajaxA和ajaxB的结果都放在`resolve()`中，Promise将其放在`results`中了，使用`setTimeout`模拟。
@@ -8420,7 +8472,7 @@ computed: {
 
 ```js
   getters: {
-    getStudentCounts: state => {
+    getStudentCounts(state) {
       return state.students.filter(s => s.age > 20).length
     }
   }
@@ -8446,8 +8498,10 @@ computed: {
 
 ```js
   getters: {
-    getStuById: state => id => {
-      return state.students.find(s => s.id === id)
+    getStuById(state) {
+      return id => {
+          state.students.find(s => s.id === id)
+      }
     }
   }
 ```
@@ -8762,7 +8816,7 @@ actions: {
     // context：上下文
     aUpdateInfo (context, name) {
         setTimeout(() => {
-        context.commit(UPDATEINFO, 12)
+        context.commit('updateName', name)
         }, 1000)
     }
 }
@@ -8798,7 +8852,7 @@ aUpdateInfo () {
            let msg = '响应成功'
            return new Promise((resolve, reject) => {
                setTimeout(() => {
-                   context.commit(UPDATEINFO, 12)
+                   context.commit('updateName', name)
                    resolve(msg)
                }, 1000)
            })
@@ -8812,8 +8866,10 @@ aUpdateInfo () {
 
    ```js
    aUpdateInfo () {
-       this.$store.dispatch('aUpdateInfo', 'lisi').then(response => {
-           console.log(response)
+       this.$store
+           .dispatch('aUpdateInfo', 'lisi')
+           .then(response => {
+           	console.log(response)
        })
    }
    ```
@@ -8953,3 +9009,157 @@ Vuex 并不限制你的代码结构。但是，它规定了一些需要遵守的
         ├── cart.js       # 购物车模块
         └── products.js   # 产品模块
 ```
+
+
+
+
+
+## (二十) axios
+
+网络请求的方式。
+
+
+
+安装
+
+> npm install axios --save
+
+### 20.1基本使用
+
+支持Promise方式处理
+
+```javascript
+
+axios({
+  url: 'http://123.207.32.32:8000/home/multidata',
+  method: 'get'
+}).then((res) => {
+  console.log(res);
+})
+
+axios({
+  url: 'http://123.207.32.32:8000/home/data',
+  method: 'get',
+  params: {           // 增加参数, get参数
+    type: 'pop',
+    page: 1
+  }
+}).then(res => {
+  console.log(res);
+})
+```
+
+### 	20.2处理多请求
+
+```javascript
+// 处理双请求
+axios.all([axios({
+  url: 'http://123.207.32.32:8000/home/multidata',
+  method: 'get'
+}), axios({
+  url: 'http://123.207.32.32:8000/home/data',
+  method: 'get',
+  params: {           // 增加参数
+    type: 'pop',
+    page: 1
+  }
+})]).then(results => {
+  console.log(results);
+  console.log(results[0]);
+  console.log(results[1]);
+})
+```
+
+### 20.3全局配置
+
+```javascript
+// 设置全局配置信息
+axios.defaults.baseURL = 'http://123.207.32.32:8000';
+axios.defaults.timeout = 5000;
+
+axios({
+  url: '/home/multidata',
+  method: 'get'
+}).then((res) => {
+  console.log(res);
+})
+
+```
+
+### 20.4axios的封装
+
+**因axios属于第三方框架，所以将其再次封装而不直接引用，**
+
+**以防止后期框架出现更换可直接调整封装文件即可**
+
+创建新文件 `request.js`
+
+```javascript
+
+export function request(config) {
+  // 1. 创建axios对象
+  const instance = axios.create({
+    // baseURL: 'http://123.207.32.32:8000',
+    // baseURL: 'https://list.mogu.com',
+    baseURL: '/api',
+    timeout: 5000
+  })
+   // 3. 使用axios
+  // 因内置返回的就是Promise 请求，故可以直接使用Promise处理请求
+  return instance(config);
+}
+
+```
+
+`main.js`
+
+```javascript
+import {request} from "./network/request";
+
+request({
+  url: '/home/url'
+}).then(res => {
+  console.log(res);
+}).catch(err => {
+  console.log(err);
+})
+
+
+```
+
+### 20.5 axios拦截器
+
+```javascript
+export function request(config) {
+  // 1. 创建axios对象
+  const instance = axios.create({
+    // baseURL: 'http://123.207.32.32:8000',
+    // baseURL: 'https://list.mogu.com',
+    baseURL: '/api',
+    timeout: 5000
+  })
+  // 2. axios拦截器
+  // 请求拦截
+  instance.interceptors.request.use(config => {
+    // 拦截预处理
+    console.log(config);
+    return config;							// 处理请求数据的配置
+  }, err => {
+    console.log(err);
+  })
+
+  // 响应拦截
+  instance.interceptors.response.use(res => {
+    // 响应预处理
+    console.log(res);
+    return res.data							// 处理响应数据的返回
+  }, err => {
+    console.log(err);
+  })
+
+  // 3. 使用axios
+  return instance(config);
+}
+
+```
+
