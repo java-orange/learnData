@@ -90,23 +90,127 @@ public void test02(){
 
 演变过程：
 
-```java
-- 垃圾代码 --> 策略模式 --> 匿名内部类 --> Lambda表达式
+```
+- 垃圾代码 --> 策略模式 --> 匿名内部类 --> Lambda表达式  --> Stream Api
+
+需求： 进行员工大于35岁的过滤
+解决:  新建方法，判断年龄大于35
+
+需求： 进行员工工资大于5000的过滤
+解决： 新建方法，判断工资大于5000
+
+--------------------------每进行一个需求变更就需要增添新的方法-----------------------
+解决： 使用策略设计模式
+实施： 新建MyPredicate接口， 定义返回boolean的方法 boolean filter()
+	public interface MyPredicate<T>{
+    	boolean filter(T t);    
+    }
+实现需求，定义相关类，实现接口
+	public class AgeFilter implements MyPredicate<Employee>(){
+     	@Override
+        public boolean filter(Employee emp){
+        	return emp.getAge() >= 35;
+        }
+    }
+    
+只需定义一个方法即可。（新需求增加 定义相关实现类）
+     public List<Employee> getSpecial(List<Employee> list, MyPredicate<Employee> mp) {
+     	List<Employee> emps = new ArraysList();
+     	list.forEach(Emp -> {
+     		if (mp.filter(emp)) {
+     			emps.add(emp);
+     		}
+     	})
+     	return emps;
+     }
+     
+-------------------每进行一个需求，都要创建对应的实现类，且代码较低-----------------------
+解决： 使用幂名内部类
+实现需求， 直接调用过滤方法，实现幂名内部类
+	public void test() {
+		List<Employee> list = Arrays.asList(
+			new Employee('001',35,4000);
+			new Employee('002',65,3000);
+			new Employee('003',25,8000);
+			new Employee('004',85,7000);
+		);
+		
+		List<Employee> emps = this.getSpecial(list,new MyPredicate<Employee>() {
+			@Override
+			public boolean filter(Employee emp) {
+				return emp.getSalary <= 10000;
+			}
+		});
+		return emps;
+	}
+
+-----------------------核心代码就一句，可读性较差，------------------------
+解决： 使用Lambda表达式
+实现需求，直接调用过滤方法，使用Lambda表达式
+	public void test() {
+		List<Employee> list = Arrays.asList(
+			new Employee('001',35,4000);
+			new Employee('002',65,3000);
+			new Employee('003',25,8000);
+			new Employee('004',85,7000);
+		);
+		
+		List<Employee> emps = getSpecial(list,emp -> emp.getSalary <= 3000);
+		emps.forEach(System.out::println);
+		return emps;
+	}
+
+------------------------实现过滤功能，有专门的数据流---------------------------------
+解决： 使用stream流
+	public void test() {
+		List<Employee> list = Arrays.asList(
+			new Employee('001',35,4000);
+			new Employee('002',65,3000);
+			new Employee('003',25,8000);
+			new Employee('004',85,7000);
+		);
+		
+		list.stream()
+			.filter(e -> e.getSalray >= 4000)
+			.forEach(System.out::println);
+			
+        // 只取前两位
+        list.stream()
+        	.filter(e -> e.gatSalary >= 4000)
+        	.limit(2).forEach(System.out::println);
+        
+        // 只取人名
+        list.stream()
+        	.map(Employee::getName)
+        	.forEach(System.out::println);
+	}
+	
 ```
 
+从上面的例子中可以看出，Lambda表达式可以更清晰简洁的实现代码的高效运作，只需书写关键代码。
+
+
+
+Lambda表达式： 实际上就是对于函数式接口（有且仅有一个抽象方法的接口）的幂名实现。
+
+`->`  ： 新的操作符号
+
+`左边`： 函数式接口的参数列表
+
+`右边`： 函数式接口的具体实现。
 
 基础语法：
 
 ```java
-- 操作符：->
-- 左侧：参数列表
-- 右侧：执行代码块 / Lambda 体
+操作符：->
+左侧：参数列表
+右侧：执行代码块 / Lambda 体
 ```
 
 
 口诀：
 
-- 写死小括号，拷贝右箭头，落地大括号
+- 能省则省
 
 - 左右遇一括号省
 
@@ -240,7 +344,7 @@ public void test06(){
 
 ## 2.4 案例
 
-**案例一：**调用 Collections.sort() 方法，通过定制排序 比较两个 Employee (先按照年龄比，年龄相同按照姓名比)，使用 Lambda 表达式作为参数传递
+**案例一：**调用 Collections.sort() 方法，通过`定制排序` 比较两个 Employee (先按照年龄比，年龄相同按照姓名比)，使用 Lambda 表达式作为参数传递
 
 - 定义实体类
 
@@ -280,7 +384,11 @@ public void test01(){
         if (e1.getAge() == e2.getAge()){
             return e1.getName().compareTo(e2.getName());
         } else {
+
             return Integer.compare(e1.getAge(), e2.getAge());
+            // 若要进行倒序
+            return -Integer.compare(e1.getAge(),e2.getAge());
+            
         }
     });
 
@@ -290,53 +398,132 @@ public void test01(){
 }
 ```
 
-
 **案例二：**声明函数式接口，接口中声明抽象方法，String getValue(String str); 声明类 TestLambda，类中编写方法使用接口作为参数，将一个字符串转换成大写，并作为方法的返回值；再将一个字符串的第二个和第四个索引位置进行截取字串
 
+```java
+// 1. 声明接口(指定为函数式接口)
+@FunctionalInterface
+public Interface MyFunc() {
+    String getValue(String str);
+}
+
+
+// 2. 声明类，类中编写方法，使用接口作为参数。
+public class TestLambda{
+    public String strHandler(String str, MyFunc mp) {
+        return mp.getValue(str);
+    }
+    
+    @Test
+    public void test(){
+        System.out.println(strHandler("abcd",(str) -> str.toUpperCase()));
+        System.out.println(strHandler("我爱尚硅谷",() -> str.substring(2)));
+    }
+}
+
+```
+
+
+
 **案例三：**声明一个带两个泛型的函数式接口，泛型类型为<T, R> T 为参数，R 为返回值；接口中声明对应的抽象方法；在 TestLambda 类中声明方法，使用接口作为参数，计算两个 Long 类型参数的和；在计算两个 Long 类型参数的乘积
+
+```java
+// 声明函数式接口
+@FunctionalInterface
+public interface MyFun<R,T>{
+    R getValue(T t1, T t2);
+}
+
+// 在类中指定方法
+public class TestLamdba{
+    public void numHandler(Long t1, Long t2, MyFun<Long,Long> f) {
+        System.out.println(f.getValue(t1,t2));
+    }
+    
+    @test
+    public void test() {
+        numHandler(100L,200L,(x,y) -> x + y);
+        numHandler(100L,299L,(x,y) -> x * y);
+    }
+}
+```
+
+
+
+上例中， 虽然实现了方法的简便处理，但是每次都需要定义接口以支持方法，并不划算，因此，Java8中内置了4大函数式接口，实现基本功能
+
+
+
+1. 消费型接口
+
+```java
+Consumer<T> 
+ 	void accept(T t);
+```
+
+2. 供给型接口
+
+```java
+Supplier<T> 
+    T get();
+```
+
+3. 函数型接口
+
+```java
+Function<R,T>
+    R apply(T t)
+```
+
+4. 断言型接口
+
+```java
+Predicate<T> 
+    boolean test(T t)
+```
+
+
+
+
 
 # 3. 函数式接口
 
 Java内置四大核心函数式接口：
 
-|函数式接口|参数类型|返回类型|用途|
-| ---- | ---- | ---- | ---- |
-|Consumer
-消费型接口|T|void|对类型为T的对象应用操作：void accept(T t)|
-|Supplier
-提供型接口|无|T|返回类型为T的对象：T get()|
-|Function<T, R>
-函数型接口|T|R|对类型为T的对象应用操作，并返回结果为R类型的对象：R apply(T t)|
-|Predicate
-断言型接口|T|boolean|确定类型为T的对象是否满足某约束，并返回boolean值：boolean test(T t)|
+<table><thead><tr><th align="center">函数式接口</th><th align="center">参数类型</th><th align="center">返回类型</th><th align="center">用途</th></tr></thead><tbody><tr><td align="center">Consumer<br>消费型接口</td><td align="center">T</td><td align="center">void</td><td align="center">对类型为T的对象应用操作：void accept(T t)</td></tr><tr><td align="center">Supplier<br>提供型接口</td><td align="center">无</td><td align="center">T</td><td align="center">返回类型为T的对象：T get()</td></tr><tr><td align="center">Function&lt;T, R&gt;<br>函数型接口</td><td align="center">T</td><td align="center">R</td><td align="center">对类型为T的对象应用操作，并返回结果为R类型的对象：R apply(T t)</td></tr><tr><td align="center">Predicate<br>断言型接口</td><td align="center">T</td><td align="center">boolean</td><td align="center">确定类型为T的对象是否满足某约束，并返回boolean值：boolean test(T t)</td></tr></tbody></table>
+
+
 
 ## 3.1 消费型接口
 
 ```java
 @Test
 public void test01(){
-    //Consumer
-    Consumer<Integer> consumer = (x) -> System.out.println("消费型接口" + x);
-    //test
-    consumer.accept(100);
+    
+    public static void main(String[] args) {
+        happy(1000,(x) -> System.out.println("消费花费" + x + "元"));
+    }
+    public void happy(double money,Consumer<Double> con) {
+        con.accept(money);
+    }
 }
 ```
 
 
-## 3.2 提供型接口
+## 3.2 供给型接口
 
 ```java
 @Test
 public void test02(){
-    List<Integer> list = new ArrayList<>();
-    List<Integer> integers = Arrays.asList(1,2,3); 
-    list.addAll(integers);
-    //Supplier<T>
-    Supplier<Integer> supplier = () -> (int)(Math.random() * 10);
-    list.add(supplier.get());
-    System.out.println(supplier);
-    for (Integer integer : list) {
-        System.out.println(integer);
+     public static void main(String[] args) {
+		List<Integer> list = getNumList(5,() -> (Integer)Math.random() *100);        
+    }
+    // 需求： 产生指定个数的整数，并放入到集合中.
+    public List<Integer> getNumList(Integer num, Supplier<T> sp) {
+        List<Integer> list = new ArrayList<>();
+		for(int i = 0; i < num; i ++) {
+            list.add(sp.get());
+        }
     }
 }
 ```
@@ -347,11 +534,16 @@ public void test02(){
 ```java
 @Test
 public void test03(){
-    //Function<T, R>
-    String oldStr = "abc123456xyz";
-    Function<String, String> function = (s) -> s.substring(1, s.length()-1);
-    //test
-    System.out.println(function.apply(oldStr));
+    public static void main(String[] args) {
+        
+        strHandler("abcd",(x) -> x.toUpperCase());
+        
+        strHandler("abcdef", (x) -> x.substring(2,5));
+    
+	}
+    public void strHandler(String str, Function<R,R> func) {
+        System.out.println(func.apply(str));
+    }
 }
 ```
 
@@ -361,13 +553,20 @@ public void test03(){
 ```java
 @Test
 public void test04(){
-    //Predicate<T>
-    Integer age = 35;
-    Predicate<Integer> predicate = (i) -> i >= 35;
-    if (predicate.test(age)){
-        System.out.println("你该退休了");
-    } else {
-        System.out.println("我觉得还OK啦");
+    public static void main(String[] args) {
+        List<String> list = Arrays.asList("12341324","1341324","1353534");
+    	List<String> ll = see(list,(x) -> x.length() > 5);
+        
+	}
+    
+    public List<String> see(List<String> strs, Predicate<String> pre) {
+        List<String> list = new ArrayList<>();
+        for (String str : strs) {
+            if (pre.test(str)){
+                list.add(str);
+            }
+        }
+        return list;
     }
 }
 ```
@@ -381,7 +580,7 @@ public void test04(){
 
 ## 4.1 方法引用
 
-**定义：**若 Lambda 表达式体中的内容已有方法实现，则我们可以使用“方法引用”
+**定义：**若 Lambda `表达式体中的内容已有方法实现`，则我们可以使用“方法引用”
 
 语法格式：
 
@@ -400,7 +599,7 @@ public void test01(){
     Consumer<String> con1 = (s) -> ps.println(s);
     con1.accept("aaa");
 
-    Consumer<String> con2 = ps::println;
+    Consumer<String> con2 = System.out::println;
     con2.accept("bbb");
 }
 ```
@@ -501,10 +700,11 @@ public void test01(){
 
     //无限流
     //迭代
-    Stream<Integer> stream4 = Stream.iterate(0, (i) -> ++i+i++);
+    Stream<Integer> stream4 = Stream.iterate(0, (i) -> i+2);
     stream4.forEach(System.out::println);
 
     //生成
+    // 也是无限流
     Stream.generate(() -> Math.random())
         .limit(5)
         .forEach(System.out::println);
@@ -516,13 +716,13 @@ public void test01(){
 
 中间操作：
 
-- filter：接收 Lambda ，从流中排除某些元素
+- `filter`：接收 Lambda ，从流中排除某些元素
 
-- limit：截断流，使其元素不超过给定数量
+- `limit`：截断流，使其元素不超过给定数量
 
-- skip(n)：跳过元素，返回一个舍弃了前n个元素的流；若流中元素不足n个，则返回一个空流；与 limit(n) 互补
+- `skip(n)`：跳过元素，返回一个舍弃了前n个元素的流；若流中元素不足n个，则返回一个空流；与 limit(n) 互补
 
-- distinct：筛选，通过流所生成的 hashCode() 与 equals() 取除重复元素
+- `distinct`：筛选，通过流所生成的 hashCode() 与 equals() 取除重复元素
 
 ```java
 List<Employee> emps = Arrays.asList(
@@ -555,9 +755,9 @@ Stream的中间操作：
 
 ## 5.3 映射
 
-- map：接收 Lambda ，将元素转换为其他形式或提取信息；接受一个函数作为参数，该函数会被应用到每个元素上，并将其映射成一个新的元素
+- `map`：接收 Lambda ，将元素转换为其他形式或提取信息；接受一个函数作为参数，该函数会被应用到每个元素上，并将其映射成一个新的元素
 
-- flatMap：接收一个函数作为参数，将流中每一个值都换成另一个流，然后把所有流重新连接成一个流
+- `flatMap`：接收一个函数作为参数，将流中每一个值都换成另一个流，然后把所有流重新连接成一个流
 
 map：
 
@@ -597,7 +797,7 @@ public void test03(){
 
 ## 5.4 排序
 
-- sorted()：自然排序
+- sorted()：自然排序	(Comparable接口)
 
 - sorted(Comparator c)：定制排序
 
@@ -608,7 +808,7 @@ Comparable：自然排序
 public void test04(){
     List<Integer> list = Arrays.asList(1,2,3,4,5);
     list.stream()
-        .sorted() //comparaTo()
+        .sorted() //Comparable.comparaTo()
         .forEach(System.out::println);
 }
 ```
@@ -620,9 +820,11 @@ Comparator：定制排序
 @Test
 public void test05(){
     emps.stream()
-        .sorted((e1, e2) -> { //compara()
+        .sorted((e1, e2) -> { //comparator()
             if (e1.getAge().equals(e2.getAge())){
                 return e1.getName().compareTo(e2.getName());
+                // 加个 - 号即为倒序
+                // return -e1.getName().compareTo(e2.getName());
             } else {
                 return e1.getAge().compareTo(e2.getAge());
             }
