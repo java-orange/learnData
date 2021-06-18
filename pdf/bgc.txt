@@ -1,0 +1,19 @@
+绿豆沙   #C7EDCC或#CCE8CF
+
+银河白    #FFFFFF  
+
+杏仁黄    #FAF9DE    
+
+秋叶褐    #FFF2E2    
+
+胭脂红    #FDE6E0    
+
+青草绿    #E3EDCD  
+
+海天蓝    #DCE2F1    
+
+葛巾紫    #E9EBFE    
+
+极光灰    #EAEAEF
+
+设置，高级选项设置

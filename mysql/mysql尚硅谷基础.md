@@ -340,15 +340,31 @@ select ifnull(commission_pct, 0) as 奖金率, commission_pct from employees;
 
 - 按条件表达式筛选：
 
-   - 查询工资>12000的员工信息：select * from employees where salary>12000;
+   - 查询工资>12000的员工信息：
 
-   - 查询部门编号不等于90号的员工名和部门编号：select last_name, department_id from employees where department_id != 90;
+   - ```sql
+     select * from employees where salary>12000;
+     ```
+
+   - 查询部门编号不等于90号的员工名和部门编号：
+
+   - ```sql
+     select last_name, department_id from employees where department_id != 90;
+     ```
 
 - 按逻辑表达式筛选：
 
-   - 查询工资在10000到20000之间的员工名、工资以及奖金：select last_name, salary, commission_pct from employees where salary >= 10000 and salary <= 20000;
+   - 查询工资在10000到20000之间的员工名、工资以及奖金：
 
-   - 查询部门编号不是在90到110之间，或者工资高于15000的员工信息：select * from employees where department_id < 90 or department_id > 110 or salary > 15000;
+   - ```sql
+     select last_name, salary, commission_pct from employees where salary >= 10000 and salary <= 20000;
+     ```
+
+   - 查询部门编号不是在90到110之间，或者工资高于15000的员工信息：
+
+   - ```sql
+     select * from employees where department_id < 90 or department_id > 110 or salary > 15000;
+     ```
 
 - 模糊查询
 
@@ -362,30 +378,31 @@ select ifnull(commission_pct, 0) as 奖金率, commission_pct from employees;
 
          - _ 任意单个字符
 
-      -  查询员工名中包含字符a的员工信息：
 
-```java
+查询员工名中包含字符a的员工信息：
+
+```sql
 SELECT * FROM employees WHERE last_name LIKE '%a%';
 ```
 
 
       -  查询员工名中第三个字符为e，第五个字符为a的员工名和工资：
 
-```java
+```sql
 SELECT last_name, salary FROM employees WHERE last_name LIKE '__n_l%';
 ```
 
 
       -  查询员工名中第二个字符为`_`的员工名：
 
-```java
+```sql
 SELECT last_name FROM employees WHERE last_name LIKE '_\_ %';
 ```
 
 
       -  指定转义字符：
 
-```java
+```sql
 SELECT last_name FROM employees WHERE last_name LIKE '_$_%' ESCAPE '$';
 ```
 
@@ -398,14 +415,15 @@ SELECT last_name FROM employees WHERE last_name LIKE '_$_%' ESCAPE '$';
 
       -  两个临界值不能替换顺序；
 
-      -  查询员工编号在100到120之间的员工信息：
 
-```java
+查询员工编号在100到120之间的员工信息：
+
+```sql
 SELECT * FROM employees WHERE employee_id >= 100 AND employee_id <= 120;
 ```
 
 
-```java
+```sql
 SELECT * FROM employees WHERE employee_id BETWEEN 100 AND 120;
 ```
 
@@ -420,14 +438,15 @@ SELECT * FROM employees WHERE employee_id BETWEEN 100 AND 120;
 
       -  in相当于等于，所以不支持通配符（like才支持）
 
-      -  查询员工的工种编号是 IT_PROG、AD_VP、AD_PRES中的一个员工名和工种编号：
 
-```java
+查询员工的工种编号是 IT_PROG、AD_VP、AD_PRES中的一个员工名和工种编号：
+
+```sql
 SELECT last_name, job_id FROM employees WHERE job_id = 'IT_PROG' OR job_id = 'AD_VP' OR job_id = 'AD_PRES';
 ```
 
 
-```java
+```sql
 SELECT last_name, job_id FROM employees WHERE job_id IN ('IT_PROG', 'AD_VP', 'AD_PRES');
 
 ```
@@ -439,9 +458,10 @@ SELECT last_name, job_id FROM employees WHERE job_id IN ('IT_PROG', 'AD_VP', 'AD
 
       -  =或者<>不能用于判断null值
 
-      -  查询没有奖金的员工名和奖金率：
 
-```java
+查询没有奖金的员工名和奖金率：
+
+```sql
 SELECT
 	last_name,
 	commission_pct
@@ -475,7 +495,7 @@ WHERE
 
 - 测试题
 
-   -  查询没有奖金，且工资小于18000的salary, last_name：
+-  查询没有奖金，且工资小于18000的salary, last_name：
 
 ```java
 SELECT 
@@ -573,7 +593,7 @@ ORDER BY hiredate ASC ;
 
 - 按年薪的高低显示员工的信息和年薪【按表达式（别名）排序】
 
-```java
+```sql
 SELECT 
   *,
   salary * 12 * (1+ IFNULL(commission_pct, 0)) AS 年薪 
@@ -685,13 +705,13 @@ ORDER BY LENGTH(email) DESC,
 
 - 字符函数
 
-   -  length：获取参数值的字节个数
+   -  length：获取参数值的**字节个数**，一个英文字母是一个，一个中文按照字符集进行算，utf8算3个
 
-   -  concat：拼接字符串，一个英文字母是一个，一个中文按照字符集进行算，utf8算3个
+   -  concat：拼接字符串
 
    -  upper/lower：将字符串变成大写/小写
 
-      -  将姓变成大写，名变成小写，然后拼接：
+-  将姓变成大写，名变成小写，然后拼接：
 
 ```java
 SELECT 
@@ -772,13 +792,13 @@ SELECT
 - 数学函数
 
    - round：四舍五入
-- ceil：向上取整，**返回>=该参数的最小整数**
+   - ceil：向上取整，**返回>=该参数的最小整数**
    - floor：向下取整，**返回<=该参数的最大整数**
-- truncate：截断，**小数点后截断到几位**
+   - truncate：截断，**小数点后截断到几位**
    - mod：取余，**被除数为正，则为正；被除数为负，则为负**
-  - mod(a,b) : a - a/b * b
-     - mod(-10,-3) : -10 - (-10)/(-3) * (-3) = -10 - (-9) = -1
-- rand：获取随机数，返回0-1之间的小数
+   - mod(a,b) : a - a/b * b
+      - mod(-10,-3) : -10 - (-10)/(-3) * (-3) = -10 - (-9) = -1
+   - rand：获取随机数，返回0-1之间的小数
    
 - 日期函数
 
@@ -827,7 +847,7 @@ WHERE hiredate = STR_TO_DATE('4-3 1992', '%c-%d %Y') ;
 
 ```java
 SELECT 
-  DATE_FORMAT(NOW(), '%y年%m月%d日)') AS output ;
+  DATE_FORMAT(NOW(), '%Y年%m月%d日)') AS output ;
 
 ```
 
@@ -865,15 +885,11 @@ md5('字符');			也是加密的一种形式（MD5）
 
    -  if函数：if else的效果，相当于三元运算符
 
-```java
+```sql
 SELECT 
   last_name,
   commission_pct,
-  IF(
-    commission_pct IS NULL,
-    '没奖金，呵呵',
-    '有奖金，嘻嘻'
-  ) 备注 
+  IF(commission_pct IS NULL, '没奖金，呵呵', '有奖金，嘻嘻' ) 备注 
 FROM
   employees ;
 
@@ -962,7 +978,7 @@ FROM
 
 - 测试题
 
-   -  显示系统时间（日期+时间）
+-  显示系统时间（日期+时间）
 
 ```java
 SELECT NOW();
@@ -1020,18 +1036,12 @@ FROM
 SELECT 
   last_name,
   job_id AS job,
-  CASE
-    job_id 
-    WHEN 'AD_PRES' 
-    THEN 'A' 
-    WHEN 'ST_MAN' 
-    THEN 'B' 
-    WHEN 'IT_PROG' 
-    THEN 'C' 
-    WHEN 'SA_PRE' 
-    THEN 'D' 
-    WHEN 'ST_CLERK' 
-    THEN 'E' 
+  CASE job_id 
+  WHEN 'AD_PRES' THEN 'A' 
+  WHEN 'ST_MAN' THEN 'B' 
+  WHEN 'IT_PROG' THEN 'C' 
+  WHEN 'SA_PRE' THEN 'D' 
+  WHEN 'ST_CLERK' THEN 'E' 
   END AS Grade 
 FROM
   employees 
@@ -1055,7 +1065,7 @@ SELECT SUM(salary) FROM employees;
 
 - 特点
 
-   - sum、avg一般用于处理数值型数据
+   - sum、avg一般用于处理数值型数据	
 
    - max、min、count可以处理任何类型数据
 
@@ -1106,7 +1116,7 @@ SELECT COUNT(1) FROM employees;
 
 - 训练题
 
-   -  查询公司员工工资的最大值，最小值，平均值，总和
+-  查询公司员工工资的最大值，最小值，平均值，总和
 
 ```java
 SELECT 
@@ -1125,10 +1135,9 @@ FROM
 
 ```java
 SELECT 
-  DATEDIFF(MAX(hiredate), MIN(hiredate)) DIFFERENCE 
+  DATEDIFF(MAX(hiredate), MIN(hiredate)) difference 
 FROM
   employees ;
-
       
 ```
 
@@ -1169,13 +1178,13 @@ group by 分组的列表
 
 分组前筛选                            原始表                                group by子句的前面             where
 
-分组后筛选                      分组后的结果集                       group by子句的后面             having
+分组后筛选                      分组后的结果集                      group by子句的后面             having
 
    -  **分组函数做条件肯定是放在having子句中**
 
    -  **能用分组前筛选的，就优先考虑使用分组前筛选**
 
-   -  group by子句支持单个字段分组，多个字段分组（多个字段之间用逗号隔开没有顺序要求），表达式或函数（用得较少）
+   -  group by子句支持单个字段分组，多个字段分组（**多个字段之间用逗号隔开没有顺序要求**），表达式或函数（用得较少）
 
    -  也可以添加排序（排序放在整个分组查询最后位置）
 
@@ -1188,7 +1197,6 @@ SELECT
 FROM
   employees 
 GROUP BY job_id ;
-
 
 ```
 
@@ -1234,7 +1242,7 @@ GROUP BY manager_id ;
 ```
 
 
-- 查询那个部门的员工个数>2
+- 查询哪个部门的员工个数>2
 
    -  查询每个部门的员工个数
 
@@ -1384,7 +1392,7 @@ ORDER BY 平均工资 DESC ;
 
 - 练习题
 
-   -  查询各job_id的员工工资的最大值、最小值、平均值，总和，并按job_id升序
+-  查询各job_id的员工工资的最大值、最小值、平均值，总和，并按job_id升序
 
 ```java
 SELECT 
@@ -1505,7 +1513,7 @@ GROUP BY job_id ;
 
       -  可以搭配前面介绍的所有子句使用，比如排序、分组、筛选
 
-      -  查询女神名和对应的男神名：
+-  查询女神名和对应的男神名：
 
 ```java
 SELECT 
@@ -1540,7 +1548,8 @@ WHERE employees.`department_id` = departments.`department_id` ;
 -  区分多个重名的字段
       -  **注意：如果为表起了别名，则查询 的字段就不能使用原始的表明去限定**
 -  因为执行顺序先走from，最后走select
-      -  查询员工名、工种号、工种名
+
+查询员工名、工种号、工种名
 
 ```java
 SELECT 
@@ -1556,9 +1565,7 @@ WHERE e.`job_id` = j.`job_id` ;
 ```
 
 
-   -  两个表的顺序是否可以调换
-
-      -  查询员工名、工种号、工种名
+-  查询员工名、工种号、工种名
 
 ```java
 SELECT 
@@ -1576,7 +1583,7 @@ WHERE e.`job_id` = j.`job_id` ;
 
    -  可以加筛选
 
-      -  查询有奖金的员工名、部门名
+-  查询有奖金的员工名、部门名
 
 ```java
 SELECT 
@@ -1626,7 +1633,7 @@ GROUP BY city ;
 ```
 
 
-      -  查询有将近的每个部门的部门名和部门的领导编号和该部门的最低工资
+      -  查询有领导的每个部门的部门名和部门的领导编号和该部门的最低工资
 
 ```java
 SELECT 
@@ -1646,7 +1653,7 @@ GROUP BY department_name,
 
    -  可以加排序
 
-      -  查询每个工种的工种名和员工的个数，并且按员工个数降序
+-  查询每个工种的工种名和员工的个数，并且按员工个数降序
 
 ```java
 SELECT 
@@ -1665,7 +1672,7 @@ ORDER BY 个数 DESC ;
 
    -  可是实现三表连接：
 
-      -  查询员工名、部门名和所在的城市
+-  查询员工名、部门名和所在的城市
 
 ```java
 SELECT 
@@ -1685,7 +1692,7 @@ WHERE e.`department_id` = d.`department_id`
 
    -  非等值连接
 
-      -  查询员工的工资和工资级别
+-  查询员工的工资和工资级别
 
 ```java
 SELECT 
@@ -1702,7 +1709,7 @@ WHERE salary BETWEEN g.lowest_sal
 
    -  自连接
 
-      -  查询 员工名和上级的名称
+-  查询 员工名和上级的名称
 
 ```java
 SELECT 
@@ -1720,7 +1727,7 @@ WHERE e.`manager_id` = m.`employee_id` ;
 
    -  测试题：
 
-      -  显示员工表的最大工资，工资平均值
+-  显示员工表的最大工资，工资平均值
 
 ```java
 SELECT 
@@ -1776,21 +1783,21 @@ select substr(str, startIndex, [length])
 
    -  语法：
 
-select 查询列表
+**select 查询列表**
 
-from 表1 别名 【连接类型】
+**from 表1 别名 **
 
-join 表2 别名
+**【连接类型】join 表2 别名**
 
-on 连接条件
+**on 连接条件**
 
-【where 筛选条件】
+**【where 筛选条件】**
 
-【group by 分组】
+**【group by 分组】**
 
-【having 筛选条件】
+**【having 筛选条件】**
 
-【order by 排序列表】
+**【order by 排序列表】**
 
    -  内连接（同上）：连接类型是inner
 
@@ -1846,8 +1853,8 @@ SELECT
   department_name 
 FROM
   employees e 
-  INNER JOIN departments d 
-    ON e.`department_id` = d.`department_id` ;
+INNER JOIN departments d 
+ON e.`department_id` = d.`department_id` ;
 
 
 ```
@@ -1861,12 +1868,14 @@ SELECT
   job_title 
 FROM
   employees e 
-  INNER JOIN jobs j 
-    ON e.`job_id` = j.`job_id` 
-WHERE last_name LIKE "%e%" ;
+INNER JOIN 
+      jobs j 
+ON 
+      e.`job_id` = j.`job_id` 
+WHERE 
+      last_name LIKE "%e%" ;
 
            
-
 ```
 
 
@@ -1878,29 +1887,12 @@ SELECT
   COUNT(*) 部门个数 
 FROM
   departments d 
-  INNER JOIN locations l 
+INNER JOIN locations l 
     ON d.`location_id` = l.`location_id` 
 GROUP BY city 
 HAVING 部门个数 > 3 ;
 
-            - 1
-
-            - 2
-
-            - 3
-
-            - 4
-
-            - 5
-
-            - 6
-
-            - 7
-
-            - 8
-
-            - 9
-
+       
 ```
 
 
@@ -1912,32 +1904,13 @@ SELECT
   COUNT(*) 员工个数 
 FROM
   departments d 
-  INNER JOIN employees e 
-    ON d.`department_id` = e.`department_id` 
+INNER JOIN employees e 
+ON d.`department_id` = e.`department_id` 
 GROUP BY d.`department_id` 
 HAVING 员工个数 > 3 
 ORDER BY 员工个数 DESC ;
 
-         - 1
-
-         - 2
-
-         - 3
-
-         - 4
-
-         - 5
-
-         - 6
-
-         - 7
-
-         - 8
-
-         - 9
-
-         - 10
-
+      
 ```
 
 
@@ -1956,27 +1929,6 @@ FROM
     ON e.`job_id` = j.`job_id` 
 ORDER BY d.`department_id` DESC ;
 
-            - 1
-
-            - 2
-
-            - 3
-
-            - 4
-
-            - 5
-
-            - 6
-
-            - 7
-
-            - 8
-
-            - 9
-
-            - 10
-
-            - 11
 
 ```
 
@@ -1992,25 +1944,9 @@ SELECT
 FROM
   employees e 
   INNER JOIN job_grades g 
-    ON e.`salary` BETWEEN g.`lowest_sal` 
-    AND g.`highest_sal` ;
+    ON e.`salary` BETWEEN g.`lowest_sal`  AND g.`highest_sal` ;
 
-            - 1
-
-            - 2
-
-            - 3
-
-            - 4
-
-            - 5
-
-            - 6
-
-            - 7
-
-            - 8
-
+          
 ```
 
 
@@ -2022,41 +1958,18 @@ SELECT
   grade_level 
 FROM
   employees e 
-  INNER JOIN job_grades g 
-    ON e.`salary` BETWEEN g.`lowest_sal` 
-    AND g.`highest_sal` 
+INNER JOIN job_grades g 
+ON e.`salary` BETWEEN g.`lowest_sal` AND g.`highest_sal` 
 GROUP BY grade_level 
 HAVING COUNT(*) > 20 
 ORDER BY grade_level DESC ;
-
-            - 1
-
-            - 2
-
-            - 3
-
-            - 4
-
-            - 5
-
-            - 6
-
-            - 7
-
-            - 8
-
-            - 9
-
-            - 10
-
-            - 11
 
 ```
 
 
       -  自连接
     
-         -  查询员工的名字、上级的名字
+    -  查询员工的名字、上级的名字
 
 ```java
 SELECT 
@@ -2066,20 +1979,6 @@ FROM
   employees e 
   INNER JOIN employees m 
     ON e.`manager_id` = m.`employee_id` ;
-
-            - 1
-
-            - 2
-
-            - 3
-
-            - 4
-
-            - 5
-
-            - 6
-
-            - 7
 
 ```
 
@@ -2095,22 +1994,6 @@ FROM
   INNER JOIN employees m 
     ON e.`manager_id` = m.`employee_id` 
 WHERE e.`last_name` LIKE "%k%" ;
-
-            - 1
-
-            - 2
-
-            - 3
-
-            - 4
-
-            - 5
-
-            - 6
-
-            - 7
-
-            - 8
 
 ```
 
@@ -2145,22 +2028,7 @@ FROM
     ON b.boyfriend_id = bo.id 
 WHERE bo.`id` IS NULL ;
 
-         - 1
-
-         - 2
-
-         - 3
-
-         - 4
-
-         - 5
-
-         - 6
-
-         - 7
-
-         - 8
-
+        
 ```
 
 
@@ -2178,21 +2046,6 @@ FROM
     ON d.`department_id` = e.`department_id` 
 WHERE e.`employee_id` IS NULL ;
 
-         - 1
-
-         - 2
-
-         - 3
-
-         - 4
-
-         - 5
-
-         - 6
-
-         - 7
-
-         - 8
 
 ```
 
@@ -2208,22 +2061,6 @@ FROM
   RIGHT OUTER JOIN departments d 
     ON d.`department_id` = e.`department_id` 
 WHERE e.`employee_id` IS NULL ;
-
-         - 1
-
-         - 2
-
-         - 3
-
-         - 4
-
-         - 5
-
-         - 6
-
-         - 7
-
-         - 8
 
 ```
 
@@ -2243,20 +2080,6 @@ FROM
   OUTER JOIN boys bo 
     ON b.`boyfriend_id` = bo.id ;
 
-            - 1
-
-            - 2
-
-            - 3
-
-            - 4
-
-            - 5
-
-            - 6
-
-            - 7
-
 ```
 
 
@@ -2272,18 +2095,6 @@ FROM
   beauty b 
   CROSS JOIN boys bo ;
 
-            - 1
-
-            - 2
-
-            - 3
-
-            - 4
-
-            - 5
-
-            - 6
-
 ```
 
 
@@ -2295,7 +2106,7 @@ FROM
 
 - 练习：
 
-   -  查询编号>3的女神的男朋友信息，如果有则列出详细信息，如果没有，则用null填充
+-  查询编号>3的女神的男朋友信息，如果有则列出详细信息，如果没有，则用null填充
 
 ```java
 SELECT 
@@ -2308,23 +2119,6 @@ FROM
     ON a.`boyfriend_id` = b.`id` 
 WHERE a.`id` > 3 ;
 
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
-      - 6
-
-      - 7
-
-      - 8
-
-      - 9
 
 ```
 
@@ -2341,22 +2135,6 @@ FROM
     ON d.location_id = l.location_id 
 WHERE d.department_id IS NULL ;
 
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
-      - 6
-
-      - 7
-
-      - 8
-
 ```
 
 
@@ -2372,24 +2150,6 @@ FROM
     ON d.`department_id` = e.`department_id` 
 WHERE d.`department_name` = 'SAL' 
   OR d.`department_name` = 'IT' ;
-
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
-      - 6
-
-      - 7
-
-      - 8
-
-      - 9
 
 ```
 
@@ -2411,7 +2171,7 @@ WHERE d.`department_name` = 'SAL'
 
       - from后面：支持表子查询
 
-      - where或having后面：支持标量子查询，列子查询，行子查询（较少）
+      - **where或having后面**：支持标量子查询，列子查询，行子查询（较少）
 
       - exists后面（相关子查询）：支持表子查询
 
@@ -2448,29 +2208,33 @@ WHERE d.`department_name` = 'SAL'
 
 - 案例1：谁的工资比Abel高？
 
-```java
+```sql
+#第一步：
 SELECT 
   salary 
 FROM
   employees 
 WHERE last_name = 'Abel' ;
 
-   - 1
 
-   - 2
+#第二部：
+select last_name 
+from employees 
+where salary > (
+	SELECT 
+  		salary 
+    FROM
+ 		employees 
+	WHERE last_name = 'Abel' ;
+)
 
-   - 3
-
-   - 4
-
-   - 5
 
 ```
 
 
 - 案例2：返回job_id与141号员工相同，salary比143员工多的员工，姓名，job_id，工资
 
-```java
+```sql
 SELECT 
   last_name,
   job_id,
@@ -2490,48 +2254,12 @@ WHERE job_id =
     employees 
   WHERE employee_id = 143) ;
 
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
-   - 6
-
-   - 7
-
-   - 8
-
-   - 9
-
-   - 10
-
-   - 11
-
-   - 12
-
-   - 13
-
-   - 14
-
-   - 15
-
-   - 16
-
-   - 17
-
-   - 18
-
 ```
 
 
 - 案例3：返回公司工资最少的员工的last_name, job_id和salary
 
-```java
+```sql
 SELECT 
   last_name,
   job_id,
@@ -2544,28 +2272,6 @@ WHERE salary =
   FROM
     employees) ;
 
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
-   - 6
-
-   - 7
-
-   - 8
-
-   - 9
-
-   - 10
-
-   - 11
-
 ```
 
 
@@ -2573,8 +2279,8 @@ WHERE salary =
 
 ```java
 SELECT 
-  MIN(salary),
-  e.`department_id` 
+  e.`department_id`,
+  MIN(salary)
 FROM
   employees e 
 GROUP BY e.`department_id` 
@@ -2584,30 +2290,6 @@ HAVING MIN(salary) >
   FROM
     employees 
   WHERE department_id = 50) ;
-
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
-   - 6
-
-   - 7
-
-   - 8
-
-   - 9
-
-   - 10
-
-   - 11
-
-   - 12
 
 ```
 
@@ -2626,7 +2308,7 @@ ALL：和子查询返回的所有值比较
 
    -  案例1：返回location_id是1400或1700的部门中的所有员工姓名
 
-```java
+```sql
 SELECT 
   last_name 
 FROM
@@ -2638,32 +2320,12 @@ WHERE department_id IN
     departments 
   WHERE location_id IN (1400, 1700)) ;
 
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
-      - 6
-
-      - 7
-
-      - 8
-
-      - 9
-
-      - 10
-
 ```
 
 
    -  案例2：返回其他工种中比job_id为‘IT_PROG’工种任一工资低的员工的员工号、姓名、job_id以及salary
 
-```java
+```sql
 SELECT 
   employee_id,
   last_name,
@@ -2679,33 +2341,6 @@ WHERE salary < ANY
   WHERE job_id = 'IT_PROG') 
   AND job_id <> 'IT_PROG' ;
 
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
-      - 6
-
-      - 7
-
-      - 8
-
-      - 9
-
-      - 10
-
-      - 11
-
-      - 12
-
-      - 13
-
-      - 14
 
 ```
 
@@ -2728,34 +2363,6 @@ WHERE salary <
   WHERE job_id = 'IT_PROG') 
   AND job_id <> 'IT_PROG' ;
 
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
-      - 6
-
-      - 7
-
-      - 8
-
-      - 9
-
-      - 10
-
-      - 11
-
-      - 12
-
-      - 13
-
-      - 14
-
 ```
 
 
@@ -2777,33 +2384,6 @@ WHERE salary < ALL
   WHERE job_id = 'IT_PROG') 
   AND job_id <> 'IT_PROG' ;
 
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
-      - 6
-
-      - 7
-
-      - 8
-
-      - 9
-
-      - 10
-
-      - 11
-
-      - 12
-
-      - 13
-
-      - 14
 
 ```
 
@@ -2826,38 +2406,10 @@ WHERE salary <
   WHERE job_id = 'IT_PROG') 
   AND job_id <> 'IT_PROG' ;
 
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
-      - 6
-
-      - 7
-
-      - 8
-
-      - 9
-
-      - 10
-
-      - 11
-
-      - 12
-
-      - 13
-
-      - 14
-
 ```
 
 
-##### 行子查询
+##### 行子查询(基本不用)
 
 - 结果集一行多列或多行多列
 
@@ -2875,26 +2427,6 @@ WHERE (employee_id, salary) =
   FROM
     employees) ;
 
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
-   - 6
-
-   - 7
-
-   - 8
-
-   - 9
-
-   - 10
-
 ```
 
 
@@ -2902,7 +2434,7 @@ WHERE (employee_id, salary) =
 
 - 仅仅支持标量子查询
 
-- 案例1：查询每个部门的员工个数
+- 案例1：查询每个部门的信息及其员工个数
 
 ```java
 SELECT 
@@ -2914,24 +2446,6 @@ SELECT
   WHERE e.department_id = d.department_Id) 个数 
 FROM
   departments d ;
-
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
-   - 6
-
-   - 7
-
-   - 8
-
-   - 9
 
 ```
 
@@ -2948,21 +2462,6 @@ SELECT
       ON d.department_id = e.department_id 
   WHERE e.employee_id = 102) 部门名 ;
 
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
-   - 6
-
-   - 7
-
-   - 8
 
 ```
 
@@ -2987,32 +2486,6 @@ FROM
   INNER JOIN job_grades g 
     ON ag_dep.ag BETWEEN g.`lowest_sal` 
     AND g.`highest_sal` ;
-
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
-   - 6
-
-   - 7
-
-   - 8
-
-   - 9
-
-   - 10
-
-   - 11
-
-   - 12
-
-   - 13
 
 ```
 
@@ -3039,26 +2512,6 @@ WHERE EXISTS
     employees e 
   WHERE d.`department_id` = e.`department_id`) ;
 
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
-   - 6
-
-   - 7
-
-   - 8
-
-   - 9
-
-   - 10
-
 ```
 
 
@@ -3075,24 +2528,7 @@ WHERE d.`department_id` IN
   FROM
     employees e) ;
 
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
-   - 6
-
-   - 7
-
-   - 8
-
-   - 9
-
+   
 ```
 
 
@@ -3113,28 +2549,6 @@ WHERE department_id =
     employees e 
   WHERE e.`last_name` = 'Zlotkey') ;
 
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
-   - 6
-
-   - 7
-
-   - 8
-
-   - 9
-
-   - 10
-
-   - 11
-
 ```
 
 
@@ -3152,28 +2566,6 @@ WHERE e.`salary` >
     AVG(salary) 
   FROM
     employees) ;
-
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
-   - 6
-
-   - 7
-
-   - 8
-
-   - 9
-
-   - 10
-
-   - 11
 
 ```
 
@@ -3197,36 +2589,6 @@ FROM
     ON nt.department_id = e.department_id 
 WHERE salary > ag ;
 
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
-   - 6
-
-   - 7
-
-   - 8
-
-   - 9
-
-   - 10
-
-   - 11
-
-   - 12
-
-   - 13
-
-   - 14
-
-   - 15
-
 ```
 
 
@@ -3245,28 +2607,6 @@ WHERE department_id IN
     employees 
   WHERE last_name LIKE '%u%') ;
 
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
-   - 6
-
-   - 7
-
-   - 8
-
-   - 9
-
-   - 10
-
-   - 11
-
 ```
 
 
@@ -3283,26 +2623,6 @@ WHERE department_id IN
   FROM
     departments 
   WHERE location_id = 1700) ;
-
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
-   - 6
-
-   - 7
-
-   - 8
-
-   - 9
-
-   - 10
 
 ```
 
@@ -3321,28 +2641,6 @@ WHERE manager_id IN
   FROM
     employees 
   WHERE last_name = 'K_ing') ;
-
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
-   - 6
-
-   - 7
-
-   - 8
-
-   - 9
-
-   - 10
-
-   - 11
 
 ```
 
@@ -3364,41 +2662,15 @@ FROM
     FROM
       employees)) nt ;
 
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
-   - 6
-
-   - 7
-
-   - 8
-
-   - 9
-
-   - 10
-
-   - 11
-
-   - 12
-
-   - 13
-
 ```
 
 
 ### 8. 分页查询
 
 - 应用场景：当要显示的数据，一页显示不全，需要分页提交sql请求
-
 - 语法：
 
+```sql
 select 查询列表
 
 from 表
@@ -3416,6 +2688,9 @@ having 分组后的筛选
 order by 排序的字段】
 
 limit offset，size；
+```
+
+
 
 offset：要显示条目的起始索引（从0开始）
 
@@ -3425,15 +2700,19 @@ size：要显示的条目个数
 
    -  limit语句放在查询语句的最后
 
-   -  公式：
+   - 公式：
+   
+     ```sql
+     要显示的页数page，每页的条目数size
+     
+     select 查询列表
+     
+     from 表
+     
+     limit （page - 1）* size， size；
+     ```
 
-要显示的页数page，每页的条目数size
 
-select 查询列表
-
-from 表
-
-limit （page - 1）* size， size；
 
 - 案例1：查询前5条员工信息
 
@@ -3442,12 +2721,6 @@ SELECT * FROM employees LIMIT 0, 5;
 或者
 SELECT * FROM employees LIMIT 5;
 
-   - 1
-
-   - 2
-
-   - 3
-
 ```
 
 
@@ -3455,8 +2728,6 @@ SELECT * FROM employees LIMIT 5;
 
 ```java
 SELECT * FROM employees LIMIT 10, 15;
-
-   - 1
 
 ```
 
@@ -3471,20 +2742,6 @@ FROM
 WHERE commission_pct IS NOT NULL 
 ORDER BY salary DESC 
 LIMIT 10 ;
-
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
-   - 6
-
-   - 7
 
 ```
 
@@ -3505,26 +2762,6 @@ WHERE salary =
   FROM
     employees) ;
 
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
-   - 6
-
-   - 7
-
-   - 8
-
-   - 9
-
-   - 10
-
 ```
 
 
@@ -3543,30 +2780,6 @@ WHERE department_id =
   GROUP BY department_id 
   ORDER BY AVG(salary) ASC 
   LIMIT 1) ;
-
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
-   - 6
-
-   - 7
-
-   - 8
-
-   - 9
-
-   - 10
-
-   - 11
-
-   - 12
 
 ```
 
@@ -3590,36 +2803,6 @@ FROM
     LIMIT 1) dd 
     ON d.`department_id` = dd.department_id ;
 
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
-   - 6
-
-   - 7
-
-   - 8
-
-   - 9
-
-   - 10
-
-   - 11
-
-   - 12
-
-   - 13
-
-   - 14
-
-   - 15
-
 ```
 
 
@@ -3639,30 +2822,6 @@ WHERE j.`job_id` =
   ORDER BY AVG(salary) DESC 
   LIMIT 1) ;
 
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
-   - 6
-
-   - 7
-
-   - 8
-
-   - 9
-
-   - 10
-
-   - 11
-
-   - 12
-
 ```
 
 
@@ -3681,28 +2840,6 @@ HAVING ag >
   FROM
     employees) ;
 
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
-   - 6
-
-   - 7
-
-   - 8
-
-   - 9
-
-   - 10
-
-   - 11
-
 ```
 
 
@@ -3719,26 +2856,6 @@ WHERE employee_id IN
   FROM
     employees 
   WHERE manager_id IS NOT NULL) ;
-
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
-   - 6
-
-   - 7
-
-   - 8
-
-   - 9
-
-   - 10
 
 ```
 
@@ -3759,29 +2876,6 @@ WHERE department_id =
   ORDER BY MAX(salary) ASC 
   LIMIT 1) ;
 
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
-   - 6
-
-   - 7
-
-   - 8
-
-   - 9
-
-   - 10
-
-   - 11
-
-   - 12
 
 ```
 
@@ -3811,48 +2905,6 @@ WHERE employee_id =
     LIMIT 1) 
     AND manager_id IS NOT NULL) ;
 
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
-   - 6
-
-   - 7
-
-   - 8
-
-   - 9
-
-   - 10
-
-   - 11
-
-   - 12
-
-   - 13
-
-   - 14
-
-   - 15
-
-   - 16
-
-   - 17
-
-   - 18
-
-   - 19
-
-   - 20
-
-   - 21
-
 ```
 
 
@@ -3869,18 +2921,6 @@ FROM
   employees 
 WHERE email LIKE "%a%" 
   OR department_id > 90 ;
-
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
-   - 6
 
 ```
 
@@ -3899,28 +2939,6 @@ SELECT
 FROM
   employees 
 WHERE department_id > 90;
-
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
-   - 6
-
-   - 7
-
-   - 8
-
-   - 9
-
-   - 10
-
-   - 11
 
 ```
 
@@ -4007,44 +3025,7 @@ VALUES
     2
   );
 
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
-      - 6
-
-      - 7
-
-      - 8
-
-      - 9
-
-      - 10
-
-      - 11
-
-      - 12
-
-      - 13
-
-      - 14
-
-      - 15
-
-      - 16
-
-      - 17
-
-      - 18
-
-      - 19
-
+  
 ```
 
 
@@ -4054,10 +3035,6 @@ VALUES
 方式1：字段的值写null
 方式2：不写该字段
 
-      - 1
-
-      - 2
-
 ```
 
 
@@ -4066,10 +3043,6 @@ VALUES
 ```java
 INSERT INTO beauty(NAME, sex, id, phone)
 VALUES('蒋欣', '女', 16, '110');
-
-      - 1
-
-      - 2
 
 ```
 
@@ -4082,10 +3055,6 @@ VALUES('蒋欣', '女', 16, '110');
 INSERT INTO beauty
 VALUES(18, '李易峰', '男', NULL, '19', NULL, NULL);
 
-      - 1
-
-      - 2
-
 ```
 
 
@@ -4097,12 +3066,6 @@ VALUES(18, '李易峰', '男', NULL, '19', NULL, NULL);
 INSERT INTO beauty SET id = 19,
 NAME = '刘涛',
 phone = '999' ;
-
-      - 1
-
-      - 2
-
-      - 3
 
 ```
 
@@ -4118,16 +3081,6 @@ VALUES
 (21, '李易峰', '男', NULL, '19', NULL, NULL),
 (22, '李易峰', '男', NULL, '19', NULL, NULL);
 
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
 ```
 
 
@@ -4136,10 +3089,6 @@ VALUES
 ```java
 INSERT INTO beauty(id, NAME, phone)
 SELECT 26, '送钱', '12341234';
-
-      - 1
-
-      - 2
 
 ```
 
@@ -4191,16 +3140,6 @@ SET
   phone = '109090909' 
 WHERE NAME LIKE '唐%' ;
 
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
 ```
 
 
@@ -4213,18 +3152,6 @@ SET
   boyname = '张飞',
   usercp = 10 
 WHERE id = 2 ;
-
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
-   - 6
 
 ```
 
@@ -4240,16 +3167,6 @@ UPDATE
     ON b.`id` = be.`boyfriend_id` SET be.`phone` = '114' 
 WHERE b.`boyName` = '张无忌' ;
 
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
 ```
 
 
@@ -4261,16 +3178,6 @@ UPDATE
   RIGHT JOIN beauty be 
     ON b.`id` = be.`boyfriend_id` SET be.`boyfriend_id` = 2 
 WHERE be.`boyfriend_id` IS NULL ;
-
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
 
 ```
 
@@ -4319,14 +3226,6 @@ FROM
   beauty 
 WHERE phone LIKE '%9' ;
 
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
 ```
 
 
@@ -4341,19 +3240,6 @@ FROM
     ON b.`id` = be.`boyfriend_id` 
 WHERE b.`boyName` = '张无忌' ;
 
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
-      - 6
-
-      - 7
 
 ```
 
@@ -4370,22 +3256,7 @@ FROM
     ON b.`id` = be.`boyfriend_id` 
 WHERE b.`boyName` = '黄晓明' ;
 
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
-      - 6
-
-      - 7
-
-      - 8
-
+   
 ```
 
 
@@ -4401,8 +3272,6 @@ truncate table 表名；
 
 ```java
 TRUNCATE TABLE boyes ;
-
-      - 1
 
 ```
 
@@ -4443,8 +3312,6 @@ TRUNCATE TABLE boyes ;
 ```java
 CREATE DATABASE IF NOT EXISTS books;
 
-      - 1
-
 ```
 
 
@@ -4455,8 +3322,6 @@ CREATE DATABASE IF NOT EXISTS books;
 ```java
 RENAME DATABASE books TO new_books;
 
-      - 1
-
 ```
 
 
@@ -4465,8 +3330,6 @@ RENAME DATABASE books TO new_books;
 ```java
 ALTER DATABASE books CHARACTER SET gbk;
 
-      - 1
-
 ```
 
 
@@ -4474,8 +3337,6 @@ ALTER DATABASE books CHARACTER SET gbk;
 
 ```java
 DROP DATABASE IF EXISTS books;
-
-   - 1
 
 ```
 
@@ -4505,20 +3366,6 @@ CREATE TABLE book (
   publishdate DATETIME
 ) ;
 
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
-      - 6
-
-      - 7
-
 ```
 
 
@@ -4531,16 +3378,6 @@ CREATE TABLE author (
   nation VARCHAR (10)
 ) ;
 
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
 ```
 
 
@@ -4548,8 +3385,6 @@ CREATE TABLE author (
 
 ```java
 DESC author;
-
-      - 1
 
 ```
 
@@ -4574,10 +3409,6 @@ DESC author;
 ALTER TABLE book 
   CHANGE COLUMN publishdate pubdate DATETIME ;
 
-      - 1
-
-      - 2
-
 ```
 
 
@@ -4586,10 +3417,6 @@ ALTER TABLE book
 ```java
 ALTER TABLE book 
   MODIFY COLUMN pubdate TIMESTAMP ;
-
-      - 1
-
-      - 2
 
 ```
 
@@ -4600,10 +3427,6 @@ ALTER TABLE book
 ALTER TABLE author 
   ADD COLUMN annual DOUBLE ;
 
-      - 1
-
-      - 2
-
 ```
 
 
@@ -4613,10 +3436,6 @@ ALTER TABLE author
 ALTER TABLE author 
   DROP COLUMN annual ;
 
-      - 1
-
-      - 2
-
 ```
 
 
@@ -4625,10 +3444,6 @@ ALTER TABLE author
 ```java
 ALTER TABLE author 
   RENAME TO book_author ;
-
-      - 1
-
-      - 2
 
 ```
 
@@ -4650,16 +3465,6 @@ CREATE DATABASE 新库名;
 DROP TABLE IF EXISTS 旧表名;
 CREATE TABLE 表名();
 
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
 ```
 
 
@@ -4669,8 +3474,6 @@ CREATE TABLE 表名();
 
 ```java
 CREATE TABLE copy LIKE book_author ;
-
-      - 1
 
 ```
 
@@ -4683,16 +3486,6 @@ SELECT
   * 
 FROM
   book_author ;
-
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
 
 ```
 
@@ -4708,20 +3501,6 @@ FROM
   book_author 
 WHERE nation = '中国' ;
 
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
-      - 6
-
-      - 7
-
 ```
 
 
@@ -4736,20 +3515,6 @@ FROM
   book_author 
 WHERE 0 ;
 
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
-      - 6
-
-      - 7
-
 ```
 
 
@@ -4760,10 +3525,6 @@ WHERE 0 ;
 ```java
 USE myemployees;
 CREATE TABLE dept1 (id INT (7), NAME VARCHAR (25)) ;
-
-      - 1
-
-      - 2
 
 ```
 
@@ -4778,18 +3539,6 @@ SELECT
 FROM
   departments ;
 
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
-      - 6
-
 ```
 
 
@@ -4803,18 +3552,6 @@ CREATE TABLE emp5 (
   dept_id INT (7)
 ) ;
 
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
-      - 6
-
 ```
 
 
@@ -4822,8 +3559,6 @@ CREATE TABLE emp5 (
 
 ```java
 ALTER TABLE emp5 MODIFY COLUMN last_name VARCHAR(50);
-
-      - 1
 
 ```
 
@@ -4833,8 +3568,6 @@ ALTER TABLE emp5 MODIFY COLUMN last_name VARCHAR(50);
 ```java
 CREATE TABLE employee2 LIKE employees ;
 
-      - 1
-
 ```
 
 
@@ -4842,8 +3575,6 @@ CREATE TABLE employee2 LIKE employees ;
 
 ```java
 DROP TABLE IF EXISTS emp5;
-
-      - 1
 
 ```
 
@@ -4853,10 +3584,6 @@ DROP TABLE IF EXISTS emp5;
 ```java
 ALTER TABLE employee2 
   RENAME TO emp5 ;
-
-      - 1
-
-      - 2
 
 ```
 
@@ -4868,12 +3595,6 @@ ALTER TABLE emp5
   ADD COLUMN test_column INT ;
 DESC emp5;
 
-      - 1
-
-      - 2
-
-      - 3
-
 ```
 
 
@@ -4882,10 +3603,6 @@ DESC emp5;
 ```java
 ALTER TABLE emp5 
   DROP COLUMN dept_id ;
-
-      - 1
-
-      - 2
 
 ```
 
@@ -5055,45 +3772,6 @@ CREATE TABLE major (
 DESC stuinfo;
 SHOW INDEX FROM stuinfo;
 
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
-   - 6
-
-   - 7
-
-   - 8
-
-   - 9
-
-   - 10
-
-   - 11
-
-   - 12
-
-   - 13
-
-   - 14
-
-   - 15
-
-   - 16
-
-   - 17
-
-   - 18
-
-   - 19
-
-   - 20
 
 ```
 
@@ -5123,39 +3801,6 @@ CONSTRAINT fk_stuinfo_major FOREIGN KEY(majorid) REFERENCES major(id)
 
 SHOW INDEX FROM stuinfo;
 
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
-   - 6
-
-   - 7
-
-   - 8
-
-   - 9
-
-   - 10
-
-   - 11
-
-   - 12
-
-   - 13
-
-   - 14
-
-   - 15
-
-   - 16
-
-   - 17
 
 ```
 
@@ -5179,23 +3824,6 @@ CREATE TABLE IF NOT EXISTS stuinfo (
   CONSTRAINT fk_stuinfo_major FOREIGN KEY (majorid) REFERENCES major (id)
 ) ;
 
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
-   - 6
-
-   - 7
-
-   - 8
-
-   - 9
 
 ```
 
@@ -5214,8 +3842,6 @@ CREATE TABLE IF NOT EXISTS stuinfo (
    - 
 ```java
        保证唯一性    是否允许为空    一个表中可以有多少个    是否允许组合
-
-      - 1
 
 ```
 
@@ -5241,8 +3867,6 @@ CREATE TABLE IF NOT EXISTS stuinfo (
 ```java
 ALTER TABLE stuinfo ad CONSTRAINT fk_stu_major FOREIGN KEY(majorid) REFERENCES major(id) ON DELETE CASCADE;
 
-         - 1
-
 ```
 
 
@@ -5252,8 +3876,6 @@ ALTER TABLE stuinfo ad CONSTRAINT fk_stu_major FOREIGN KEY(majorid) REFERENCES m
 
 ```java
 ALTER TABLE stuinfo ad CONSTRAINT fk_stu_major FOREIGN KEY(majorid) REFERENCES major(id) ON DELETE SET NULL;
-
-         - 1
 
 ```
 
@@ -5271,8 +3893,6 @@ ALTER TABLE stuinfo ad CONSTRAINT fk_stu_major FOREIGN KEY(majorid) REFERENCES m
 ```java
 ALTER TABLE stuinfo MODIFY COLUMN stuname VARCHAR(20) NOT NULL;
 
-   - 1
-
 ```
 
 
@@ -5280,8 +3900,6 @@ ALTER TABLE stuinfo MODIFY COLUMN stuname VARCHAR(20) NOT NULL;
 
 ```java
 ALTER TABLE stuinfo MODIFY COLUMN age INT DEFAULT 18;
-
-   - 1
 
 ```
 
@@ -5294,14 +3912,6 @@ ALTER TABLE stuinfo MODIFY COLUMN id INT PRIMARY KEY;
 # 表级约束的写法
 ALTER TABLE stuinfo ADD PRIMARY KEY(id);
 
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
 ```
 
 
@@ -5313,13 +3923,6 @@ ALTER TABLE stuinfo MODIFY COLUMN seat INT UNIQUE;
 # 表级约束的写法
 ALTER TABLE stuinfo ADD UNIQUE(seat);
 
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
 
 ```
 
@@ -5328,8 +3931,6 @@ ALTER TABLE stuinfo ADD UNIQUE(seat);
 
 ```java
 ALTER TABLE (CONSTRAINT fk_stuinfo_major) stuinfo ADD FOREIGN KEY(majorid) REFERENCES major(id);
-
-   - 1
 
 ```
 
@@ -5341,8 +3942,6 @@ ALTER TABLE (CONSTRAINT fk_stuinfo_major) stuinfo ADD FOREIGN KEY(majorid) REFER
 ```java
 ALTER TABLE stuinfo MODIFY COLUMN stuname VARCHAR(20) NULL;
 
-   - 1
-
 ```
 
 
@@ -5350,8 +3949,6 @@ ALTER TABLE stuinfo MODIFY COLUMN stuname VARCHAR(20) NULL;
 
 ```java
 ALTER TABLE stuinfo MODIFY COLUMN age INT;
-
-   - 1
 
 ```
 
@@ -5361,8 +3958,6 @@ ALTER TABLE stuinfo MODIFY COLUMN age INT;
 ```java
 ALTER TABLE stuinfo DROP PRIMARY KEY;
 
-   - 1
-
 ```
 
 
@@ -5371,8 +3966,6 @@ ALTER TABLE stuinfo DROP PRIMARY KEY;
 ```java
 ALTER TABLE stuinfo DROP INDEX seat;
 
-   - 1
-
 ```
 
 
@@ -5380,8 +3973,6 @@ ALTER TABLE stuinfo DROP INDEX seat;
 
 ```java
 ALTER TABLE stuinfo DROP FOREIGN KEY fk_stuinfo_major;
-
-   - 1
 
 ```
 
@@ -5448,14 +4039,6 @@ CREATE TABLE tab_identity (
   NAME varcahr (20)
 ) ;
 
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
 ```
 
 
@@ -5464,10 +4047,6 @@ CREATE TABLE tab_identity (
 ```java
 SHOW VARIABLES LIKE '%auto_increment%';
 SET auto_increment_increment = 3;
-
-   - 1
-
-   - 2
 
 ```
 
@@ -5481,8 +4060,6 @@ alter table 表 modify column 字段名 字段类型 约束 auto_increment
 ```java
 ALTER TABLE tab_identity MODIFY COLUMN id INT PRIMARY KEY AUTO_INCREMENT;
 
-   - 1
-
 ```
 
 
@@ -5492,8 +4069,6 @@ alter table 表 modify column 字段名 字段类型 约束
 
 ```java
 ALTER TABLE tab_identity MODIFY COLUMN id INT;
-
-   - 1
 
 ```
 
@@ -5529,8 +4104,6 @@ ALTER TABLE tab_identity MODIFY COLUMN id INT;
 ```java
 SET autocommit=0;
 
-         - 1
-
 ```
 
 
@@ -5539,10 +4112,6 @@ SET autocommit=0;
 ```java
 SET autocommit=0;
 START TRANSACTION;（可选）
-
-         - 1
-
-         - 2
 
 ```
 
@@ -5572,20 +4141,6 @@ SAVEPOINT a;
 DELETE FROM accound WHERE id=28;
 ROLLBACK TO a;
 
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
-      - 6
-
-      - 7
-
 ```
 
 
@@ -5599,14 +4154,6 @@ START TRANSACTION;
 DELETE FROM account;
 ROLLBACK;
 
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
 ```
 
 
@@ -5617,14 +4164,6 @@ SET autocommit = 0 ;
 START TRANSACTION;
 TRUNCATE TABLE account;
 ROLLBACK;
-
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
 
 ```
 
@@ -5697,56 +4236,7 @@ FROM
   v1 
 WHERE stuname LIKE '张%' ;
 
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
-   - 6
-
-   - 7
-
-   - 8
-
-   - 9
-
-   - 10
-
-   - 11
-
-   - 12
-
-   - 13
-
-   - 14
-
-   - 15
-
-   - 16
-
-   - 17
-
-   - 18
-
-   - 19
-
-   - 20
-
-   - 21
-
-   - 22
-
-   - 23
-
-   - 24
-
-   - 25
-
+  
 ```
 
 
@@ -5787,39 +4277,7 @@ FROM
   myv1 
 WHERE last_name LIKE '%a%' ;
 
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
-      - 6
-
-      - 7
-
-      - 8
-
-      - 9
-
-      - 10
-
-      - 11
-
-      - 12
-
-      - 13
-
-      - 14
-
-      - 15
-
-      - 16
-
-      - 17
+     
 
 ```
 
@@ -5846,42 +4304,6 @@ FROM
     ON myv2.`ag` BETWEEN g.`lowest_sal` 
     AND g.`highest_sal` ;
 
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
-      - 6
-
-      - 7
-
-      - 8
-
-      - 9
-
-      - 10
-
-      - 11
-
-      - 12
-
-      - 13
-
-      - 14
-
-      - 15
-
-      - 16
-
-      - 17
-
-      - 18
-
 ```
 
 
@@ -5896,19 +4318,6 @@ FROM
 ORDER BY ag 
 LIMIT 1 ;
 
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
-      - 6
-
-      - 7
 
 ```
 
@@ -5931,34 +4340,7 @@ FROM
   JOIN departments d 
     ON m.`department_id` = d.`department_id` ;
 
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
-      - 6
-
-      - 7
-
-      - 8
-
-      - 9
-
-      - 10
-
-      - 11
-
-      - 12
-
-      - 13
-
-      - 14
-
+   
 ```
 
 
@@ -5992,22 +4374,6 @@ FROM
   employees 
 WHERE phone_number LIKE '011%' ;
 
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
-   - 6
-
-   - 7
-
-   - 8
-
 ```
 
 
@@ -6036,48 +4402,6 @@ FROM
   JOIN emp_v2 m 
     ON m.department_id = d.`department_id` ;
 
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
-   - 6
-
-   - 7
-
-   - 8
-
-   - 9
-
-   - 10
-
-   - 11
-
-   - 12
-
-   - 13
-
-   - 14
-
-   - 15
-
-   - 16
-
-   - 17
-
-   - 18
-
-   - 19
-
-   - 20
-
-   - 21
-
 ```
 
 
@@ -6103,40 +4427,6 @@ UPDATE myv1 SET last_name='张无忌' WHERE last_name = '张飞';
 
 # 删除
 DELETE FROM myv1 WHERE last_name='张无忌';
-
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
-      - 6
-
-      - 7
-
-      - 8
-
-      - 9
-
-      - 10
-
-      - 11
-
-      - 12
-
-      - 13
-
-      - 14
-
-      - 15
-
-      - 16
-
-      - 17
 
 ```
 
@@ -6177,19 +4467,6 @@ CREATE TABLE book (
   FOREIGN KEY (btypeid) REFERENCES booktype (id)
 ) ;
 
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
-      - 6
-
-      - 7
 
 ```
 
@@ -6201,14 +4478,6 @@ SET autocommit = 0 ;
 INSERT INTO book(bid, bname, price, btypeid)
 VALUES(1, '小李飞刀', 100, 1);
 COMMIT;
-
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
 
 ```
 
@@ -6226,24 +4495,7 @@ FROM
     ON b.btypeid = t.id 
 WHERE price > 100 ;
 
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
-      - 6
-
-      - 7
-
-      - 8
-
-      - 9
-
+ 
 ```
 
 
@@ -6259,22 +4511,6 @@ FROM
 WHERE price BETWEEN 90 
   AND 120 ;
 
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
-      - 6
-
-      - 7
-
-      - 8
-
 ```
 
 
@@ -6282,8 +4518,6 @@ WHERE price BETWEEN 90
 
 ```java
 DROP VIEW myv1;
-
-      - 1
 
 ```
 
@@ -6303,8 +4537,6 @@ DROP VIEW myv1;
 ```java
 SHOW GLOBAL|【SESSION】 VARIABLES;
 
-         - 1
-
 ```
 
 
@@ -6313,8 +4545,6 @@ SHOW GLOBAL|【SESSION】 VARIABLES;
 ```java
 SHOW GLOBAL|【SESSION】 VARIABLES LIKE '%char%';
 
-         - 1
-
 ```
 
 
@@ -6322,8 +4552,6 @@ SHOW GLOBAL|【SESSION】 VARIABLES LIKE '%char%';
 
 ```java
 SELECT @@GLOBAL|【SESSION】.系统变量名;
-
-         - 1
 
 ```
 
@@ -6335,8 +4563,6 @@ SELECT @@GLOBAL|【SESSION】.系统变量名;
 ```java
 set GLOBAL|【SESSION】 系统变量名 = 值;
 
-            - 1
-
 ```
 
 
@@ -6344,8 +4570,6 @@ set GLOBAL|【SESSION】 系统变量名 = 值;
 
 ```java
 set @@GLOBAL|【SESSION】.系统变量名 = 值;
-
-            - 1
 
 ```
 
@@ -6360,24 +4584,12 @@ set @@GLOBAL|【SESSION】.系统变量名 = 值;
 
          -  查看所有的全局变量
 
-```java
-
-
-```
-
 
 SHOW GLOBAL VARIABLES;
 
 ```java
 
 - 查看部分的全局变量
-
-
-         - 1
-
-         - 2
-
-         - 3
 
 ```
 
@@ -6387,13 +4599,6 @@ SHOW GLOBAL VARIABLES LIKE ‘%char%’;
 ```java
 
 - 查看指定的全局变量的值
-
-
-         - 1
-
-         - 2
-
-         - 3
 
 ```
 
@@ -6415,41 +4620,6 @@ set global autocommit=0;
 
   ```
 SET @@global.autocommit=0;
-  ```
-
-
-         - 1
-
-         - 2
-
-         - 3
-
-         - 4
-
-         - 5
-
-         - 6
-
-         - 7
-
-         - 8
-
-         - 9
-
-         - 10
-
-         - 11
-
-         - 12
-
-         - 13
-
-         - 14
-
-         - 15
-
-  ```
-
 
       -  会话变量
     
@@ -6459,19 +4629,11 @@ SET @@global.autocommit=0;
     
          -  查看所有的会话变量
 
-```java
-
-
-```
-
 
 SHOW 【SESSION】 VARIABLES;
 ```
 
       -  查看部分的会话变量
-
-​```java
-
 
 ```
 
@@ -6480,9 +4642,6 @@ SHOW 【SESSION】 VARIABLES LIKE ‘%char%’;
 ```
 
       -  查看指定的某个会话变量
-
-​```java
-
 
 ```
 
@@ -6494,34 +4653,16 @@ SELECT @@【SESSION.】autocommit;
 
          -  方式1：
 
-​```java
-
-
 ```
 
 
 set session autocommit=0;
 ```
 
-​```java
 - 方式2：
 
 ```
   SET @@【session.】autocommit=0;
-  ```
-
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
-  ```
-
 
 - 自定义变量
 
@@ -6544,12 +4685,6 @@ set @用户变量名=值；
 set @用户变量名:=值；（推荐）
 select @用户变量名:=值；
 
-         - 1
-
-         - 2
-
-         - 3
-
 ```
 
 
@@ -6562,12 +4697,6 @@ set @用户变量名=值；
 set @用户变量名:=值；（推荐）
 select @用户变量名:=值；
 
-            - 1
-
-            - 2
-
-            - 3
-
 ```
 
 
@@ -6577,10 +4706,6 @@ select @用户变量名:=值；
 SET @name='John';
 SET @name=100;
 
-               - 1
-
-               - 2
-
 ```
 
 
@@ -6589,10 +4714,6 @@ SET @name=100;
 ```java
 select 字段 into 变量名
 from 表；
-
-            - 1
-
-            - 2
 
 ```
 
@@ -6605,13 +4726,6 @@ SELECT
 FROM
   employees ;
 
-               - 1
-
-               - 2
-
-               - 3
-
-               - 4
 
 ```
 
@@ -6641,12 +4755,6 @@ set 局部变量名=值；
 set 局部变量名:=值；（推荐）
 select @局部变量名:=值；
 
-            - 1
-
-            - 2
-
-            - 3
-
 ```
 
 
@@ -6655,10 +4763,6 @@ select @局部变量名:=值；
 ```java
 select 字段 into 局部变量名
 from 表；
-
-            - 1
-
-            - 2
 
 ```
 
@@ -6684,14 +4788,6 @@ SET @n=2;
 SET @sum=@m+@n;
 SELECT @sum;
 
-            - 1
-
-            - 2
-
-            - 3
-
-            - 4
-
 ```
 
 
@@ -6704,18 +4800,6 @@ DECLARE n INT DEFAULT 2;
 DECLARE SUM INT;
 SET SUM=m+n;
 SELECT SUM;
-
-            - 1
-
-            - 2
-
-            - 3
-
-            - 4
-
-            - 5
-
-            - 6
 
 ```
 
@@ -6751,13 +4835,6 @@ BEGIN
 	存储过程体(一组合法的SQL语句)
 END
 
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
 
 ```
 
@@ -6788,8 +4865,6 @@ END
 ```java
 DELIMITER $
 
-            - 1
-
 ```
 
 
@@ -6818,35 +4893,6 @@ END $
 
 CALL myp1()$
 
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
-      - 6
-
-      - 7
-
-      - 8
-
-      - 9
-
-      - 10
-
-      - 11
-
-      - 12
-
-      - 13
-
-      - 14
-
-      - 15
 
 ```
 
@@ -6866,26 +4912,6 @@ END $
 
 CALL myp2('柳岩')$
 CALL myp2('王语嫣')$
-
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
-      - 6
-
-      - 7
-
-      - 8
-
-      - 9
-
-      - 10
 
 ```
 
@@ -6907,32 +4933,7 @@ END $
 
 CALL myp4('张飞', '8888')$
 
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
-      - 6
-
-      - 7
-
-      - 8
-
-      - 9
-
-      - 10
-
-      - 11
-
-      - 12
-
-      - 13
-
+   
 ```
 
 
@@ -6952,26 +4953,6 @@ END $
 CALL myp5('王语嫣', @bname)$
 SELECT @bname$
 
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
-      - 6
-
-      - 7
-
-      - 8
-
-      - 9
-
-      - 10
-
 ```
 
 
@@ -6988,26 +4969,6 @@ END $
 
 CALL myp6('王语嫣', @bname, @usercp)$
 SELECT @bname, @usercp$
-
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
-      - 6
-
-      - 7
-
-      - 8
-
-      - 9
-
-      - 10
 
 ```
 
@@ -7028,26 +4989,6 @@ SET @n=20$
 CALL myp8(@m,@n)$
 SELECT @m,@n$
 
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
-      - 6
-
-      - 7
-
-      - 8
-
-      - 9
-
-      - 10
-
 ```
 
 
@@ -7064,22 +5005,6 @@ END $
 
 CALL test_pro1('litian', '1234')$
 SELECT * FROM admin$
-
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
-      - 6
-
-      - 7
-
-      - 8
 
 ```
 
@@ -7099,28 +5024,6 @@ SET @m=''$
 CALL test_pro2(1, @n, @m)$
 SELECT @m,@n$
 
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
-      - 6
-
-      - 7
-
-      - 8
-
-      - 9
-
-      - 10
-
-      - 11
-
 ```
 
 
@@ -7135,20 +5038,6 @@ END $
 CALL test_pro3('1990-2-3', NOW(), @result)$
 SELECT @result$
 
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
-      - 6
-
-      - 7
-
 ```
 
 
@@ -7158,8 +5047,6 @@ SELECT @result$
 
 ```java
 DROP PROCEDURE myp1;
-
-      - 1
 
 ```
 
@@ -7172,8 +5059,6 @@ DROP PROCEDURE myp1;
 
 ```java
 SHOW CREATE PROCEDURE myp2;
-
-      - 1
 
 ```
 
@@ -7193,20 +5078,6 @@ END $
 CALL test_pro4(NOW(), @str)$
 SELECT @str $
 
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
-      - 6
-
-      - 7
-
 ```
 
 
@@ -7225,28 +5096,6 @@ END $
 CALL test_pro5('王语嫣', @result)$
 SELECT @result$
 
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
-      - 6
-
-      - 7
-
-      - 8
-
-      - 9
-
-      - 10
-
-      - 11
-
 ```
 
 
@@ -7259,18 +5108,6 @@ SELECT * FROM beauty LIMIT startindex, size;
 END $
 
 CALL test_pro6(3, 3)$
-
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
-      - 6
 
 ```
 
@@ -7329,24 +5166,6 @@ END $
 
 SELECT myf1()$
 
-         - 1
-
-         - 2
-
-         - 3
-
-         - 4
-
-         - 5
-
-         - 6
-
-         - 7
-
-         - 8
-
-         - 9
-
 ```
 
 
@@ -7365,26 +5184,6 @@ RETURN @sal;
 END $
 
 SELECT myf2('kochhar')$
-
-         - 1
-
-         - 2
-
-         - 3
-
-         - 4
-
-         - 5
-
-         - 6
-
-         - 7
-
-         - 8
-
-         - 9
-
-         - 10
 
 ```
 
@@ -7405,30 +5204,6 @@ END $
 
 SELECT myf3('IT')$
 
-         - 1
-
-         - 2
-
-         - 3
-
-         - 4
-
-         - 5
-
-         - 6
-
-         - 7
-
-         - 8
-
-         - 9
-
-         - 10
-
-         - 11
-
-         - 12
-
 ```
 
 
@@ -7437,8 +5212,6 @@ SELECT myf3('IT')$
 ```java
 SHOW CREATE FUNCTION myf3;
 
-   - 1
-
 ```
 
 
@@ -7446,8 +5219,6 @@ SHOW CREATE FUNCTION myf3;
 
 ```java
 DROP FUNCTION myf3;
-
-   - 1
 
 ```
 
@@ -7463,22 +5234,6 @@ RETURN SUM;
 END $
 
 SELECT test_fun1(1,2)$
-
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
-   - 6
-
-   - 7
-
-   - 8
 
 ```
 
@@ -7574,28 +5329,6 @@ END $
 
 CALL test_case(95)$
 
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
-      - 6
-
-      - 7
-
-      - 8
-
-      - 9
-
-      - 10
-
-      - 11
-
 ```
 
 
@@ -7630,26 +5363,6 @@ END IF;
 END $
 
 SELECT test_if(86)$
-
-      - 1
-
-      - 2
-
-      - 3
-
-      - 4
-
-      - 5
-
-      - 6
-
-      - 7
-
-      - 8
-
-      - 9
-
-      - 10
 
 ```
 
@@ -7725,28 +5438,6 @@ END $
 CALL pro_while1(100)$
 SELECT * FROM admin;
 
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
-   - 6
-
-   - 7
-
-   - 8
-
-   - 9
-
-   - 10
-
-   - 11
-
 ```
 
 
@@ -7769,32 +5460,6 @@ END $
 CALL test_while1(100)$
 SELECT * FROM admin;
 
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
-   - 6
-
-   - 7
-
-   - 8
-
-   - 9
-
-   - 10
-
-   - 11
-
-   - 12
-
-   - 13
-
 ```
 
 
@@ -7816,32 +5481,6 @@ END $
 
 CALL test_while2(100)$
 SELECT * FROM admin;
-
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
-   - 6
-
-   - 7
-
-   - 8
-
-   - 9
-
-   - 10
-
-   - 11
-
-   - 12
-
-   - 13
 
 ```
 
@@ -7877,58 +5516,6 @@ CALL test_randstr_insert(10)$
 SELECT * FROM stringcontent;
 CALL test_randstr_insert(10)$
 SELECT * FROM stringcontent;
-
-   - 1
-
-   - 2
-
-   - 3
-
-   - 4
-
-   - 5
-
-   - 6
-
-   - 7
-
-   - 8
-
-   - 9
-
-   - 10
-
-   - 11
-
-   - 12
-
-   - 13
-
-   - 14
-
-   - 15
-
-   - 16
-
-   - 17
-
-   - 18
-
-   - 19
-
-   - 20
-
-   - 21
-
-   - 22
-
-   - 23
-
-   - 24
-
-   - 25
-
-   - 26
 
 ```
 
