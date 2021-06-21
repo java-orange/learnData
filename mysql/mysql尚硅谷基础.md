@@ -3000,7 +3000,7 @@ limit 排序列表 9
 
 - 方式1：
 
-   -  语法：insert into 表名（列名，…） values（值1，…）
+   -  语法：`insert into 表名（列名，…） values（值1，…）`
 
    -  示例1：插入的值的类型要与列的类型一致或兼容
 
@@ -3097,13 +3097,9 @@ SELECT 26, '送钱', '12341234';
 
 - 语法：
 
-   -  修改单表的记录
+-  修改单表的记录
 
-update 表名
-
-set 列=新值，列=新值…
-
-where 筛选条件；
+`update 表名 set 列=新值，列=新值… where 筛选条件；`
 
    -  修改多表的记录
 
@@ -3190,7 +3186,7 @@ WHERE be.`boyfriend_id` IS NULL ;
 
       -  单表的删除
 
-delete from 表名 where 筛选条件
+`delete from 表名 where 筛选条件`
 
       -  多表的删除
     
