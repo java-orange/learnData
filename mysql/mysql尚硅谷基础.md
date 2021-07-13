@@ -10,7 +10,7 @@
    - [MySQL引入](#MySQL_7 "MySQL引入")
 
    - 
-      - [数据库的好处](#_9 "数据库的好处")
+      - [数据库的好处](#_9 "数据库的好处")``
 
       - [数据库的相关概念](#_14 "数据库的相关概念")
 
@@ -3399,7 +3399,7 @@ DESC author;
 
    -  修改表名：alter table 表名 rename 【to】 新表名；
 
-   -  修改列名
+-  `修改列名`
 
 ```java
 ALTER TABLE book 
@@ -3408,7 +3408,7 @@ ALTER TABLE book
 ```
 
 
-   -  修改列的类型或约束
+   -  `修改列的类型或约束`
 
 ```java
 ALTER TABLE book 
@@ -3417,7 +3417,7 @@ ALTER TABLE book
 ```
 
 
-   -  添加新列
+   -  `添加新列`
 
 ```java
 ALTER TABLE author 
@@ -3426,7 +3426,7 @@ ALTER TABLE author
 ```
 
 
-   -  删除列
+   -  `删除列`
 
 ```java
 ALTER TABLE author 
@@ -3435,7 +3435,7 @@ ALTER TABLE author
 ```
 
 
-   -  修改表名
+   -  `修改表名`
 
 ```java
 ALTER TABLE author 
