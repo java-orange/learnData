@@ -145,8 +145,13 @@ xshell链接服务器 https://blog.csdn.net/zzy1078689276/article/details/772808
 /
 [root@192 /]# ls
 bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
-[root@192 /]# uname -r
+[root@192 /]# uname -r    查看linux内核
 3.10.0-1127.el7.x86_64
+
+
+[root@192 /]# cat /etc/os-release         查看linux版本详情信息
+
+
 ```
 
 ![image-20200608091950655](Docker.assets/image-20200608091950655.png)
@@ -157,7 +162,7 @@ bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  s
 
 查看ip：vmware里面输入，ip addIPr
 
-视频书签，p602:20
+视频书签，p6  02:20
 
 https://www.bilibili.com/video/BV1og4y1q7M4?p=6
 
@@ -190,8 +195,6 @@ $ sudo yum remove docker \
 # 安装基本的安装包
 $ sudo yum install -y yum-utils
 ```
-
-!
 
 ![image-20200608093114774](Docker.assets/image-20200608093114774.png)
 
@@ -358,7 +361,7 @@ rm -rf /var/lib/docker # docker 的默认工作路径
 ![image-20200616155649476](Docker.assets/image-20200616155649476.png)
 
 ```
-sudo mkdir -p /etc/docker # 创建一个陌路
+sudo mkdir -p /etc/docker # 创建一个目录
 sudo tee /etc/docker/daemon.json <<-'EOF'
 {
   "registry-mirrors": ["https://uyfgafsw.mirror.aliyuncs.com"]
@@ -392,7 +395,7 @@ DockerServer接受到Docker-Client的指令，
 Docker为什么比VM快？
 
 1. Docker有着比虚拟机更少的抽象层
-2. docker主要用的是宿主机的内核，vm需要Guest OS
+2. docker主要用的是宿主机的内核，vm需要CentOS
 
 ![image-20200616162302653](Docker.assets/image-20200616162302653.png)
 
@@ -424,7 +427,6 @@ docker 命令 --help # 全部信息
 
 ```bash
 [root@192 ~]# docker images
-
 ```
 
 ![image-20200616172056530](Docker.assets/image-20200616172056530.png)
@@ -488,10 +490,6 @@ docker search mysql --filter=STARS=3000 # 搜索出Stars大于3000的
 ```
 
 ![image-20200616174440284](Docker.assets/image-20200616174440284.png)
-
-【视频书签，https://www.bilibili.com/video/BV1og4y1q7M4?p=9，13:44，太热了我要缓一缓】
-
-【20200616拳击课回来，好爽，赶紧把这个命令熟悉完】
 
 #### docker pull
 
@@ -595,7 +593,7 @@ docker run [可选参数] image
 	-p 主机端口:容器端口
 	-p 容器端口
 	
--p 随机指定端口
+-P(大写) 随机指定端口
 ```
 
 #### 进入退出容器
@@ -613,19 +611,19 @@ exit
 
 注意这里面主机名，编程了centos的id
 
-这里面就是一个容器，套娃啊
+这里面就是一个容器，俄罗斯套娃
 
 #### 查看运行的容器
 
 ```
-# 查看正在运行的容器
-docker ps
-# 查看曾经运行的容器
-docker ps -a
-# 显示最近创建的容器，设置显示个数
-docker ps -a - n=? 
-# 只显示容器的编号
-docker ps -aq
+
+docker ps             # 查看正在运行的容器
+
+docker ps -a	      # 查看所有的容器
+
+docker ps -a -n=?    # 显示最近创建的容器，设置显示个数
+
+docker ps -aq         # 只显示容器的编号
 ```
 
 ```shell
@@ -671,12 +669,11 @@ exit
 #### 删除容器
 
 ```shell
-# 删除指定容器 不能删除正在运行的容器，如果强制删除 rm -f
-docker rm 容器id
-# 删除所有容器
-docker rm -f $(docker ps -aq)
-# 删除所有容器
-docker ps -a -q|xargs docker rm
+
+docker rm 容器id        		  	  # 删除指定容器 不能删除正在运行的容器，如果强制删除 rm -f
+
+docker rm -f $(docker ps -aq)   	# 删除所有容器
+
 ```
 
 ```shell
@@ -711,10 +708,10 @@ a89ddb393d3d
 #### 启动和停止容器的操作
 
 ```shell
-docker start
-docker restart
-docker stop
-docker kill
+docker start 容器id
+docker restart 容器id
+docker stop 容器id
+docker kill 容器id
 ```
 
 ```shell
@@ -741,8 +738,6 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 
 ### 常用其他命令
 
-【视频书签：https://www.bilibili.com/video/BV1og4y1q7M4?p=11，不知不觉搞了一上午了，按部就班学东西的感觉真好，得找时间快点刷完】
-
 #### 后台启动docker
 
 ```shell
@@ -757,7 +752,7 @@ Last login: Wed Jun 17 19:47:35 2020
 [root@192 ~]# systemctl start docker # 关机后重启了，需要启动docker
 [root@192 ~]# docker run -d centos # 运行
 8ce188e5fee31c2fac93c0a405ee1a95c38dbc50cb47c35b19c0039c27558ded
-[root@192 ~]# docker ps -a # 查看正在运行的
+[root@192 ~]# docker ps -a 
 CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                      PORTS               NAMES
 8ce188e5fee3        centos              "/bin/bash"         19 seconds ago      Exited (0) 18 seconds ago                       tender_dirac
 7b1a7dd10ea4        centos              "/bin/bash"         8 hours ago         Exited (0) 8 hours ago                          fervent_mirzakhani
@@ -771,6 +766,8 @@ CONTAINER ID        IMAGE               COMMAND             CREATED             
 ```shell
 docker logs
 docker logs -f -t --tail n 【id】
+f follow  跟踪
+t timestap  时间chu
 
 ```
 
@@ -844,7 +841,19 @@ c2887d35c71d        centos              "/bin/bash"              3 minutes ago  
 
 ```
 
-#### 查看正在运行的容器信息
+#### 查看容器中的进程信息 
+
+```shell
+# 命令 docker top 容器id
+[root@192 ~]# docker top cb6d7fbc3f27
+UID    PID   	PPID    C    	STIME    TTY
+root   22819	23854	0		21:21	  ?
+root   23301	22594	0       21:21     ?
+```
+
+
+
+#### 查看正在运行的容器信息(镜像的元数据)
 
 ```shell
 [root@192 ~]# docker inspect cb6d7fbc3f27
@@ -1092,7 +1101,7 @@ cb6d7fbc3f27
 
 ```shell
 # 我们通常容器都是使用后台方式运行的e
-
+# 进入容器
 docker exec -it 容器id bashSHELL
 
 # 测试
