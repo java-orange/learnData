@@ -342,7 +342,7 @@ public void test06(){
 ```
 
 
-## 2.4 案例
+## 2.4 案例（多看多理解设计模式）
 
 **案例一：**调用 Collections.sort() 方法，通过`定制排序` 比较两个 Employee (先按照年龄比，年龄相同按照姓名比)，使用 Lambda 表达式作为参数传递
 
@@ -471,7 +471,7 @@ Supplier<T>
 3. 函数型接口
 
 ```java
-Function<R,T>
+Function<T,R>
     R apply(T t)
 ```
 
@@ -486,7 +486,7 @@ Predicate<T>
 
 
 
-# 3. 函数式接口
+# 3. 函数式接口(多看)
 
 Java内置四大核心函数式接口：
 
@@ -503,6 +503,7 @@ public void test01(){
     public static void main(String[] args) {
         happy(1000,(x) -> System.out.println("消费花费" + x + "元"));
     }
+    
     public void happy(double money,Consumer<Double> con) {
         con.accept(money);
     }
@@ -605,7 +606,7 @@ public void test01(){
 ```
 
 
-**注意：**Lambda 表达实体中调用方法的参数列表、返回类型必须和函数式接口中抽象方法保持一致
+**注意：**Lambda 表达式实体中调用方法的参数列表、返回类型必须和函数式接口中抽象方法保持一致
 
 **类::静态方法**
 
