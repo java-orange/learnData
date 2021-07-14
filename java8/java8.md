@@ -297,7 +297,7 @@ public void test04(){
 
 - Lambda 表达式 参数的数据类型可以省略不写 Jvm可以自动进行 “类型推断”
 
-函数式接口：
+**函数式接口**：
 
 - 接口中只有一个抽象方法的接口 @FunctionalIterface
 
