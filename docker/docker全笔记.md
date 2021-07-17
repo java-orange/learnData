@@ -1,9 +1,5 @@
 <font face="Consolas">
 
-[toc]
-
-
-
 
 
 ## Docker 入门
@@ -130,7 +126,7 @@ docker官网：https://www.docker.com/
 
 **应用更快速的交付和部署**
 
-传统：一对帮助文档，安装程序。
+传统：一堆帮助文档，安装程序。
 
 Docker：打包镜像发布测试一键运行。
 
@@ -207,6 +203,7 @@ REDHAT_SUPPORT_PRODUCT_VERSION="7"
 >>安装
 
 帮助文档：https://docs.docker.com/engine/install/
+
 卸载与安装
 
 ```shell
@@ -257,8 +254,7 @@ REPOSITORY            TAG                 IMAGE ID            CREATED           
 hello-world           latest              bf756fb1ae65        4 months ago      13.3kB
 ```
 
-
-卸载docker
+#### 卸载docker
 
 ```shell
 #1. 卸载依赖
@@ -297,9 +293,6 @@ sudo systemctl daemon-reload
 sudo systemctl restart docker
 ```
 
-
-### 回顾HelloWorld流程
-
 ### 回顾HelloWorld流程
 
 ![image-20200515102503722](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTEwMjUwMzcyMi5wbmc)
@@ -334,6 +327,53 @@ HostOS：物理机里的系统（OS）
 因此,当新建一个 容器时,docker不需要和虚拟机一样重新加载一个操作系统内核。仍而避免引导、加载操作系统内核返个比较费时费资源的过程,当新建一个虚拟机时,虚拟机软件需要加载GuestOS,返个新建过程是**分钟级别**的。而docker由于直接利用宿主机的操作系统,则省略了这个复杂的过程,因此新建一个docker容器只需要**几秒钟**。
 
 ## Docker的常用命令
+
+参考资料
+官方英文资源
+· Docker官网：http://www.docker.com
+
+· Docker windows入门：https://docs.docker.com/windows/
+
+· Docker Linux 入门：https://docs.docker.com/linux/
+
+· Docker mac 入门：https://docs.docker.com/mac/
+
+· Docker 用户指引：https://docs.docker.com/engine/userguide/
+
+· Docker 官方博客：http://blog.docker.com/
+
+· Docker Hub: https://hub.docker.com/
+
+· Docker开源： https://www.docker.com/open-source
+
+中文资源
+`Docker中文网站：`http://www.docker.org.cn
+
+` Docker中文文档：`http://www.dockerinfo.net/document
+
+· Docker安装手册：http://www.docker.org.cn/book/install.html
+
+· 一小时Docker教程 ：https://blog.csphere.cn/archives/22
+
+· Docker中文指南：http://www.widuu.com/chinese_docker/index.html
+
+其它资源
+· Docker 快速手册！
+
+· Docker 教程
+
+· MySQL Docker 单一机器上如何配置自动备份
+
+· https://segmentfault.com/t/docker
+
+· https://github.com/docker/docker
+
+· https://wiki.openstack.org/wiki/Docker
+
+· https://wiki.archlinux.org/index.php/Docker
+————————————————
+版权声明：本文为CSDN博主「GOODDEEP」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/u013378306/article/details/86668313
 
 ### 1.帮助命令
 
@@ -819,12 +859,15 @@ docker inspect 容器id
 
 ##### 进入当前正在运行的容器
 
-# 我们通常容器都是使用后台方式运行的，需要进入容器，修改一些配置
+### 我们通常容器都是使用后台方式运行的，需要进入容器，修改一些配置
 
 # 命令
 
+```shell
 docker exec -it 容器id bashshell
+```
 
+```shell
 #测试
 ➜ ~ docker ps
 CONTAINER ID IMAGE COMMAND CREATED STATUS PORTS NAMES
@@ -833,6 +876,9 @@ a7215824a4db centos “/bin/sh -c 'while t…” 13 minutes ago Up 13 minutes ze
 55a31b3f8613 centos “/bin/bash” 15 minutes ago Up 15 minutes lucid_clarke
 ➜ ~ docker exec -it 55321bcae33d /bin/bash
 [root@55321bcae33d /]#
+```
+
+
 ![image-20200515133433372](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTEzMzQzMzM3Mi5wbmc)
 
 ```shell
@@ -842,7 +888,7 @@ docker attach 容器id
 docker attach 55321bcae33d 
 正在执行当前的代码...
 区别
-#docker exec #进入当前容器后开启一个新的终端，可以在里面操作。（常用）
+#docker exec -it  id /bin/bash #进入当前容器后开启一个新的终端，可以在里面操作。（常用）
 #docker attach # 进入容器正在执行的终端
 ```
 
@@ -1495,7 +1541,7 @@ hello-world           latest              bf756fb1ae65        4 months ago      
 
 <font face="Consolas">
 
-[toc]
+
 
 
 
@@ -1528,7 +1574,7 @@ MySQL，容器删除了，删库跑路！需求：**MySQL数据可以存储在�
 ```shell
 -v, --volume list                    Bind mount a volume
 
-docker run -it -v 主机目录:容器内目录  -p 主机端口:容器内端口
+docker run -it -v 主机目录:容器内目录  -p 主机端口:容器内端口   容器id
 # /home/ceshi：主机home目录下的ceshi文件夹  映射：centos容器中的/home
 [root@iz2zeak7 home]# docker run -it -v /home/ceshi:/home centos /bin/bash
 #这时候主机的/home/ceshi文件夹就和容器的/home文件夹关联了,二者可以实现文件或数据同步了
@@ -1664,8 +1710,8 @@ $ docker volume inspect juming-nginx
 
 ```shell
 # 通过 -v 容器内路径： ro rw 改变读写权限
-ro #readonly 只读
-rw #readwrite 可读可写
+:ro #readonly 只读
+:rw #readwrite 可读可写
 $ docker run -d -P --name nginx05 -v juming:/etc/nginx:ro nginx
 $ docker run -d -P --name nginx05 -v juming:/etc/nginx:rw nginx
 
@@ -2135,7 +2181,7 @@ $ docker run -d -p 8080:8080 --name tomcat01
 ```shell
 $ docker exec -it 自定义容器的id /bin/bash
 
-$ cul localhost:8080
+$ curl localhost:8080
 ```
 
 
@@ -2417,6 +2463,7 @@ $ docker run -d -P --name tomcat01 tomcat
 等价于 => docker run -d -P --name tomcat01 --net bridge tomcat
 
 # docker0，特点：默认，域名不能访问。 --link可以打通连接，但是很麻烦！
+
 # 我们可以 自定义一个网络
 $ docker network create --driver bridge --subnet 192.168.0.0/16 --gateway 192.168.0.1 mynet
 ```
