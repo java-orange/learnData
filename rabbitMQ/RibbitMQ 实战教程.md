@@ -31,7 +31,7 @@
 
 ---
 
-## 2.RabbitMQ 的引言
+## 2. RabbitMQ 的引言
 
 ### 2.1 RabbitMQ 
 
@@ -74,7 +74,7 @@
 
 # 3.安装RabbitMQ安装包(需要联网)
 	yum install -y rabbitmq-server-3.7.18-1.el7.noarch.rpm
-		注意:默认安装完成后配置文件模板在:/usr/share/doc/rabbitmq-server-3.7.18/rabbitmq.config.example目录中,需要	
+		注意:默认安装完成后配置文件模板在:/usr/share/doc/rabbitmq-server-3.7.18/rabbitmq.config.example目录中,需要
 				将配置文件复制到/etc/rabbitmq/目录中,并修改名称为rabbitmq.config
 # 4.复制配置文件
 	cp /usr/share/doc/rabbitmq-server-3.7.18/rabbitmq.config.example /etc/rabbitmq/rabbitmq.config
@@ -159,9 +159,9 @@
 
 ----
 
-## 3. RabiitMQ 配置
+## 3. RabbitMQ 配置
 
-### 3.1RabbitMQ 管理命令行
+### 3.1 RabbitMQ 管理命令行
 
 ```markdown
 # 1.服务启动相关
@@ -180,13 +180,13 @@
 
 ![image-20191126162026720](RibbitMQ 实战教程.assets/image-20191126162026720.png)
 
-- `connections：无论生产者还是消费者，都需要与RabbitMQ建立连接后才可以完成消息的生产和消费，在这里可以查看连接情况`
+- `connections`：无论生产者还是消费者，都需要与RabbitMQ建立连接后才可以完成消息的生产和消费，在这里可以查看连接情况
 
-- `channels：通道，建立连接后，会形成通道，消息的投递获取依赖通道。`
+- `channels`：通道，建立连接后，会形成通道，消息的投递获取依赖通道。
 
-- `Exchanges：交换机，用来实现消息的路由`
+- `Exchanges`：交换机，用来实现消息的路由
 
-- `Queues：队列，即消息队列，消息存放在队列中，等待消费，消费后被移除队列。`
+- `Queues`：队列，即消息队列，消息存放在队列中，等待消费，消费后被移除队列。
 
   
 
@@ -241,7 +241,7 @@
 
 -----
 
-## 4.RabbitMQ 的第一个程序
+## 4. RabbitMQ 的第一个程序
 
 ### 4.0 AMQP协议的回顾
 
