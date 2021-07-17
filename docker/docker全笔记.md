@@ -35,7 +35,7 @@
 docker流程： java-jar（环境） — 打包项目帯上环境（镜像） — ( Docker仓库：商店）-----
 
 Docker给以上的问题，提出了解决方案！
-![在这里插入图片描述](docker+.assets/20200522080257159.png)
+![在这里插入图片描述](docker全笔记.assets/20200522080257159.png)
 
 Docker的思想就来自于集装箱！
 
@@ -98,7 +98,7 @@ docker官网：https://www.docker.com/
 >
 >>
 >>之前的虚拟机技术
->>![image-20200515153852954](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTE1Mzg1Mjk1NC5wbmc)
+>>![image-20200515153852954](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTE1Mzg1Mjk1NC5wbmc)
 
 **虚拟机技术缺点**：
 
@@ -114,7 +114,7 @@ docker官网：https://www.docker.com/
 
 容器化技术不是模拟一个完整的操作系统
 
-![image-20200515094336846](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTA5NDMzNjg0Ni5wbmc)
+![image-20200515094336846](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTA5NDMzNjg0Ni5wbmc)
 
 比较Docker和虚拟机技术的不同：
 
@@ -150,7 +150,7 @@ Docker是内核级别的虚拟化，可以在一个物理机上可以运行很�
 
 #### Docker的基本组成
 
-![image-20200514195805400](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNDE5NTgwNTQwMC5wbmc)
+![image-20200514195805400](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNDE5NTgwNTQwMC5wbmc)
 
 **镜像（image)：**
 
@@ -273,11 +273,11 @@ rm -rf /var/lib/docker
 
 #### 1、登录阿里云找到容器服务
 
-![image-20200515102112851](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTEwMjExMjg1MS5wbmc)
+![image-20200515102112851](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTEwMjExMjg1MS5wbmc)
 
 #### 2、找到镜像加速器
 
-![image-20200515102009470](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTEwMjAwOTQ3MC5wbmc)
+![image-20200515102009470](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTEwMjAwOTQ3MC5wbmc)
 
 #### 3、配置使用
 
@@ -302,11 +302,11 @@ sudo systemctl restart docker
 
 ### 回顾HelloWorld流程
 
-![image-20200515102503722](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTEwMjUwMzcyMi5wbmc)
+![image-20200515102503722](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTEwMjUwMzcyMi5wbmc)
 
 **docker run 流程图**
 
-![image-20200515102637246](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTEwMjYzNzI0Ni5wbmc)
+![image-20200515102637246](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTEwMjYzNzI0Ni5wbmc)
 
 #### 底层原理
 
@@ -316,7 +316,7 @@ Docker是一个Client-Server结构的系统，Docker的守护进程运行在主�
 
 Docker-Server接收到Docker-Client的指令，就会执行这个命令！
 
-![image-20200515102949558](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTEwMjk0OTU1OC5wbmc)
+![image-20200515102949558](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTEwMjk0OTU1OC5wbmc)
 
 **为什么Docker比Vm快**
 1、docker有着比虚拟机更少的抽象层。由于docker不需要Hypervisor实现硬件资源虚拟化,运行在docker容器上的程序直接使用的都是实际物理机的硬件资源。因此在CPU、内存利用率上docker将会在效率上有明显优势。
@@ -329,7 +329,7 @@ HostOS：物理机里的系统（OS）
 ```
 
 
-![image-20200515104117329](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTEwNDExNzMyOS5wbmc)
+![image-20200515104117329](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTEwNDExNzMyOS5wbmc)
 
 因此,当新建一个 容器时,docker不需要和虚拟机一样重新加载一个操作系统内核。仍而避免引导、加载操作系统内核返个比较费时费资源的过程,当新建一个虚拟机时,虚拟机软件需要加载GuestOS,返个新建过程是**分钟级别**的。而docker由于直接利用宿主机的操作系统,则省略了这个复杂的过程,因此新建一个docker容器只需要**几秒钟**。
 
@@ -392,7 +392,7 @@ f19c56ce92a8
 
 ##### docker search 搜索镜像
 
-![在这里插入图片描述](docker+.assets/20200522083541799.png)
+![在这里插入图片描述](docker全笔记.assets/20200522083541799.png)
 
 ```shell
 [root@iz2zeak7sgj6i7hrb2g862z ~]# docker search mysql
@@ -479,7 +479,7 @@ docker kill 容器id	#强制停止当前容器
 ```
 
 
-![在这里插入图片描述](docker+.assets/20200522092043553.png)
+![在这里插入图片描述](docker全笔记.assets/20200522092043553.png)
 
 ##### 新建容器并启动
 
@@ -506,7 +506,7 @@ exit
 ```
 
 
-![在这里插入图片描述](docker+.assets/20200522093429405.png)
+![在这里插入图片描述](docker全笔记.assets/20200522093429405.png)
 
 ##### 列出所有运行的容器
 
@@ -518,9 +518,9 @@ docker ps 命令  		#列出当前正在运行的容器
 ```
 
 
-![在这里插入图片描述](docker+.assets/20200522093522617.png)
+![在这里插入图片描述](docker全笔记.assets/20200522093522617.png)
 
-![在这里插入图片描述](docker+.assets/20200522093522598.png)
+![在这里插入图片描述](docker全笔记.assets/20200522093522598.png)
 
 ##### 退出容器
 
@@ -593,7 +593,7 @@ docker logs -ft 容器id #跟着日志
 ```
 
 
-![image-20200515132913888](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTEzMjkxMzg4OC5wbmc)
+![image-20200515132913888](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTEzMjkxMzg4OC5wbmc)
 
 ##### 查看镜像的元数据
 
@@ -833,7 +833,7 @@ a7215824a4db centos “/bin/sh -c 'while t…” 13 minutes ago Up 13 minutes ze
 55a31b3f8613 centos “/bin/bash” 15 minutes ago Up 15 minutes lucid_clarke
 ➜ ~ docker exec -it 55321bcae33d /bin/bash
 [root@55321bcae33d /]#
-![image-20200515133433372](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTEzMzQzMzM3Mi5wbmc)
+![image-20200515133433372](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTEzMzQzMzM3Mi5wbmc)
 
 ```shell
 # 方式二
@@ -847,7 +847,7 @@ docker attach 55321bcae33d
 ```
 
 
-![image-20200515133907134](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTEzMzkwNzEzNC5wbmc)
+![image-20200515133907134](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTEzMzkwNzEzNC5wbmc)
 
 **从容器内拷贝到主机上**
 
@@ -884,7 +884,7 @@ drwx------ 3 www  www  4096 May  8 12:14 www
 学习方式：将我的所有笔记敲一遍，自己记录笔记！
 
 **小结：**
-![image-20200514214313962](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNDIxNDMxMzk2Mi5wbmc)
+![image-20200514214313962](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNDIxNDMxMzk2Mi5wbmc)
 
 **命令大全**
 
@@ -983,7 +983,7 @@ aa664b0c8ed9        nginx               "nginx -g 'daemon of…"   10 minutes ag
 
 **宿主机端口** 和 **容器内部端口** 以及端口暴露：
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNDIxNTkxNTY1MC5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNDIxNTkxNTY1MC5wbmc)
 
 **问题：**我们每次改动nginx配置文件，都需要进入容器内部？十分麻烦，我要是可以在容器外部提供一个映射路径，达到在容器外部修改文件名，容器内部就可以自动修改？-v 数据卷 技术！
 
@@ -1059,7 +1059,7 @@ ROOT  docs  examples  host-manager  manager
 
 
 这样docker部署tomcat就可以访问了
-![在这里插入图片描述](docker+.assets/20200522112432972.png)
+![在这里插入图片描述](docker全笔记.assets/20200522112432972.png)
 
 **问题**:我们以后要部署项目，如果每次都要进入容器是不是十分麻烦？要是可以在容器外部提供一个映射路径，比如webapps，我们在外部放置项目，就自动同步内部就好了！
 
@@ -1104,7 +1104,7 @@ d834ce2bd306
 ```
 
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTE1MjU1MjcyMi5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTE1MjU1MjcyMi5wbmc)
 
 ```shell
 #测试成功就关掉elasticSearch，可以添加内存的限制，修改配置文件 -e 环境配置修改
@@ -1113,7 +1113,7 @@ d834ce2bd306
 ```
 
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTE1MzUxMTY5NS5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTE1MzUxMTY5NS5wbmc)
 
 ```shell
 ➜  ~ curl localhost:9200
@@ -1140,7 +1140,7 @@ d834ce2bd306
 >
 >>
 >>作业三：使用kibana连接es (elasticSearch)？思考网络如何才能连接
->>![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTE1MzcyNTk5MS5wbmc)
+>>![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTE1MzcyNTk5MS5wbmc)
 
 ## Portainer 可视化面板安装
 
@@ -1173,11 +1173,11 @@ Status: Downloaded newer image for portainer/portainer:latest
 
 
 测试访问： 外网：8080 ：http://123.56.247.59:8080/
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTE1NTAwNjA3OS5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTE1NTAwNjA3OS5wbmc)
 
 进入之后的面板
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTE1NTExMzY5My5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTE1NTExMzY5My5wbmc)
 
 ## 镜像原理之联合文件系统
 
@@ -1212,11 +1212,11 @@ docker的镜像实际上由一层一层的文件系统组成，这种层级的�
 boots(boot file system）主要包含 bootloader和 Kernel, bootloader主要是引导加 kernel, Linux刚启动时会加bootfs文件系统，在 Docker镜像的最底层是 boots。这一层与我们典型的Linux/Unix系统是一样的，包含boot加載器和内核。当boot加载完成之后整个内核就都在内存中了，此时内存的使用权已由 bootfs转交给内核，此时系统也会卸载bootfs。
 rootfs（root file system),在 bootfs之上。包含的就是典型 Linux系统中的/dev,/proc,/bin,/etc等标准目录和文件。 rootfs就是各种不同的操作系统发行版，比如 Ubuntu, Centos等等。
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTE2MzA0OTk1OS5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTE2MzA0OTk1OS5wbmc)
 
 平时我们安装进虚拟机的CentOS都是好几个G，为什么Docker这里才200M？
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTE2MzE0MDU1OS5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTE2MzE0MDU1OS5wbmc)
 
 对于个精简的OS,rootfs可以很小，只需要包合最基本的命令，工具和程序库就可以了，因为底层直接用Host的kernel，自己只需要提供rootfs就可以了。由此可见对于不同的Linux发行版， boots基本是一致的， rootfs会有差別，因此不同的发行版可以公用bootfs.
 
@@ -1230,7 +1230,7 @@ rootfs（root file system),在 bootfs之上。包含的就是典型 Linux系统�
 
 我们可以去下载一个镜像，注意观察下载的日志输出，可以看到是一层层的在下载
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTE2MzgzOTE4MC5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTE2MzgzOTE4MC5wbmc)
 
 **思考：为什么Docker镜像要采用这种分层的结构呢？**
 
@@ -1369,16 +1369,16 @@ rootfs（root file system),在 bootfs之上。包含的就是典型 Linux系统�
 
 在添加额外的镜像层的同时，镜像始终保持是当前所有镜像的组合，理解这一点.
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTE2NTIzNDI3NC5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTE2NTIzNDI3NC5wbmc)
 
 在添加额外的镜像层的同时，镜像始终保持是当前所有镜像的组合，理解这一点非常重要。下图中举了一个简单的例子，每个镜像层包含3个文件，而镜像包含了来自两个镜像层的6个文件。
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTE2NDk1ODkzMi5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTE2NDk1ODkzMi5wbmc)
 
 上图中的镜像层跟之前图中的略有区別，主要目的是便于展示文件
 下图中展示了一个稍微复杂的三层镜像，在外部看来整个镜像只有6个文件，这是因为最上层中的文件7是文件5的一个更新版。
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTE2NTE0ODAwMi5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTE2NTE0ODAwMi5wbmc)
 
 文种情況下，上层镜像层中的文件覆盖了底层镜像层中的文件。这样就使得文件的更新版本作为一个新镜像层添加到镜像当中
 
@@ -1391,7 +1391,7 @@ Docker在 Windows上仅支持 windowsfilter 一种存储引擎，该引擎基于
 
 下图展示了与系统显示相同的三层镜像。所有镜像层堆并合井，对外提供统一的视图。
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTE2NTU1NzgwNy5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTE2NTU1NzgwNy5wbmc)
 
 >
 >>
@@ -1401,7 +1401,7 @@ Docker 镜像都是只读的，当容器启动时，一个新的可写层加载�
 
 这一层就是我们通常说的容器层，容器之下的都叫镜像层！
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTE2MTUwNTg5Ny5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTE2MTUwNTg5Ny5wbmc)
 
 #### commit镜像
 
@@ -1515,7 +1515,7 @@ MySQL，容器删除了，删库跑路！需求：**MySQL数据可以存储在�
 
 这就是卷技术！目录的挂载，将我们容器内的目录，挂载到Linux上面！
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjEwNTI1ODQ1Ni5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjEwNTI1ODQ1Ni5wbmc)
 
 **总结一句话：容器的持久化和同步操作！容器间也是可以数据共享的！**
 
@@ -1538,11 +1538,11 @@ docker run -it -v 主机目录:容器内目录  -p 主机端口:容器内端口
 ```
 
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTE5MTY0Nzk3MC5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTE5MTY0Nzk3MC5wbmc)
 
 测试文件的同步
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTE5MTcxODQ3MC5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTE5MTcxODQ3MC5wbmc)
 
 再来测试！
 
@@ -1554,7 +1554,7 @@ docker run -it -v 主机目录:容器内目录  -p 主机端口:容器内端口
 
 4、容器内的数据依旧是同步的
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjExMDg1MDQzMS5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjExMDg1MDQzMS5wbmc)
 
 好处：我们以后修改只需要在本地修改即可，容器内会自动同步！
 
@@ -1587,15 +1587,15 @@ $ docker run -d -p 3310:3306 -v /home/mysql/conf:/etc/mysql/conf.d -v /home/mysq
 
 **测试连接**：注意3310端口要在阿里云服务器的安全组中打开，否则无法连接。
 
-![在这里插入图片描述](docker+.assets/20200524154329225.png)
+![在这里插入图片描述](docker全笔记.assets/20200524154329225.png)
 
 当我们在本地用SQLyog新建名称为test的数据库时候，容器容器也会创建
 
-![在这里插入图片描述](docker+.assets/20200524154352820.png)
+![在这里插入图片描述](docker全笔记.assets/20200524154352820.png)
 
 假设我们将包含mysql的容器删除时，
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjExMjUzMjk1MC5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjExMjUzMjk1MC5wbmc)
 
 发现，**我们挂载到本地的数据卷依旧没有丢失，这就实现了容器数据持久化功能**。
 
@@ -1643,12 +1643,12 @@ $ docker volume inspect juming-nginx
 ```
 
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjExMzU0NTc0Ni5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjExMzU0NTc0Ni5wbmc)
 
 所有的docker容器内的卷，没有指定目录的情况下都是在**/var/lib/docker/volumes/自定义的卷名/_data**下，
 **如果指定了目录，docker volume ls 是查看不到的**。
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjExNDIzMTQzNS5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjExNDIzMTQzNS5wbmc)
 
 **区分三种挂载方式**
 
@@ -1725,7 +1725,7 @@ caoshipeng/centos   latest       f4a6b0d4d948        About a minute ago   237MB
 ```
 
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjEyMTIyMTA2Ni5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjEyMTIyMTA2Ni5wbmc)
 
 >
 >>
@@ -1737,11 +1737,11 @@ $ ls -l 								# 查看目录
 ```
 
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjEyMTQ1OTAyNi5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjEyMTQ1OTAyNi5wbmc)
 
 这个卷和外部一定有一个同步的目录
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjEyMTUzMTYyNi5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjEyMTUzMTYyNi5wbmc)
 
 查看一下卷挂载
 
@@ -1751,11 +1751,11 @@ $ docker inspect ca3b45913df5
 ```
 
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjEyMTYzMDI5NS5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjEyMTYzMDI5NS5wbmc)
 
 测试一下刚才的文件是否同步出去了！
 
-![在这里插入图片描述](docker+.assets/20200524154444736.png)
+![在这里插入图片描述](docker全笔记.assets/20200524154444736.png)
 
 这种方式使用的十分多，因为我们通常会构建自己的镜像！
 
@@ -1767,7 +1767,7 @@ $ docker inspect ca3b45913df5
 
 命名的容器挂载数据卷！
 
-![在这里插入图片描述](docker+.assets/20200524154518325.png)
+![在这里插入图片描述](docker全笔记.assets/20200524154518325.png)
 
 ```shell
 # 测试 启动3个容器，通过刚才自己写的镜像启动
@@ -1794,9 +1794,9 @@ etc  lib64  mnt		root  srv   usr  volume02
 ```
 
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjEyMzAyMDA1MC5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjEyMzAyMDA1MC5wbmc)
 
-![在这里插入图片描述](docker+.assets/20200524154539606.png)
+![在这里插入图片描述](docker全笔记.assets/20200524154539606.png)
 
 ```shell
 # 再新建一个docker03同样继承docker01
@@ -1810,7 +1810,7 @@ docker01.txt
 ```
 
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjEyMzM1NTAzNC5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjEyMzM1NTAzNC5wbmc)
 
 **多个mysql实现数据共享**
 
@@ -1845,11 +1845,11 @@ $ docker run -d -p 3310:3306 -e MYSQL_ROOT_PASSWORD=123456 --name mysql02 --volu
 
 4、 docker push发布镜像（DockerHub 、阿里云仓库)
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjEzMTQwMDQ1Ni5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjEzMTQwMDQ1Ni5wbmc)
 
 点击后跳到一个Dockerfile
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjEzMTQ0MTc1MC5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjEzMTQ0MTc1MC5wbmc)
 
 很多官方镜像都是基础包，很多功能没有，我们通常会自己搭建自己的镜像！
 
@@ -1867,7 +1867,7 @@ $ docker run -d -p 3310:3306 -e MYSQL_ROOT_PASSWORD=123456 --name mysql02 --volu
 
 4、每一个指令都会创建提交一个新的镜像曾，并提交！
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjEzMTc1Njk5Ny5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjEzMTc1Njk5Ny5wbmc)
 
 Dockerfile是面向开发的，我们以后要发布项目，做镜像，就需要编写dockerfile文件，这个文件十分简单！
 
@@ -1897,7 +1897,7 @@ ENV					# env:构建的时候设置环境变量！
 ```
 
 
-![在这里插入图片描述](docker+.assets/20200524154609624.png)
+![在这里插入图片描述](docker全笔记.assets/20200524154609624.png)
 
 #### 实战测试
 
@@ -1924,7 +1924,7 @@ CMD ["/bin/bash"]
 
 **Docker Hub 中 99%的镜像都是从这个基础镜像过来的 FROM scratch**，然后配置需要的软件和配置来进行构建。
 
-![在这里插入图片描述](docker+.assets/20200524154740467.png)
+![在这里插入图片描述](docker全笔记.assets/20200524154740467.png)
 
 >
 >>
@@ -1961,7 +1961,7 @@ $ docker build -f mydockerfile-centos -t mycentos:0.1 .
 ```
 
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE0MDgzMTQ2NC5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE0MDgzMTQ2NC5wbmc)
 
 ```shell
 $ docker images
@@ -1981,11 +1981,11 @@ $ docker history 镜像id
 ```
 
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE0MTYyOTU4My5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE0MTYyOTU4My5wbmc)
 
 我们可以列出本地进行的变更历史
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE0MTg0MDcwNi5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE0MTg0MDcwNi5wbmc)
 
 我们平时拿到一个镜像，可以用 “docker history 镜像id” 研究一下是什么做的
 
@@ -2081,7 +2081,7 @@ Dockerfile中很多命令都十分的相似，我们需要了解它们的区别�
 ```
 
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE2MjQ0MzY1Mi5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE2MjQ0MzY1Mi5wbmc)
 
 ##### 2、编写dokerfile
 
@@ -2177,7 +2177,7 @@ $ docker login -u 你的用户名 -p 你的密码
 
 4、提交 push镜像
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE2NDQzNDA0Mi5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE2NDQzNDA0Mi5wbmc)
 
 ```shell
 # 会发现push不上去，因为如果没有前缀的话默认是push到 官方的library
@@ -2210,7 +2210,7 @@ $ sudo docker push registry.cn-shenzhen.aliyuncs.com/dsadxzc/cheng:[镜像版本
 
 ## 小结
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE3MTE1NTY2Ny5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE3MTE1NTY2Ny5wbmc)
 
 ## Docker 网络
 
@@ -2231,7 +2231,7 @@ $ docker rmi -f $(docker images -aq)
 >>
 >>测试
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTIyMzIzNjc3Mi5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTIyMzIzNjc3Mi5wbmc)
 
 **三个网络**
 
@@ -2239,7 +2239,7 @@ $ docker rmi -f $(docker images -aq)
 >>
 >>问题： docker 是如果处理容器网络访问的？
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE3MjA0MTk4NS5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE3MjA0MTk4NS5wbmc)
 
 ```shell
 # 测试  运行一个tomcat
@@ -2278,11 +2278,11 @@ https://www.cnblogs.com/bakari/p/10613710.html
 
 再次测试 ip addr
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTIyNDAzNjg4My5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNTIyNDAzNjg4My5wbmc)
 
 2 、再启动一个容器测试，发现又多了一对网络
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE3MzI1OTQ1OC5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE3MzI1OTQ1OC5wbmc)
 
 ```shell
 # 我们发现这个容器带来网卡，都是一对对的
@@ -2314,7 +2314,7 @@ PING 172.17.0.2 (172.17.0.2) 56(84) bytes of data.
 
 **网络模型图**
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE3NDI0ODYyNi5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE3NDI0ODYyNi5wbmc)
 
 结论：tomcat01和tomcat02公用一个路由器，docker0。
 
@@ -2326,7 +2326,7 @@ PING 172.17.0.2 (172.17.0.2) 56(84) bytes of data.
 
 Docker使用的是Linux的桥接，宿主机是一个Docker容器的网桥 docker0
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE3NDcwMTA2My5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE3NDcwMTA2My5wbmc)
 
 Docker中所有网络接口都是虚拟的，虚拟的转发效率高（内网传递文件）
 
@@ -2360,15 +2360,15 @@ PING tomcat02 (172.17.0.3) 56(84) bytes of data.
 
 docker network inspect 网络id 网段相同
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE3NTkwNDU1MS5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE3NTkwNDU1MS5wbmc)
 
 docker inspect tomcat03
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE4MDMwODUzMC5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE4MDMwODUzMC5wbmc)
 
 查看tomcat03里面的/etc/hosts发现有tomcat02的配置
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE4MDYyOTAxMi5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE4MDYyOTAxMi5wbmc)
 
 –link 本质就是在hosts配置中添加映射
 
@@ -2396,7 +2396,7 @@ rm          -- Deletes one or more networks
 >>
 >>查看所有的docker网络
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE5MDMxNjA3My5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE5MDMxNjA3My5wbmc)
 
 **网络模式**
 
@@ -2422,24 +2422,24 @@ $ docker network create --driver bridge --subnet 192.168.0.0/16 --gateway 192.16
 ```
 
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE5MTEzOTk0NC5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE5MTEzOTk0NC5wbmc)
 
 ```shell
 $ docker network inspect mynet;
 ```
 
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE5MTQwNzA2NS5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE5MTQwNzA2NS5wbmc)
 
 启动两个tomcat,再次查看网络情况
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE5MTg0NDI0MC5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE5MTg0NDI0MC5wbmc)
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE5MjAwNzM3MS5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE5MjAwNzM3MS5wbmc)
 
 在自定义的网络下，服务可以互相ping通，不用使用–link
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE5MjEzNDY3My5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE5MjEzNDY3My5wbmc)
 
 我们自定义的网络docker当我们维护好了对应的关系，推荐我们平时这样使用网络！
 
@@ -2449,13 +2449,13 @@ redis -不同的集群使用不同的网络，保证集群是安全和健康的
 
 mysql-不同的集群使用不同的网络，保证集群是安全和健康的
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE5MjUwNDM2Ny5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE5MjUwNDM2Ny5wbmc)
 
 ## 网络连通
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE5MzI0MzE0Ni5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE5MzI0MzE0Ni5wbmc)
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE5MzI1OTE4NS5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE5MzI1OTE4NS5wbmc)
 
 ```shell
 # 测试两个不同的网络连通  再启动两个tomcat 使用默认网络，即docker0
@@ -2465,7 +2465,7 @@ $ docker run -d -P --name tomcat02 tomcat
 ```
 
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE5MzU1NDkzMS5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE5MzU1NDkzMS5wbmc)
 
 ```shell
 # 要将tomcat01 连通 tomcat—net-01 ，连通就是将 tomcat01加到 mynet网络
@@ -2473,7 +2473,7 @@ $ docker run -d -P --name tomcat02 tomcat
 ```
 
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE5Mzg0ODMzNy5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE5Mzg0ODMzNy5wbmc)
 
 ```shell
 # 01连通 ，加入后此时，已经可以tomcat01 和 tomcat-01-net ping通了
@@ -2485,7 +2485,7 @@ $ docker run -d -P --name tomcat02 tomcat
 
 ## 实战：部署Redis集群
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE5NDQxOTQ3MS5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjE5NDQxOTQ3MS5wbmc)
 
 ```shell
 # 创建网卡
@@ -2520,11 +2520,11 @@ redis-cli --cluster create 172.38.0.11:6379 172.38.0.12:6379 172.38.0.13:6379 17
 ```
 
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjIwMjkwMjI0MS5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjIwMjkwMjI0MS5wbmc)
 
 docker搭建redis集群完成！
 
-![](docker+.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjIwMzMyMzk3MS5wbmc)
+![](docker全笔记.assets/aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2NoZW5nY29kZXgvY2xvdWRpbWcvbWFzdGVyL2ltZy9pbWFnZS0yMDIwMDUxNjIwMzMyMzk3MS5wbmc)
 
 我们使用docker之后，所有的技术都会慢慢变得简单起来！
 
@@ -2562,6 +2562,5 @@ $ docker build -t xxxxx:xx  .
 5、发布运行
 
 以后我们使用了Docker之后，给别人交付就是一个镜像即可！
-
 
 </font>
