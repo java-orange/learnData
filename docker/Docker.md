@@ -1196,6 +1196,12 @@ docker stats
 
 #### 小结
 
+
+
+[docker概念图](https://www.processon.com/view/link/5d836beae4b021bb66447353)
+
+![image-20210716101546426](C:\Users\H-VISIONS\Desktop\荆晓华\learnData\docker\Docker.assets\image-20210716101546426.png)
+
 ![image-20200617210554147](Docker.assets/image-20200617210554147.png)
 
 ```shell
@@ -1789,8 +1795,6 @@ docker run -d -p 3310:3306 -v /home/mysql/conf:/etc/mysql/conf.d -v /home/mysql/
 
 ### 具名和匿名挂载
 
-【视频书签：https://www.bilibili.com/video/BV1og4y1q7M4?p=23，有点累了，跟不动了，这两天运动太少了，有点颓】
-
 ![image-20200618203452205](Docker.assets/image-20200618203452205.png)
 
 ![image-20200618203744983](Docker.assets/image-20200618203744983.png)
@@ -1801,32 +1805,9 @@ DockerFile使用来构建docker镜像的文件
 
 ![image-20200618211547398](Docker.assets/image-20200618211547398.png)
 
-> kas:
-> 没有安装吧？
->
-> kas:
-> 安装一下就可以了
->
-> py9001021曾叙坚:
-> centos 默认使用vi写内容，vim需要下载
->
-> py9001021曾叙坚:
-> 是的，需要下载vim才能使用
->
-> YF:
-> 配置可以改下，字体就很炫酷了
->
-> 都建民:
-> 用vi  试试
->
-> 都建民:
-> 你没有安装vim
->
-> 都建民:
-> yum install vim
->
-> 都建民:
-> 试试这个命令
+> yum install vim  
+> 
+> 安装vim
 
 ```shell
 yum install vim # 编辑文件的，没有装一下
@@ -1856,7 +1837,6 @@ CMD /bin/bash
 
 想保存并退出
 
->Wesley.:
 >shift  加  冒号
 
 
@@ -1866,7 +1846,7 @@ CMD /bin/bash
 ```shell
 cat dockerfile1
 
-docker build -f dockerfile1 -t padaxing/centos:1.0 .  # 最后的点很重要 镜像名不能有/
+docker build -f dockerfile1 -t padaxing/centos:1.0 .  # 最后的点很重要  且镜像名不能有/
 ```
 
 ![image-20200618212936481](Docker.assets/image-20200618212936481.png)
@@ -1896,8 +1876,6 @@ docker images
 在主机挂载路径下，也同样生成
 
 ### 多个容器数据共享
-
-【视频书签：https://www.bilibili.com/video/BV1og4y1q7M4?p=25，周日下午，滨江，大雨，本来说这周六刷完的，发现周六啥也干不下去，除了吃就是睡，要么发呆研究小金库】
 
 ![image-20200621165403842](Docker.assets/image-20200621165403842.png)
 
@@ -2129,8 +2107,6 @@ ifconfig
 
 ### CMD与ENTRYPOINT
 
-【视频书签，https://www.bilibili.com/video/BV1og4y1q7M4?p=29，雨终于停了，想去江边跑步】
-
 ```shell
 
 FROM centos
@@ -2153,10 +2129,7 @@ Docker中许多命令都十分相似，我们需要了解他们的区别，最�
 
 ### 实战Tomcat镜像
 
-【视频书签，https://www.bilibili.com/video/BV1og4y1q7M4?p=30，这节有点长，这个jar包是哪来的，晚上再搞，先去该模型比较急，还有10节课，这周争取都看完】
-
 1. 准备镜像文件 tomcat压缩包
-2. 
 
 ## IDEA整合Docker
 
