@@ -572,7 +572,7 @@ channel.basicConsume(queue,true,new DefaultConsumer(channel){
 
 ----
 
-### 4.6 第四种模型(Routing)
+### 4.6 第四种模型(direct)
 
 #### 4.6.1 Routing 之订阅模型-Direct(直连)
 
@@ -591,7 +591,7 @@ channel.basicConsume(queue,true,new DefaultConsumer(channel){
 图解：
 
 - P：生产者，向Exchange发送消息，发送消息时，会指定一个routing key。
-- X：Exchange（交换机），接收生产者的消息，然后把消息递交给 与routing key完全匹配的队列
+- X:   Exchange（交换机），接收生产者的消息，然后把消息递交给 与routing key完全匹配的队列
 - C1：消费者，其所在队列指定了需要routing key 为 error 的消息
 - C2：消费者，其所在队列指定了需要routing key 为 info、error、warning 的消息
 
@@ -659,7 +659,7 @@ channel.basicConsume(queue,true,new DefaultConsumer(channel){
 
 ----
 
-#### 4.6.2 Routing 之订阅模型-Topic
+### 4.7 Routing 之订阅模型-Topic
 
 `Topic`类型的`Exchange`与`Direct`相比，都是可以根据`RoutingKey`把消息路由到不同的队列。只不过`Topic`类型`Exchange`可以让队列在绑定`Routing key` 的时候**使用通配符**！这种模型`Routingkey` 一般都是由一个或多个单词组成，多个单词之间以”.”分割，例如： `item.insert`
 
