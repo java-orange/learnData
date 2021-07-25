@@ -159,12 +159,12 @@
 
 - 一个数据库中可以有多个表，每个表都有一个的名字，用来标识自己。表名具有唯一性。
 
-- 表具有一些特性，这些特性定义了数据在表中如何存储，类似java中 “类”的设计。
+- 表具有一些特性，这些特性定义了数据在表中如何存储，类似sql中 “类”的设计。
 
 - 表由列组成，我们也称为字段。所有表都是由一个或多个列
-组成的，每一列类似java 中的“属性” 。
+组成的，每一列类似sql 中的“属性” 。
 
-- 表中的数据是按行存储的，每一行类似于java中的“对象”。
+- 表中的数据是按行存储的，每一行类似于sql中的“对象”。
 
 - DBMS分为两类：
    - 基于共享文件系统的DBMS（ACCESS）
@@ -197,24 +197,30 @@
 
 ### MySQL的常用命令
 
-- 查看当前所有的数据库：show databases;
-- 打开指定的库：use 库名
-- 查看当前的所有表：show tables;
-- 查看其他库的所有表：show tables from 库名;
-- 显示表的结构： desc 表名;
+```sql
+- 查看当前所有的数据库：
+show databases;
+- 打开指定的库：
+use 库名
+- 查看当前的所有表：
+show tables;
+- 查看其他库的所有表：
+show tables from 库名;
+- 显示表的结构： 
+desc 表名;
 - 创建表：
-
 create table 表名(
-
  列名 列类型,
-
  列名 列类型,
-
  …
-
 );
 
-- 查看表结构：desc 表名;
+- 查看表结构：
+desc 表名;
+
+
+
+```
 
 ### MySQL语法规范
 
@@ -247,13 +253,29 @@ from 表名;
 
    - 查询的结果是一个虚拟的表格
 
-- **注意：在进行查询操作之前要指定所有的库**：use myemployees;
+- **注意：在进行查询操作之前要指定所有的库**：
 
-- 查询表中的单个字段：select last_name from employees;
+- ```sql
+   use myemployees;
+   ```
 
-- 查询表中的多个字段：select last_name, salary, email from employees;
+- 查询表中的单个字段：
 
-- 查询表中的所有字段：select * from employees;
+- ```sql
+   select last_name from employees;
+   ```
+
+- 查询表中的多个字段：
+
+   ```sql
+   select last_name, salary, email from employees;
+   ```
+
+- 查询表中的所有字段：
+
+- ```sql
+  select * from employees;
+  ```
 
 - **按F12进行格式化**
 
@@ -263,13 +285,23 @@ from 表名;
 
 - 查询常量值：
 
-select 100;
+- ```sql
+   select 100;
+   
+   select ‘john’;
+   ```
 
-select ‘john’;
+- 查询表达式：
 
-- 查询表达式：select 100*98；
+- ```sql
+   select 100*98；
+   ```
 
-- 查询函数：select version();
+- 查询函数：
+
+- ```sql
+   select version();
+   ```
 
 - 起别名：
 
@@ -279,21 +311,29 @@ select ‘john’;
 
 方式1：
 
+```sql
 select 100%98 as 结果;
 
 select last_name as 姓, first_name as 名 from employees;
+```
 
 方式2：
 
+```sql
 select last_name 姓, first_name 名 from employees;
 
 如果别名有特殊符号要加双引号：
 
 select salary as “out put” from employees;
+```
 
 - 去重：
 
-查询员工表中涉及到的所有部门编号：select distinct department_id from employees;
+查询员工表中涉及到的所有部门编号：
+
+```sql
+select distinct department_id from employees;
+```
 
 - +号的作用：
 - 两个操作数为数值型，则做加法运算
@@ -305,11 +345,15 @@ select salary as “out put” from employees;
 
 **使用 concat函数，若有一方为Null，则全部为Null**
 
-查询员工的名和姓连接成一个字段，并显示为姓名：select concat(last_name,first_name) as 姓名 from employees;
+查询员工的名和姓连接成一个字段，并显示为姓名：
+
+```sql
+select concat(last_name,first_name) as 姓名 from employees;
+```
 
 - **ifnull函数检测是否为null，如果为null，则返回指定的值，否则返回原本的值：**
 
-```java
+```sql
 select ifnull(commission_pct, 0) as 奖金率, commission_pct from employees;
 ```
 
@@ -374,12 +418,13 @@ select ifnull(commission_pct, 0) as 奖金率, commission_pct from employees;
 
       -  通配符：
 
-         - % 任意多个字符，包含0个字符
+         - `%` 任意多个字符，包含0个字符
 
-         - _ 任意单个字符
+         - `_ `任意单个字符
 
-
-查询员工名中包含字符a的员工信息：
+```sql
+  -  查询员工名中包含字符a的员工信息：
+```
 
 ```sql
 SELECT * FROM employees WHERE last_name LIKE '%a%';
@@ -436,7 +481,7 @@ SELECT * FROM employees WHERE employee_id BETWEEN 100 AND 120;
 
       -  in列表的值类型必须一致或兼容
 
-      -  in相当于等于，所以不支持通配符（like才支持）
+      -  `in相当于等于，所以不支持通配符（like才支持）`
 
 
 查询员工的工种编号是 IT_PROG、AD_VP、AD_PRES中的一个员工名和工种编号：
@@ -475,7 +520,7 @@ WHERE
 
       -  查询有奖金的：
 
-```java
+```sql
 SELECT
 	last_name,
 	commission_pct
@@ -497,7 +542,7 @@ WHERE
 
 -  查询没有奖金，且工资小于18000的salary, last_name：
 
-```java
+```sql
 SELECT 
   salary,
   last_name 
@@ -511,7 +556,7 @@ WHERE commission_pct IS NULL
 
    -  查询employees表中，job_id不为‘IT’或者工资为12000的员工信息：
 
-```java
+```sql
 SELECT 
   * 
 FROM
@@ -524,7 +569,7 @@ WHERE job_id <> 'IT'
 
    -  查看部门表的结构：
 
-```java
+```sql
 DESC departments;
 
 ```
@@ -532,7 +577,7 @@ DESC departments;
 
    -  查询部门表中涉及到了哪些位置编号：
 
-```java
+```sql
 SELECT DISTINCT 
   location_id 
 FROM
@@ -559,13 +604,13 @@ order by 排序列表 【asc|desc】
 
 - **asc代表的是升序，desc代表的是降序，如果不写，默认是升序**
 
-- order by子句中可以支持单个字段、多个字段、表达式、函数、别名
+- `order by子句中可以支持单个字段、多个字段、表达式、函数、别名`
 
 - **order by子句一般是放在查询语句的最后面，但limit子句除外**
 
 - 查询员工的信息，要求工资从高到低排序：
 
-```java
+```sql
 SELECT 
   * 
 FROM
@@ -579,7 +624,7 @@ ORDER BY salary DESC ;
 
 - 查询部门编号>=90的员工信息，按入职时间的先后进行排序：
 
-```java
+```sql
 SELECT 
   * 
 FROM
@@ -607,7 +652,7 @@ ORDER BY 年薪 DESC ;
 
 - 按姓名的长度显示员工的姓名和工资【按函数排序】
 
-```java
+```sql
 SELECT 
   LENGTH(last_name) AS 字节长度,
   last_name,
@@ -621,7 +666,7 @@ ORDER BY 字节长度 DESC;
 
 - 查询员工信息，要求先按工资排序，再按员工编号排序
 
-```java
+```sql
 SELECT 
   * 
 FROM
@@ -634,9 +679,9 @@ ORDER BY salary ASC,
 
 - 测试题
 
-   -  查询员工的姓名和部门号和年薪，按年薪降序，按姓名升序
+-  查询员工的姓名和部门号和年薪，按年薪降序，按姓名升序
 
-```java
+```sql
 SELECT 
   last_name,
   department_id,
@@ -651,7 +696,7 @@ ORDER BY 年薪 DESC,
 
    -  选择工资不在8000到17000的员工的姓名和工资，按工资降序
 
-```java
+```sql
 SELECT 
   last_name,
   salary 
@@ -665,7 +710,7 @@ ORDER BY salary DESC ;
 
    -  查询邮箱中包含e的员工信息，并先按邮箱的字节数降序，再按部门号升序
 
-```java
+```sql
 SELECT 
   * 
 FROM
@@ -679,7 +724,7 @@ ORDER BY LENGTH(email) DESC,
 
 ### 4. 常见函数
 
-- 功能：类似于java中的方法，将一组逻辑语句
+- 功能：类似于sql中的方法，将一组逻辑语句
 
 - 好处：
 
@@ -706,14 +751,13 @@ ORDER BY LENGTH(email) DESC,
 - 字符函数
 
    -  length：获取参数值的**字节个数**，一个英文字母是一个，一个中文按照字符集进行算，utf8算3个
-
-   -  concat：拼接字符串
-
+-  concat：拼接字符串
    -  upper/lower：将字符串变成大写/小写
-
+-  ifnull:    将Null值赋予默认值
+   
 -  将姓变成大写，名变成小写，然后拼接：
 
-```java
+```sql
 SELECT 
   CONCAT(UPPER(last_name), LOWER(first_name)) AS 姓名 
 FROM
@@ -728,23 +772,23 @@ FROM
 
       -  截取从指定索引处后面所有字符
 
-```java
-SELECT SUBSTR('李莫愁爱上了陆展元',6) AS output ;
-
+```sql
+SELECT SUBSTR('李莫愁爱上了陆展元',7) AS output ;
+陆展元
 ```
 
 
 -  **截取从指定索引处指定`字符`长度的字符**, 除了length是字节，其余都是字符
 
-```java
+```sql
 SELECT SUBSTR('李莫愁爱上了陆展元',1, 3) output ;
-
+李莫愁
 ```
 
 
-   -  案例：姓名中首字母大写，其他字符小写，然后用_拼接，显示出来：
+   -  案例：姓中首字母大写，其他字符小写，然后用_拼接，显示出来：
 
-```java
+```sql
 SELECT 
   CONCAT(
     UPPER(SUBSTR(last_name, 1, 1)),
@@ -759,23 +803,22 @@ FROM
 
    -  instr：返回子串第一次出现的索引，如果找不到返回0
 
-```java
+```sql
 SELECT 
   INSTR('杨不悔爱上了殷六侠','殷六侠') AS output ;
-
 ```
 
 
    -  trim：去掉字符串前后的空格或子串
 
-```java
+```sql
 SELECT 
   LENGTH(TRIM('   张翠山   ')) AS output ;
 
 ```
 
 
-```java
+```sql
 SELECT 
   TRIM('a' FROM 'aaa张a翠aa山aaaaa') AS output ;
 
@@ -810,7 +853,7 @@ SELECT
 
    -  可以获取指定的部分，年、月、日、小时、分钟、秒
 
-```java
+```sql
 SELECT 
   YEAR(hiredate) 年 
 FROM
@@ -821,7 +864,7 @@ FROM
 
    -  str_to_date：将日期格式的字符转换成指定格式的日期
 
-```java
+```sql
 SELECT 
   STR_TO_DATE('1998-3-2', '%Y-%c-%d') AS output ;
 
@@ -832,7 +875,7 @@ SELECT
 
       -  查询入职日期为1992-4-3的员工信息
 
-```java
+```sql
 SELECT 
   * 
 FROM
@@ -845,7 +888,7 @@ WHERE hiredate = STR_TO_DATE('4-3 1992', '%c-%d %Y') ;
 
    -  date_format：将日期转换成字符串
 
-```java
+```sql
 SELECT 
   DATE_FORMAT(NOW(), '%Y年%m月%d日)') AS output ;
 
@@ -854,7 +897,7 @@ SELECT
 
       -  查询有奖金的员工名和入职日期（xx月/xx日 xx年）
 
-```java
+```sql
 SELECT 
   last_name,
   DATE_FORMAT(hiredate, '%m月/%d日 %y年') AS 入职日期 
@@ -871,7 +914,7 @@ WHERE commission_pct IS NOT NULL ;
 
 - 其他函数
 
-```java
+```sql
 SELECT VERSION();	当前数据库服务器的版本
 SELECT DATABASE();	当前打开的数据库
 SELECT USER();		当前用户
@@ -900,7 +943,7 @@ FROM
 
       -  语法：
 
-```java
+```sql
 case 要判断的字段或表达式
 when 常量1 then 要显示的值1或语句1;
 when 常量2 then 要显示的值2或语句2;
@@ -920,7 +963,7 @@ end
 
 其他部门，显示的工资为原工资
 
-```java
+```sql
 SELECT 
   salary AS 原始工资,
   department_id,
@@ -933,13 +976,12 @@ SELECT
 FROM
   employees ;
 
-
 ```
 
 
    -  case函数的使用2：类似于多重if
 
-```java
+```sql
 case
 when 条件1 then 要显示的值1或语句1
 when 条件2 then 要显示的值2或语句2
@@ -960,7 +1002,7 @@ end
 
 否则，显示D级别
 
-```java
+```sql
 SELECT 
   salary,
   CASE
@@ -980,7 +1022,7 @@ FROM
 
 -  显示系统时间（日期+时间）
 
-```java
+```sql
 SELECT NOW();
 
 ```
@@ -988,7 +1030,7 @@ SELECT NOW();
 
    -  查询员工号，姓名，工资，以及工资提高20%后的结果（new salary）
 
-```java
+```sql
 SELECT 
   employee_id,
   last_name,
@@ -1002,7 +1044,7 @@ FROM
 
    -  将员工的姓名按首字母排序，并写出姓名的长度（length）
 
-```java
+```sql
 SELECT 
   last_name,
   LENGTH(last_name) 
@@ -1015,7 +1057,7 @@ ORDER BY SUBSTR(last_name, 1, 1) ;
 
    -  做一个查询
 
-```java
+```sql
 SELECT 
   CONCAT(
     last_name,
@@ -1032,7 +1074,7 @@ FROM
 
    -  case-when训练
 
-```java
+```sql
 SELECT 
   last_name,
   job_id AS job,
@@ -1057,7 +1099,7 @@ WHERE job_id = 'AD_PRES' ;
 - `所有得分组函数都会忽略Null值，当作不存在`
 - 分类：**sum 求和、avg 平均值、max 最大值、min 最小值、count 计数（非空）**
 
-```java
+```sql
 SELECT SUM(salary) FROM employees;
 
 ```
@@ -1073,7 +1115,7 @@ SELECT SUM(salary) FROM employees;
 
 - **`可以和distinct搭配实现去重的运算`**
 
-```java
+```sql
 SELECT 
   SUM(DISTINCT salary),
   SUM(salary) 
@@ -1083,7 +1125,7 @@ FROM
 ```
 
 
-```java
+```sql
 SELECT 
   COUNT(DISTINCT salary),
   COUNT(salary) 
@@ -1104,7 +1146,7 @@ FROM
 
    -  使用count(*) 统计一共有多少行
 
-```java
+```sql
 SELECT COUNT(salary) FROM employees;
 SELECT COUNT(*) FROM employees;
 SELECT COUNT(1) FROM employees;
@@ -1118,7 +1160,7 @@ SELECT COUNT(1) FROM employees;
 
 -  查询公司员工工资的最大值，最小值，平均值，总和
 
-```java
+```sql
 SELECT 
   MAX(salary),
   MIN(salary),
@@ -1133,7 +1175,7 @@ FROM
 
    -  查询员工表中的最大入职时间和最小入职时间的相差天数（difference）
 
-```java
+```sql
 SELECT 
   DATEDIFF(MAX(hiredate), MIN(hiredate)) difference 
 FROM
@@ -1144,7 +1186,7 @@ FROM
 
    -  查询部门编号为90的员工个数
 
-```java
+```sql
 SELECT 
   COUNT(*) 
 FROM
@@ -1190,7 +1232,7 @@ group by 分组的列表
 
 - 查询每个工种的最高工资
 
-```java
+```sql
 SELECT 
   MAX(salary),
   job_id 
@@ -1203,7 +1245,7 @@ GROUP BY job_id ;
 
 - 查询每个位置上的部门个数
 
-```java
+```sql
 SELECT 
   COUNT(*),
   location_id 
@@ -1216,7 +1258,7 @@ GROUP BY location_id ;
 
 - 查询邮箱中包含a字符的，每个部门的平均工资
 
-```java
+```sql
 SELECT 
   AVG(salary),
   department_id 
@@ -1230,7 +1272,7 @@ GROUP BY department_id ;
 
 - 查询有奖金的每个领导手下员工的最高工资
 
-```java
+```sql
 SELECT 
   MAX(salary),
   manager_id 
@@ -1242,11 +1284,11 @@ GROUP BY manager_id ;
 ```
 
 
-- 查询哪个部门的员工个数>2
+- 查询哪个部门的员工个数 > 2
 
    -  查询每个部门的员工个数
 
-```java
+```sql
 SELECT 
   COUNT(*) AS 员工个数,
   department_id 
@@ -1260,7 +1302,7 @@ GROUP BY department_id ;
 
    -  根据上面的结果进行筛选，查询哪个部门的员工个数＞2
 
-```java
+```sql
 SELECT 
   COUNT(*) AS 员工个数,
   department_id 
@@ -1279,7 +1321,7 @@ HAVING 员工个数 > 2 ;
 
    -  查询每个工种有奖金的员工的最高工资
 
-```java
+```sql
 SELECT 
   MAX(salary),
   job_id 
@@ -1293,7 +1335,7 @@ GROUP BY job_id ;
 
    -  根据上面的结果继续筛选，最高工资>12000
 
-```java
+```sql
 SELECT 
   MAX(salary) AS 最高工资,
   job_id 
@@ -1308,7 +1350,7 @@ HAVING 最高工资 > 12000 ;
 
    -  查询领导编号>102的每个领导手下的最低工资>5000的领导编号是哪个，以及其最低工资
 
-```java
+```sql
 SELECT 
   MIN(salary) AS 最低工资,
   manager_id 
@@ -1328,7 +1370,7 @@ HAVING 最低工资 > 5000 ;
 
          -  查询每个长度的员工个数
 
-```java
+```sql
 SELECT 
   COUNT(*) 员工个数,
   LENGTH(last_name) 姓名长度 
@@ -1341,7 +1383,7 @@ GROUP BY 姓名长度 ;
 
          -  添加筛选条件
 
-```java
+```sql
 SELECT 
   COUNT(*) 员工个数,
   LENGTH(last_name) 姓名长度 
@@ -1358,7 +1400,7 @@ HAVING 员工个数 > 5 ;
 
       -  查询每个部门每个工种的员工的平均工资
 
-```java
+```sql
 SELECT 
   AVG(salary),
   department_id,
@@ -1376,7 +1418,7 @@ GROUP BY department_id,
 
       -  查询每个部门每个工种的员工的平均工资，并按平均工资的高低显示
 
-```java
+```sql
 SELECT 
   AVG(salary) AS 平均工资,
   department_id,
@@ -1394,7 +1436,7 @@ ORDER BY 平均工资 DESC ;
 
 -  查询各job_id的员工工资的最大值、最小值、平均值，总和，并按job_id升序
 
-```java
+```sql
 SELECT 
   MAX(salary),
   MIN(salary),
@@ -1412,7 +1454,7 @@ ORDER BY job_id ;
 
    -  查询员工最高工资和最低工资的差距（DIFFERENCE）
 
-```java
+```sql
 SELECT 
   MAX(salary) - MIN(salary) AS DIFFERENCE 
 FROM
@@ -1423,7 +1465,7 @@ FROM
 
    -  查询各个管理者手下员工的最低工资，其中最低工资不能低于6000，没有管理者的员工不计算在内
 
-```java
+```sql
 SELECT 
   MIN(salary) AS 最低工资 
 FROM
@@ -1438,7 +1480,7 @@ HAVING 最低工资 >= 6000 ;
 
    -  查询所有部门的编号，员工数量和工资平均值，并按平均工资降序
 
-```java
+```sql
 SELECT 
   department_id,
   COUNT(*) AS 员工数量,
@@ -1453,7 +1495,7 @@ ORDER BY 工资平均值 DESC ;
 
    -  查询具有各个job_id的员工人数
 
-```java
+```sql
 SELECT 
   COUNT(*),
   job_id 
@@ -1515,7 +1557,7 @@ GROUP BY job_id ;
 
 -  查询女神名和对应的男神名：
 
-```java
+```sql
 SELECT 
   NAME,
   boyname 
@@ -1530,7 +1572,7 @@ WHERE beauty.boyfriend_id = boys.id ;
 
       -  查询员工名和对应的部门名
 
-```java
+```sql
 SELECT 
   last_name,
   department_name 
@@ -1549,9 +1591,9 @@ WHERE employees.`department_id` = departments.`department_id` ;
       -  **注意：如果为表起了别名，则查询 的字段就不能使用原始的表明去限定**
 -  因为执行顺序先走from，最后走select
 
-查询员工名、工种号、工种名
+- 查询员工名、工种号、工种名
 
-```java
+```sql
 SELECT 
   last_name,
   e.`job_id`,
@@ -1567,7 +1609,7 @@ WHERE e.`job_id` = j.`job_id` ;
 
 -  查询员工名、工种号、工种名
 
-```java
+```sql
 SELECT 
   last_name,
   e.`job_id`,
@@ -1585,7 +1627,7 @@ WHERE e.`job_id` = j.`job_id` ;
 
 -  查询有奖金的员工名、部门名
 
-```java
+```sql
 SELECT 
   last_name,
   department_name 
@@ -1601,7 +1643,7 @@ WHERE e.`department_id` = d.`department_id`
 
       -  查询城市名中第二个字符为o的部门名和城市名
 
-```java
+```sql
 SELECT 
   department_name,
   city 
@@ -1619,7 +1661,7 @@ WHERE d.`location_id` = l.`location_id`
 
       -  查询每个城市的部门个数
 
-```java
+```sql
 SELECT 
   COUNT(*) 个数,
   city 
@@ -1629,13 +1671,12 @@ FROM
 WHERE d.`location_id` = l.`location_id` 
 GROUP BY city ;
 
-
 ```
 
 
       -  查询有领导的每个部门的部门名和部门的领导编号和该部门的最低工资
 
-```java
+```sql
 SELECT 
   department_name,
   d.manager_id,
@@ -1655,7 +1696,7 @@ GROUP BY department_name,
 
 -  查询每个工种的工种名和员工的个数，并且按员工个数降序
 
-```java
+```sql
 SELECT 
   job_title,
   COUNT(*) AS 个数 
@@ -1674,7 +1715,7 @@ ORDER BY 个数 DESC ;
 
 -  查询员工名、部门名和所在的城市
 
-```java
+```sql
 SELECT 
   last_name,
   department_name,
@@ -1694,7 +1735,7 @@ WHERE e.`department_id` = d.`department_id`
 
 -  查询员工的工资和工资级别
 
-```java
+```sql
 SELECT 
   salary,
   grade_level 
@@ -1711,7 +1752,7 @@ WHERE salary BETWEEN g.lowest_sal
 
 -  查询 员工名和上级的名称
 
-```java
+```sql
 SELECT 
   e.employee_id,
   e.last_name,
@@ -1729,7 +1770,7 @@ WHERE e.`manager_id` = m.`employee_id` ;
 
 -  显示员工表的最大工资，工资平均值
 
-```java
+```sql
 SELECT 
   MAX(salary),
   AVG(salary) 
@@ -1742,7 +1783,7 @@ FROM
 
       -  查询员工表的employee_id，job_id，last_name，按department_id降序，salary升序
 
-```java
+```sql
 SELECT 
   employee_id,
   job_id,
@@ -1758,7 +1799,7 @@ ORDER BY department_id DESC,
 
       -  查询员工表的job_id中包含a和e的，并且a在e的前面
 
-```java
+```sql
 SELECT 
   job_id 
 FROM
@@ -1771,7 +1812,7 @@ WHERE job_id LIKE '%a%e%' ;
 
       -  显示当前日期，以及去前后空格，截取子字符串的函数
 
-```java
+```sql
 select now();
 select trim();
 select substr(str, startIndex, [length])
@@ -1847,7 +1888,7 @@ on 连接条件
     
          -  查询员工名、部门名
 
-```java
+```sql
 SELECT 
   last_name,
   department_name 
@@ -1862,7 +1903,7 @@ ON e.`department_id` = d.`department_id` ;
 
          -  查询名字中包含e的给员工名和工种名
 
-```java
+```sql
 SELECT 
   last_name,
   job_title 
@@ -1881,7 +1922,7 @@ WHERE
 
          -  查询部门个数>3的城市名和部门个数
 
-```java
+```sql
 SELECT 
   city,
   COUNT(*) 部门个数 
@@ -1898,7 +1939,7 @@ HAVING 部门个数 > 3 ;
 
          -  查询哪个部门的部门员工个数>3的部门名和员工个数，并按个数降序排序
 
-```java
+```sql
 SELECT 
   department_name,
   COUNT(*) 员工个数 
@@ -1916,7 +1957,7 @@ ORDER BY 员工个数 DESC ;
 
          -  查询员工名、部门名、工种名，并按部门名降序
 
-```java
+```sql
 SELECT 
   last_name,
   department_name,
@@ -1937,7 +1978,7 @@ ORDER BY d.`department_id` DESC ;
     
          -  查询员工的工资级别
 
-```java
+```sql
 SELECT 
   salary,
   grade_level 
@@ -1952,7 +1993,7 @@ FROM
 
          -  查询每个工资级别>20的个数，并且按工资级别降序
 
-```java
+```sql
 SELECT 
   COUNT(*),
   grade_level 
@@ -1971,7 +2012,7 @@ ORDER BY grade_level DESC ;
     
     -  查询员工的名字、上级的名字
 
-```java
+```sql
 SELECT 
   e.last_name,
   m.last_name 
@@ -1985,7 +2026,7 @@ FROM
 
          -  查询姓名中包含字符k的员工的名字、上级的名字
 
-```java
+```sql
 SELECT 
   e.last_name,
   m.last_name 
@@ -2018,14 +2059,14 @@ WHERE e.`last_name` LIKE "%k%" ;
 
       -  查询没有男朋友的女神名
 
-```java
+```sql
 SELECT 
   b.name,
   bo.* 
 FROM
   beauty b 
-  LEFT JOIN boys bo 
-    ON b.boyfriend_id = bo.id 
+LEFT JOIN boys bo 
+ON b.boyfriend_id = bo.id 
 WHERE bo.`id` IS NULL ;
 
         
@@ -2036,14 +2077,14 @@ WHERE bo.`id` IS NULL ;
     
       -  左外：
 
-```java
+```sql
 SELECT 
   d.*,
   e.employee_id 
 FROM
   departments d 
-  LEFT OUTER JOIN employees e 
-    ON d.`department_id` = e.`department_id` 
+LEFT OUTER JOIN employees e 
+ON d.`department_id` = e.`department_id` 
 WHERE e.`employee_id` IS NULL ;
 
 
@@ -2052,14 +2093,14 @@ WHERE e.`employee_id` IS NULL ;
 
       -  右外：
 
-```java
+```sql
 SELECT 
   d.*,
   e.employee_id 
 FROM
   employees e 
-  RIGHT OUTER JOIN departments d 
-    ON d.`department_id` = e.`department_id` 
+RIGHT OUTER JOIN departments d 
+ON d.`department_id` = e.`department_id` 
 WHERE e.`employee_id` IS NULL ;
 
 ```
@@ -2071,7 +2112,7 @@ WHERE e.`employee_id` IS NULL ;
     
          -  案例：
 
-```java
+```sql
 SELECT 
   b.*,
   bo.* 
@@ -2087,7 +2128,7 @@ FROM
     
          -  案例：
 
-```java
+```sql
 SELECT 
   b.*,
   bo.* 
@@ -2108,15 +2149,15 @@ FROM
 
 -  查询编号>3的女神的男朋友信息，如果有则列出详细信息，如果没有，则用null填充
 
-```java
+```sql
 SELECT 
   a.id,
   a.name,
   b.* 
 FROM
   beauty a 
-  LEFT JOIN boys b 
-    ON a.`boyfriend_id` = b.`id` 
+LEFT JOIN boys b 
+ON a.`boyfriend_id` = b.`id` 
 WHERE a.`id` > 3 ;
 
 
@@ -2125,14 +2166,14 @@ WHERE a.`id` > 3 ;
 
    -  查询哪个城市没有部门
 
-```java
+```sql
 SELECT 
   city,
   d.* 
 FROM
   departments d 
-  RIGHT JOIN locations l 
-    ON d.location_id = l.location_id 
+RIGHT JOIN locations l 
+ON d.location_id = l.location_id 
 WHERE d.department_id IS NULL ;
 
 ```
@@ -2140,16 +2181,16 @@ WHERE d.department_id IS NULL ;
 
    -  查询部门名为SAL或IT的员工信息
 
-```java
+```sql
 SELECT 
   d.`department_name`,
   e.* 
 FROM
   departments d 
-  LEFT JOIN employees e 
-    ON d.`department_id` = e.`department_id` 
+LEFT JOIN employees e 
+ON d.`department_id` = e.`department_id` 
 WHERE d.`department_name` = 'SAL' 
-  OR d.`department_name` = 'IT' ;
+OR d.`department_name` = 'IT' ;
 
 ```
 
@@ -2277,7 +2318,7 @@ WHERE salary =
 
 - 案例4：查询最低工资大于50号部门的最低工资的部门id和其最低工资
 
-```java
+```sql
 SELECT 
   e.`department_id`,
   MIN(salary)
@@ -2347,7 +2388,7 @@ WHERE salary < ANY
 
 或者用max代替any
 
-```java
+```sql
 SELECT 
   employee_id,
   last_name,
@@ -2368,7 +2409,7 @@ WHERE salary <
 
    -  案例3：返回其他工种中比job_id为‘IT_PROG’工种所有工资都低的员工的员工号、姓名、job_id以及salary
 
-```java
+```sql
 SELECT 
   employee_id,
   last_name,
@@ -2390,7 +2431,7 @@ WHERE salary < ALL
 
 或者用min代替all
 
-```java
+```sql
 SELECT 
   employee_id,
   last_name,
@@ -2415,7 +2456,7 @@ WHERE salary <
 
 - 案例1：查询员工编号最少并且工资最高的员工信息
 
-```java
+```sql
 SELECT 
   * 
 FROM
@@ -2436,7 +2477,7 @@ WHERE (employee_id, salary) =
 
 - 案例1：查询每个部门的信息及其员工个数
 
-```java
+```sql
 SELECT 
   d.*,
   (SELECT 
@@ -2452,7 +2493,7 @@ FROM
 
 - 案例2：查询员工号=102的部门名
 
-```java
+```sql
 SELECT 
   (SELECT 
     department_name 
@@ -2472,7 +2513,7 @@ SELECT
 
 - 案例1：查询每个部门的平均工资的工资等级
 
-```java
+```sql
 SELECT 
   ag_dep.*,
   g.`grade_level` 
@@ -2500,7 +2541,7 @@ FROM
 
 - 案例1：查询有员工的部门名
 
-```java
+```sql
 SELECT 
   department_name 
 FROM
@@ -2517,7 +2558,7 @@ WHERE EXISTS
 
 用in更简单
 
-```java
+```sql
 SELECT 
   department_name 
 FROM
@@ -2536,7 +2577,7 @@ WHERE d.`department_id` IN
 
    1.  查询和zlotkey相同部门的员工姓名和工资
 
-```java
+```sql
 SELECT 
   last_name,
   salary 
@@ -2554,7 +2595,7 @@ WHERE department_id =
 
    2.  查询工资比公司平均工资高的员工的员工号，姓名和工资
 
-```java
+```sql
 SELECT 
   employee_id,
   last_name,
@@ -2572,7 +2613,7 @@ WHERE e.`salary` >
 
    3.  查询各部门中工资比本部门平均工资高的员工的员工号，姓名和工资
 
-```java
+```sql
 SELECT 
   employee_id,
   last_name,
@@ -2594,7 +2635,7 @@ WHERE salary > ag ;
 
    4.  查询和姓名中包含字母u的员工在相同部门的员工的员工号和姓名
 
-```java
+```sql
 SELECT 
   employee_id,
   last_name 
@@ -2612,7 +2653,7 @@ WHERE department_id IN
 
    5.  查询在部门的location_id为1700的部门工作的员工的员工号
 
-```java
+```sql
 SELECT 
   employee_id 
 FROM
@@ -2629,7 +2670,7 @@ WHERE department_id IN
 
    6.  查询管理者是King的员工姓名和工资
 
-```java
+```sql
 SELECT 
   last_name,
   salary 
@@ -2647,7 +2688,7 @@ WHERE manager_id IN
 
    7.  查询工资最高的员工的姓名，要求first_name和last_name显示为一列，列名为 姓.名
 
-```java
+```sql
 SELECT 
   CONCAT(nt.first_name, nt.last_name) "姓.名" 
 FROM
@@ -2716,7 +2757,7 @@ size：要显示的条目个数
 
 - 案例1：查询前5条员工信息
 
-```java
+```sql
 SELECT * FROM employees LIMIT 0, 5;
 或者
 SELECT * FROM employees LIMIT 5;
@@ -2726,7 +2767,7 @@ SELECT * FROM employees LIMIT 5;
 
 - 案例2：查询第11条-第25条
 
-```java
+```sql
 SELECT * FROM employees LIMIT 10, 15;
 
 ```
@@ -2734,7 +2775,7 @@ SELECT * FROM employees LIMIT 10, 15;
 
 - 案例3：有奖金的员工信息，并且工资较高的前10名显示出来
 
-```java
+```sql
 SELECT 
   * 
 FROM
@@ -2750,7 +2791,7 @@ LIMIT 10 ;
 
    1.  查询工资最低的员工信息：last_name, salary
 
-```java
+```sql
 SELECT 
   last_name,
   salary 
@@ -2767,7 +2808,7 @@ WHERE salary =
 
    2.  查询平均工资最低的部门信息
 
-```java
+```sql
 SELECT 
   * 
 FROM
@@ -2786,7 +2827,7 @@ WHERE department_id =
 
    3.  查询平均工资最低的部门信息和该部门的平均工资
 
-```java
+```sql
 SELECT 
   d.*,
   dd.ag 
@@ -2808,7 +2849,7 @@ FROM
 
    4.  查询平均工资最高的job信息
 
-```java
+```sql
 SELECT 
   * 
 FROM
@@ -2827,7 +2868,7 @@ WHERE j.`job_id` =
 
    5.  查询平均工资高于公司平均工资的部门有哪些
 
-```java
+```sql
 SELECT 
   AVG(salary) ag,
   department_id 
@@ -2845,7 +2886,7 @@ HAVING ag >
 
    6.  查询出公司中所有manager的详细信息
 
-```java
+```sql
 SELECT 
   * 
 FROM
@@ -2862,7 +2903,7 @@ WHERE employee_id IN
 
    7.  各个部门中，最高工资中，最低的那个部门的最低工资是多少
 
-```java
+```sql
 SELECT 
   MIN(salary) 
 FROM
@@ -2882,7 +2923,7 @@ WHERE department_id =
 
    8.  查询平均工资最高的部门的manager的详细信息
 
-```java
+```sql
 SELECT 
   last_name,
   department_id,
@@ -2914,7 +2955,7 @@ WHERE employee_id =
 
 - 引入案例：查询部门编号>90或邮箱包含a的员工信息
 
-```java
+```sql
 SELECT 
   * 
 FROM
@@ -2927,7 +2968,7 @@ WHERE email LIKE "%a%"
 
 用联合查询为：
 
-```java
+```sql
 SELECT 
   * 
 FROM
@@ -3004,7 +3045,7 @@ limit 排序列表 9
 
    -  示例1：插入的值的类型要与列的类型一致或兼容
 
-```java
+```sql
 INSERT INTO beauty (
   id,
   NAME,
@@ -3031,7 +3072,7 @@ VALUES
 
    -  示例2：不可以为null的列必须插入值。可以为null的列如何插入值？
 
-```java
+```sql
 方式1：字段的值写null
 方式2：不写该字段
 
@@ -3040,7 +3081,7 @@ VALUES
 
    -  示例3：列的顺序是否可以调换
 
-```java
+```sql
 INSERT INTO beauty(NAME, sex, id, phone)
 VALUES('蒋欣', '女', 16, '110');
 
@@ -3051,7 +3092,7 @@ VALUES('蒋欣', '女', 16, '110');
 
    -  示例5：可以省略列名，默认所有列，而且列的顺序和表中列的顺序一致
 
-```java
+```sql
 INSERT INTO beauty
 VALUES(18, '李易峰', '男', NULL, '19', NULL, NULL);
 
@@ -3062,7 +3103,7 @@ VALUES(18, '李易峰', '男', NULL, '19', NULL, NULL);
 
    -  语法：insert into 表名 set 列名=值，列名=值，…
 
-```java
+```sql
 INSERT INTO beauty SET id = 19,
 NAME = '刘涛',
 phone = '999' ;
@@ -3074,7 +3115,7 @@ phone = '999' ;
 
    -  方式1支持插入多行，但是方式2不支持
 
-```java
+```sql
 INSERT INTO beauty
 VALUES
 (20, '李易峰', '男', NULL, '19', NULL, NULL),
@@ -3086,7 +3127,7 @@ VALUES
 
    -  方式1支持子查询，方式2不支持
 
-```java
+```sql
 INSERT INTO beauty(id, NAME, phone)
 SELECT 26, '送钱', '12341234';
 
@@ -3129,7 +3170,7 @@ where 筛选条件；
 
 - 案例1：修改beauty表中姓唐的女神电话为109090909
 
-```java
+```sql
 UPDATE 
   beauty 
 SET
@@ -3141,7 +3182,7 @@ WHERE NAME LIKE '唐%' ;
 
 - 案例2：修改boys表中id号位2的名称为张飞，魅力值为10
 
-```java
+```sql
 UPDATE 
   boys 
 SET
@@ -3156,7 +3197,7 @@ WHERE id = 2 ;
 
 - 案例1：修改张无忌的女朋友的手机号为114
 
-```java
+```sql
 UPDATE
   boys b 
   INNER JOIN beauty be 
@@ -3168,7 +3209,7 @@ WHERE b.`boyName` = '张无忌' ;
 
 - 案例2：修改没有男朋友的女神的男朋友编号都为 2号
 
-```java
+```sql
 UPDATE 
   boys b 
   RIGHT JOIN beauty be 
@@ -3216,7 +3257,7 @@ limit 条目数；
 
    -  案例1：删除手机号以9结尾的女神信息
 
-```java
+```sql
 DELETE 
 FROM
   beauty 
@@ -3227,7 +3268,7 @@ WHERE phone LIKE '%9' ;
 
    -  案例2：删除张无忌的女朋友的信息
 
-```java
+```sql
 DELETE 
   be 
 FROM
@@ -3242,7 +3283,7 @@ WHERE b.`boyName` = '张无忌' ;
 
    -  案例3：删除黄晓明的信息以及他女朋友的信息
 
-```java
+```sql
 DELETE 
   b,
   be 
@@ -3266,7 +3307,7 @@ truncate table 表名；
 
    -  一删全删
 
-```java
+```sql
 TRUNCATE TABLE boyes ;
 
 ```
@@ -3305,7 +3346,7 @@ TRUNCATE TABLE boyes ;
 
    -  案例：创建库book
 
-```java
+```sql
 CREATE DATABASE IF NOT EXISTS books;
 
 ```
@@ -3315,7 +3356,7 @@ CREATE DATABASE IF NOT EXISTS books;
 
    -  修改库名的语句【已停用】
 
-```java
+```sql
 RENAME DATABASE books TO new_books;
 
 ```
@@ -3323,7 +3364,7 @@ RENAME DATABASE books TO new_books;
 
    -  更改库的字符集
 
-```java
+```sql
 ALTER DATABASE books CHARACTER SET gbk;
 
 ```
@@ -3331,7 +3372,7 @@ ALTER DATABASE books CHARACTER SET gbk;
 
 - 库的删除
 
-```java
+```sql
 DROP DATABASE IF EXISTS books;
 
 ```
@@ -3353,7 +3394,7 @@ create table 【if not exists】 表名(
 
    -  案例1：创建表 book
 
-```java
+```sql
 CREATE TABLE book (
   id INT,
   bname VARCHAR (20),
@@ -3367,7 +3408,7 @@ CREATE TABLE book (
 
    -  案例2：创建表author
 
-```java
+```sql
 CREATE TABLE author (
   id INT,
   au_name VARCHAR (20),
@@ -3379,7 +3420,7 @@ CREATE TABLE author (
 
    -  案例3：查看创建的表
 
-```java
+```sql
 DESC author;
 
 ```
@@ -3401,7 +3442,7 @@ DESC author;
 
 -  `修改列名`
 
-```java
+```sql
 ALTER TABLE book 
   CHANGE COLUMN publishdate pubdate DATETIME ;
 
@@ -3410,7 +3451,7 @@ ALTER TABLE book
 
    -  `修改列的类型或约束`
 
-```java
+```sql
 ALTER TABLE book 
   MODIFY COLUMN pubdate TIMESTAMP ;
 
@@ -3419,7 +3460,7 @@ ALTER TABLE book
 
    -  `添加新列`
 
-```java
+```sql
 ALTER TABLE author 
   ADD COLUMN annual DOUBLE ;
 
@@ -3428,7 +3469,7 @@ ALTER TABLE author
 
    -  `删除列`
 
-```java
+```sql
 ALTER TABLE author 
   DROP COLUMN annual ;
 
@@ -3437,7 +3478,7 @@ ALTER TABLE author
 
    -  `修改表名`
 
-```java
+```sql
 ALTER TABLE author 
   RENAME TO book_author ;
 
@@ -3454,7 +3495,7 @@ ALTER TABLE author
 
    -  通用的写法：
 
-```java
+```sql
 DROP DATABASE IF EXISTS 旧库名;
 CREATE DATABASE 新库名;
 
@@ -3468,7 +3509,7 @@ CREATE TABLE 表名();
 
    -  仅仅复制表的结构
 
-```java
+```sql
 CREATE TABLE copy LIKE book_author ;
 
 ```
@@ -3476,7 +3517,7 @@ CREATE TABLE copy LIKE book_author ;
 
    -  复制表的结构+数据
 
-```java
+```sql
 CREATE TABLE copy2 
 SELECT 
   * 
@@ -3488,7 +3529,7 @@ FROM
 
    -  只复制部分数据
 
-```java
+```sql
 CREATE TABLE copy3 
 SELECT 
   id,
@@ -3502,7 +3543,7 @@ WHERE nation = '中国' ;
 
    -  仅仅复制某些字段（部分结构）：设置where不满足，那么就没有数据
 
-```java
+```sql
 CREATE TABLE copy4 
 SELECT 
   id,
@@ -3518,7 +3559,7 @@ WHERE 0 ;
 
    -  创建表dept1
 
-```java
+```sql
 USE myemployees;
 CREATE TABLE dept1 (id INT (7), NAME VARCHAR (25)) ;
 
@@ -3527,7 +3568,7 @@ CREATE TABLE dept1 (id INT (7), NAME VARCHAR (25)) ;
 
    -  将表departments中的数据插入新表dept2中
 
-```java
+```sql
 CREATE TABLE dept2 
 SELECT 
   department_id,
@@ -3540,7 +3581,7 @@ FROM
 
    -  创建表emp5
 
-```java
+```sql
 CREATE TABLE emp5 (
   id INT (7),
   first_name VARCHAR (25),
@@ -3553,7 +3594,7 @@ CREATE TABLE emp5 (
 
    -  `将`last_name的长度修改为50
 
-```java
+```sql
 ALTER TABLE emp5 MODIFY COLUMN last_name VARCHAR(50);
 
 ```
@@ -3561,7 +3602,7 @@ ALTER TABLE emp5 MODIFY COLUMN last_name VARCHAR(50);
 
    -  根据表employees创建employee2
 
-```java
+```sql
 CREATE TABLE employee2 LIKE employees ;
 
 ```
@@ -3569,7 +3610,7 @@ CREATE TABLE employee2 LIKE employees ;
 
    -  删除表emp5
 
-```java
+```sql
 DROP TABLE IF EXISTS emp5;
 
 ```
@@ -3577,7 +3618,7 @@ DROP TABLE IF EXISTS emp5;
 
    -  将表empoyees2重命名为emp5
 
-```java
+```sql
 ALTER TABLE employee2 
   RENAME TO emp5 ;
 
@@ -3586,7 +3627,7 @@ ALTER TABLE employee2
 
    -  在表dept和emp5中添加新列test_column，并检查所做的操作
 
-```java
+```sql
 ALTER TABLE emp5 
   ADD COLUMN test_column INT ;
 DESC emp5;
@@ -3596,7 +3637,7 @@ DESC emp5;
 
    -  直接删除表emp5中的列dept_id
 
-```java
+```sql
 ALTER TABLE emp5 
   DROP COLUMN dept_id ;
 
@@ -3746,7 +3787,7 @@ ALTER TABLE emp5
 
 - 添加列级约束
 
-```java
+```sql
 CREATE DATABASE students;
 USE students;
 
@@ -3778,7 +3819,7 @@ SHOW INDEX FROM stuinfo;
 
 - 添加表级约束
 
-```java
+```sql
 DROP TABLE IF EXISTS stuinfo ;
 
 CREATE TABLE stuinfo(
@@ -3809,7 +3850,7 @@ SHOW INDEX FROM stuinfo;
 
 - 通用的写法：
 
-```java
+```sql
 CREATE TABLE IF NOT EXISTS stuinfo (
   id INT PRIMARY KEY,
   stuname VARCHAR (20) NOT NULL,
@@ -3836,7 +3877,7 @@ CREATE TABLE IF NOT EXISTS stuinfo (
 - 主键和唯一的大对比
 
    - 
-```java
+```sql
        保证唯一性    是否允许为空    一个表中可以有多少个    是否允许组合
 
 ```
@@ -3860,7 +3901,7 @@ CREATE TABLE IF NOT EXISTS stuinfo (
 
       -  方式1：级联删除
 
-```java
+```sql
 ALTER TABLE stuinfo ad CONSTRAINT fk_stu_major FOREIGN KEY(majorid) REFERENCES major(id) ON DELETE CASCADE;
 
 ```
@@ -3870,7 +3911,7 @@ ALTER TABLE stuinfo ad CONSTRAINT fk_stu_major FOREIGN KEY(majorid) REFERENCES m
 
       -  方式2：级联置空
 
-```java
+```sql
 ALTER TABLE stuinfo ad CONSTRAINT fk_stu_major FOREIGN KEY(majorid) REFERENCES major(id) ON DELETE SET NULL;
 
 ```
@@ -3886,7 +3927,7 @@ ALTER TABLE stuinfo ad CONSTRAINT fk_stu_major FOREIGN KEY(majorid) REFERENCES m
 
 - 添加非空约束
 
-```java
+```sql
 ALTER TABLE stuinfo MODIFY COLUMN stuname VARCHAR(20) NOT NULL;
 
 ```
@@ -3894,7 +3935,7 @@ ALTER TABLE stuinfo MODIFY COLUMN stuname VARCHAR(20) NOT NULL;
 
 - 添加默认约束
 
-```java
+```sql
 ALTER TABLE stuinfo MODIFY COLUMN age INT DEFAULT 18;
 
 ```
@@ -3902,7 +3943,7 @@ ALTER TABLE stuinfo MODIFY COLUMN age INT DEFAULT 18;
 
 - 添加主键
 
-```java
+```sql
 # 列级约束的写法
 ALTER TABLE stuinfo MODIFY COLUMN id INT PRIMARY KEY;
 # 表级约束的写法
@@ -3913,7 +3954,7 @@ ALTER TABLE stuinfo ADD PRIMARY KEY(id);
 
 - 添加唯一
 
-```java
+```sql
 # 列级约束的写法
 ALTER TABLE stuinfo MODIFY COLUMN seat INT UNIQUE;
 # 表级约束的写法
@@ -3925,7 +3966,7 @@ ALTER TABLE stuinfo ADD UNIQUE(seat);
 
 - 添加外键
 
-```java
+```sql
 ALTER TABLE (CONSTRAINT fk_stuinfo_major) stuinfo ADD FOREIGN KEY(majorid) REFERENCES major(id);
 
 ```
@@ -3935,7 +3976,7 @@ ALTER TABLE (CONSTRAINT fk_stuinfo_major) stuinfo ADD FOREIGN KEY(majorid) REFER
 
 - 删除非空约束
 
-```java
+```sql
 ALTER TABLE stuinfo MODIFY COLUMN stuname VARCHAR(20) NULL;
 
 ```
@@ -3943,7 +3984,7 @@ ALTER TABLE stuinfo MODIFY COLUMN stuname VARCHAR(20) NULL;
 
 - 删除默认约束
 
-```java
+```sql
 ALTER TABLE stuinfo MODIFY COLUMN age INT;
 
 ```
@@ -3951,7 +3992,7 @@ ALTER TABLE stuinfo MODIFY COLUMN age INT;
 
 - 删除主键
 
-```java
+```sql
 ALTER TABLE stuinfo DROP PRIMARY KEY;
 
 ```
@@ -3959,7 +4000,7 @@ ALTER TABLE stuinfo DROP PRIMARY KEY;
 
 - 删除唯一
 
-```java
+```sql
 ALTER TABLE stuinfo DROP INDEX seat;
 
 ```
@@ -3967,7 +4008,7 @@ ALTER TABLE stuinfo DROP INDEX seat;
 
 - 删除外键
 
-```java
+```sql
 ALTER TABLE stuinfo DROP FOREIGN KEY fk_stuinfo_major;
 
 ```
@@ -4029,7 +4070,7 @@ create table 表（
 
 ）
 
-```java
+```sql
 CREATE TABLE tab_identity (
   id INT PRIMARY KEY AUTO_INCREMENT,
   NAME varcahr (20)
@@ -4040,7 +4081,7 @@ CREATE TABLE tab_identity (
 
 - 设置表时列的步长
 
-```java
+```sql
 SHOW VARIABLES LIKE '%auto_increment%';
 SET auto_increment_increment = 3;
 
@@ -4053,7 +4094,7 @@ SET auto_increment_increment = 3;
 
 alter table 表 modify column 字段名 字段类型 约束 auto_increment
 
-```java
+```sql
 ALTER TABLE tab_identity MODIFY COLUMN id INT PRIMARY KEY AUTO_INCREMENT;
 
 ```
@@ -4063,7 +4104,7 @@ ALTER TABLE tab_identity MODIFY COLUMN id INT PRIMARY KEY AUTO_INCREMENT;
 
 alter table 表 modify column 字段名 字段类型 约束
 
-```java
+```sql
 ALTER TABLE tab_identity MODIFY COLUMN id INT;
 
 ```
@@ -4097,7 +4138,7 @@ ALTER TABLE tab_identity MODIFY COLUMN id INT;
 
       -  前提：必须先设置自动提交功能为禁用
 
-```java
+```sql
 SET autocommit=0;
 
 ```
@@ -4105,7 +4146,7 @@ SET autocommit=0;
 
       -  步骤1：开启事务
 
-```java
+```sql
 SET autocommit=0;
 START TRANSACTION;（可选）
 
@@ -4128,7 +4169,7 @@ rollback；回滚事务
 
    -  savepoint 结点名：设置保存点
 
-```java
+```sql
 SET autocommit = 0 ;
 
 START TRANSACTION;
@@ -4144,7 +4185,7 @@ ROLLBACK TO a;
 
       - delete删除后支持回滚
 
-```java
+```sql
 SET autocommit = 0 ;
 START TRANSACTION;
 DELETE FROM account;
@@ -4155,7 +4196,7 @@ ROLLBACK;
 
       - truncate删除后不支持回滚
 
-```java
+```sql
 SET autocommit = 0 ;
 START TRANSACTION;
 TRUNCATE TABLE account;
@@ -4205,7 +4246,7 @@ ROLLBACK;
 
 - 案例1：查询姓张的学生名和专业名
 
-```java
+```sql
 # 普通写法
 SELECT 
   stuname,
@@ -4254,7 +4295,7 @@ create view 视图名 as 查询语句；
 
    -  习题1：查询姓名中包含a字符的员工名、部门名和工种信息
 
-```java
+```sql
 CREATE VIEW myv1 AS 
 SELECT 
   last_name,
@@ -4280,7 +4321,7 @@ WHERE last_name LIKE '%a%' ;
 
    -  习题2：查询各部门的平均工资级别
 
-```java
+```sql
 # 创建视图查看每个部门的平均工资
 CREATE VIEW myv2 AS 
 SELECT 
@@ -4305,7 +4346,7 @@ FROM
 
    -  习题3：查询平均工资最低的部门信息
 
-```java
+```sql
 # 用习题2的视图myv2
 SELECT 
   * 
@@ -4320,7 +4361,7 @@ LIMIT 1 ;
 
    -  习题4：查询平均工资最低的部门名和工资
 
-```java
+```sql
 CREATE VIEW myv3 AS 
 SELECT 
   * 
@@ -4360,7 +4401,7 @@ desc 视图名；
 
 - 案例1：创建一个视图emp_v1，要求查询电话号码以‘011’开头的员工姓名和工资、邮箱
 
-```java
+```sql
 CREATE OR REPLACE VIEW emp_v1 AS 
 SELECT 
   last_name,
@@ -4375,7 +4416,7 @@ WHERE phone_number LIKE '011%' ;
 
 - 案例2：创建视图emp_v2，要求查询部门的最高工资高于12000的部门信息
 
-```java
+```sql
 CREATE OR REPLACE VIEW emp_v2 AS 
 SELECT 
   MAX(salary) mx,
@@ -4405,7 +4446,7 @@ FROM
 
    -  增、删、改（视图基于的表也会发生更改）
 
-```java
+```sql
 CREATE OR REPLACE VIEW myv1 AS 
 SELECT 
   last_name,
@@ -4454,7 +4495,7 @@ DELETE FROM myv1 WHERE last_name='张无忌';
 
    -  题1：创建表
 
-```java
+```sql
 CREATE TABLE book (
   bid INT PRIMARY KEY,
   bname VARCHAR (20) UNIQUE nut NULL,
@@ -4469,7 +4510,7 @@ CREATE TABLE book (
 
    -  题2：开启事务，向表中插入1行数据，并结束
 
-```java
+```sql
 SET autocommit = 0 ;
 INSERT INTO book(bid, bname, price, btypeid)
 VALUES(1, '小李飞刀', 100, 1);
@@ -4480,7 +4521,7 @@ COMMIT;
 
    -  题3：创建视图，实现查询价格大于100的书名和类型名
 
-```java
+```sql
 CREATE VIEW myv1 AS 
 SELECT 
   bname,
@@ -4497,7 +4538,7 @@ WHERE price > 100 ;
 
    -  题4：修改视图，实现查询价格在90-120之间的书名和价格
 
-```java
+```sql
 CREATE OR REPLACE VIEW myv1 AS 
 SELECT 
   bname,
@@ -4512,7 +4553,7 @@ WHERE price BETWEEN 90
 
    -  题5：删除刚才创建的视图
 
-```java
+```sql
 DROP VIEW myv1;
 
 ```
@@ -4530,7 +4571,7 @@ DROP VIEW myv1;
 
       -  查看所有的系统变量
 
-```java
+```sql
 SHOW GLOBAL|【SESSION】 VARIABLES;
 
 ```
@@ -4538,7 +4579,7 @@ SHOW GLOBAL|【SESSION】 VARIABLES;
 
       -  查看满足条件的部分系统变量
 
-```java
+```sql
 SHOW GLOBAL|【SESSION】 VARIABLES LIKE '%char%';
 
 ```
@@ -4546,7 +4587,7 @@ SHOW GLOBAL|【SESSION】 VARIABLES LIKE '%char%';
 
       -  查看指定的某个系统变量的值
 
-```java
+```sql
 SELECT @@GLOBAL|【SESSION】.系统变量名;
 
 ```
@@ -4556,7 +4597,7 @@ SELECT @@GLOBAL|【SESSION】.系统变量名;
     
          -  方式一
 
-```java
+```sql
 set GLOBAL|【SESSION】 系统变量名 = 值;
 
 ```
@@ -4564,7 +4605,7 @@ set GLOBAL|【SESSION】 系统变量名 = 值;
 
          -  方式二
 
-```java
+```sql
 set @@GLOBAL|【SESSION】.系统变量名 = 值;
 
 ```
@@ -4583,7 +4624,7 @@ set @@GLOBAL|【SESSION】.系统变量名 = 值;
 
 SHOW GLOBAL VARIABLES;
 
-```java
+```sql
 
 - 查看部分的全局变量
 
@@ -4592,7 +4633,7 @@ SHOW GLOBAL VARIABLES;
 
 SHOW GLOBAL VARIABLES LIKE ‘%char%’;
 
-```java
+```sql
 
 - 查看指定的全局变量的值
 
@@ -4602,7 +4643,7 @@ SHOW GLOBAL VARIABLES LIKE ‘%char%’;
 SELECT @@global.autocommit;
 SELECT @@global.tx_isolation;
 
-```java
+```sql
 
 - 为某个指定的全局变量赋值
 
@@ -4676,7 +4717,7 @@ set session autocommit=0;
 
          1.  声明并初始化（三种方式）
 
-```java
+```sql
 set @用户变量名=值；
 set @用户变量名:=值；（推荐）
 select @用户变量名:=值；
@@ -4688,7 +4729,7 @@ select @用户变量名:=值；
     
          -  方式1：通过set或select（同上）
 
-```java
+```sql
 set @用户变量名=值；
 set @用户变量名:=值；（推荐）
 select @用户变量名:=值；
@@ -4698,7 +4739,7 @@ select @用户变量名:=值；
 
             -  案例1：
 
-```java
+```sql
 SET @name='John';
 SET @name=100;
 
@@ -4707,7 +4748,7 @@ SET @name=100;
 
          -  方式2：通过select into
 
-```java
+```sql
 select 字段 into 变量名
 from 表；
 
@@ -4716,7 +4757,7 @@ from 表；
 
             -  案例1：
 
-```java
+```sql
 SELECT 
   COUNT(*) INTO @count 
 FROM
@@ -4746,7 +4787,7 @@ declare 变量名 类型 default 值；
     
          -  方式1：通过set或select（同上）
 
-```java
+```sql
 set 局部变量名=值；
 set 局部变量名:=值；（推荐）
 select @局部变量名:=值；
@@ -4756,7 +4797,7 @@ select @局部变量名:=值；
 
          -  方式2：通过select into
 
-```java
+```sql
 select 字段 into 局部变量名
 from 表；
 
@@ -4778,7 +4819,7 @@ select 局部变量名；
     
          -  用户变量
 
-```java
+```sql
 SET @m=1;
 SET @n=2;
 SET @sum=@m+@n;
@@ -4789,7 +4830,7 @@ SELECT @sum;
 
          -  局部变量
 
-```java
+```sql
 # 报错
 DECLARE m INT DEFAULT 1;
 DECLARE n INT DEFAULT 2;
@@ -4802,7 +4843,7 @@ SELECT SUM;
 
 ## 存储过程和函数
 
-- 类似于java中的方法
+- 类似于sql中的方法
 
 - 好处：
    - 提高代码的重用性
@@ -4825,7 +4866,7 @@ SELECT SUM;
 
    -  创建语法
 
-```java
+```sql
 CREATE PROCEDURE 存储过程名(参数列表)
 BEGIN
 	存储过程体(一组合法的SQL语句)
@@ -4858,7 +4899,7 @@ END
 
          -  案例：
 
-```java
+```sql
 DELIMITER $
 
 ```
@@ -4872,7 +4913,7 @@ DELIMITER $
 
    -  案例1：插入到admin表中五条记录
 
-```java
+```sql
 SELECT * FROM admin;
 DELIMITER $
 
@@ -4897,7 +4938,7 @@ CALL myp1()$
 
    -  案例1：创建存储过程实现：根据女神名，查询对应的男神信息
 
-```java
+```sql
 CREATE PROCEDURE myp2(IN beautyname VARCHAR(20))
 BEGIN
 SELECT bo.*
@@ -4914,7 +4955,7 @@ CALL myp2('王语嫣')$
 
    -  案例2：创建存储过程实现，用户是否登录成功
 
-```java
+```sql
 CREATE PROCEDURE myp4(IN username VARCHAR(20), IN passward VARCHAR(20))
 BEGIN
 DECLARE result INT DEFAULT 0;	# 声明并初始化
@@ -4937,7 +4978,7 @@ CALL myp4('张飞', '8888')$
 
    -  案例1：根据女神名，返回对应的男神名
 
-```java
+```sql
 CREATE PROCEDURE myp5(IN beautyname VARCHAR(20), OUT boyname VARCHAR(20))
 BEGIN
 SELECT bo.boyname INTO boyname
@@ -4954,7 +4995,7 @@ SELECT @bname$
 
    -  案例2：根据女神名，返回对应的男神名和男神魅力值
 
-```java
+```sql
 CREATE PROCEDURE myp6(IN beautyname VARCHAR(20), OUT boyname VARCHAR(20), OUT usercp INT)
 BEGIN
 SELECT bo.boyname, bo.usercp INTO boyname, usercp
@@ -4973,7 +5014,7 @@ SELECT @bname, @usercp$
 
    -  案例1：传入a和b两个值，最终a和b都翻倍并返回
 
-```java
+```sql
 CREATE PROCEDURE myp8(INOUT a INT, INOUT b INT)
 BEGIN
 SET a=a*2;
@@ -4992,7 +5033,7 @@ SELECT @m,@n$
 
    -  习题1：创建存储过程实现传入用户名和密码，插入到admin表中
 
-```java
+```sql
 CREATE PROCEDURE test_pro1(IN username VARCHAR(20), IN loginpwd VARCHAR(20))
 BEGIN
 INSERT INTO admin(admin.`username`, PASSWORD)
@@ -5007,7 +5048,7 @@ SELECT * FROM admin$
 
    -  习题2：创建存储过程实现传入女神编号，返回女神名称和女神电话
 
-```java
+```sql
 CREATE PROCEDURE test_pro2(IN id INT, OUT NAME VARCHAR(20), OUT phone VARCHAR(20))
 BEGIN
 SELECT b.name, b.phone INTO NAME, phone
@@ -5025,7 +5066,7 @@ SELECT @m,@n$
 
    -  习题3：创建存储过程来实现传入两个女神生日，返回大小
 
-```java
+```sql
 CREATE PROCEDURE test_pro3(IN birth1 DATETIME, IN birth2 DATETIME, OUT result INT)
 BEGIN
 SELECT DATEDIFF(birth1, birth2) INTO result;
@@ -5041,7 +5082,7 @@ SELECT @result$
 
    -  语法：drop procedure 存储过程名
 
-```java
+```sql
 DROP PROCEDURE myp1;
 
 ```
@@ -5053,7 +5094,7 @@ DROP PROCEDURE myp1;
 
    -  语法：show create procedure 存储过程名
 
-```java
+```sql
 SHOW CREATE PROCEDURE myp2;
 
 ```
@@ -5065,7 +5106,7 @@ SHOW CREATE PROCEDURE myp2;
 
    -  练习题1：创建存储过程实现传入一个日期，格式化成xx年xx月xx日并返回
 
-```java
+```sql
 CREATE PROCEDURE test_pro4(IN mydate DATETIME, OUT strdate VARCHAR(20))
 BEGIN
 SELECT DATE_FORMAT(mydate, '%y年%m月%d天') INTO strdate;
@@ -5079,7 +5120,7 @@ SELECT @str $
 
    -  练习题2：创建存储过程实现传入女神名称，返回：女神 and 男神 格式的字符串
 
-```java
+```sql
 CREATE PROCEDURE test_pro5(IN beautyname VARCHAR(20), OUT str VARCHAR(50))
 BEGIN
 SELECT CONCAT(beautyname, ' and ', IFNULL(boyname, 'null')) INTO str
@@ -5097,7 +5138,7 @@ SELECT @result$
 
    -  练习题3：创建存储过程，根据传入的起始索引和条目数，查询beauty表的记录
 
-```java
+```sql
 CREATE PROCEDURE test_pro6(IN startindex INT, IN size INT)
 BEGIN
 SELECT * FROM beauty LIMIT startindex, size;
@@ -5151,7 +5192,7 @@ end
 
       -  案例1：返回公司的员工个数
 
-```java
+```sql
 CREATE FUNCTION myf1() RETURNS INT
 BEGIN
 DECLARE c INT DEFAULT 0;# 定义变量
@@ -5169,7 +5210,7 @@ SELECT myf1()$
 
       -  案例1：根据员工名，返回他的工资
 
-```java
+```sql
 CREATE FUNCTION myf2(empname VARCHAR(20)) RETURNS DOUBLE
 BEGIN
 SET @sal=0;# 定义用户变量
@@ -5186,7 +5227,7 @@ SELECT myf2('kochhar')$
 
       -  案例2：根据部门名，返回该部门的平均工资
 
-```java
+```sql
 CREATE FUNCTION myf3(deptname VARCHAR(20)) RETURNS DOUBLE
 BEGIN
 DECLARE sal DOUBLE;
@@ -5205,7 +5246,7 @@ SELECT myf3('IT')$
 
 - 查看函数：
 
-```java
+```sql
 SHOW CREATE FUNCTION myf3;
 
 ```
@@ -5213,7 +5254,7 @@ SHOW CREATE FUNCTION myf3;
 
 - 删除函数：
 
-```java
+```sql
 DROP FUNCTION myf3;
 
 ```
@@ -5221,7 +5262,7 @@ DROP FUNCTION myf3;
 
 - 案例1：创建函数，实现传入两个float，返回二者之和
 
-```java
+```sql
 CREATE FUNCTION test_fun1(num1 FLOAT, num2 FLOAT) RETURNS FLOAT
 BEGIN
 DECLARE SUM FLOAT DEFAULT 0;
@@ -5262,7 +5303,7 @@ select if(表达式1，表达式2，表达式3)
 
    -  case结构
 
-      -  情况1：类似于java中的switch语句，一般用于实现等值判断
+      -  情况1：类似于sql中的switch语句，一般用于实现等值判断
 
          -  语法：
 
@@ -5278,7 +5319,7 @@ else 要返回的值n或语句n；
 
 end case；
 
-      -  情况2：类似于java中的多重if语句，一般用于实现区间判断
+      -  情况2：类似于sql中的多重if语句，一般用于实现区间判断
     
          -  语法：
 
@@ -5312,7 +5353,7 @@ end case；
 
    -  案例1：创建存储过程，根据传入的成绩，来显示等级，比如传入的成绩：90-100，显示A；80-90：显示B；60-80：显示C；否则显示D
 
-```java
+```sql
 CREATE PROCEDURE test_case(IN score INT)
 BEGIN
 CASE 
@@ -5348,7 +5389,7 @@ end if；
 
    -  案例2：创建存储过程，根据传入的成绩，来返回等级，比如传入的成绩：90-100，返回A；80-90：返回B；60-80：返回C；否则返回D
 
-```java
+```sql
 CREATE FUNCTION test_if(score INT) RETURNS CHAR
 BEGIN
 IF score >= 90 AND score <= 100 THEN RETURN 'A';
@@ -5421,7 +5462,7 @@ end repeat【标签】；
 
 - 批量插入，根据次数插入到admin表中多条记录
 
-```java
+```sql
 CREATE PROCEDURE pro_while1(IN insertcount INT)
 BEGIN
 DECLARE i INT DEFAULT 1;
@@ -5441,7 +5482,7 @@ SELECT * FROM admin;
 
 - 批量插入，根据次数插入到admin表中20条记录
 
-```java
+```sql
 CREATE PROCEDURE test_while1(IN insertcount INT)
 BEGIN
 DECLARE i INT DEFAULT 1;
@@ -5463,7 +5504,7 @@ SELECT * FROM admin;
 
 - 批量插入，根据次数插入到admin表中多条记录，只插入偶数次
 
-```java
+```sql
 CREATE PROCEDURE test_while2(IN insertcount INT)
 BEGIN
 DECLARE i INT DEFAULT 0;
@@ -5485,7 +5526,7 @@ SELECT * FROM admin;
 
 - 案例4：已知表stringcontent，其中字段id 自增长；content varchar(20)，向该表中插入指定个数的随机的字符串
 
-```java
+```sql
 USE test;
 DROP TABLE IF EXISTS stringcontent;
 CREATE TABLE stringcontent(
