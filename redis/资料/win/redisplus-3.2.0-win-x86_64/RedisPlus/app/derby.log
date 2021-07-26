@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Wed Jun 30 08:31:37 CST 2021:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.13.1.1 - (1765088): instance a816c00e-017a-5a54-159c-00000419f640 
+on database directory C:\Users\j1781\.redis_plus\data with class loader sun.misc.Launcher$AppClassLoader@c387f44 
+Loaded from file:/C:/Users/j1781/Desktop/julian/redisplus-3.2.0-win-x86_64/RedisPlus/app/lib/derby-10.13.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_171-b11
+user.dir=C:\Users\j1781\Desktop\julian\redisplus-3.2.0-win-x86_64\RedisPlus\app
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

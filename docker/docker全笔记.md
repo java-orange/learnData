@@ -575,7 +575,6 @@ ctrl +P +Q  #容器不停止退出 	---注意：这个很有用的操作
 ```shell
 docker rm 容器id   				#删除指定的容器，不能删除正在运行的容器，如果要强制删除 rm -rf
 docker rm -f $(docker ps -aq)  	 #删除所有的容器
-docker ps -a -q|xargs docker rm  #删除所有的容器
 ```
 
 
@@ -1146,7 +1145,7 @@ ROOT  docs  examples  host-manager  manager
 [root@iz2zeak7sgj6i7hrb2g862z ~]# docker stop d834ce2bd306
 d834ce2bd306
 
-[root@iz2zeak7sgj6i7hrb2g862z ~]# docker stats  # 查看docker容器使用内存情况
+[root@iz2zeak7sgj6i7hrb2g862z ~]# docker status  # 查看docker容器使用内存情况
 ```
 
 
