@@ -47,7 +47,7 @@ idea全套快捷键
 | 选择要粘贴的内容(Show in Explorer)           | ctrl+shift+v          |
 | 查看接口的实现                               | ctrl + t              |
 | 查看方法在哪里被调用                         | ctrl + g              |
-|                                              |                       |
+| 去掉没有引用的import                         | Ctrl + shift + o      |
 |                                              |                       |
 |                                              |                       |
 
