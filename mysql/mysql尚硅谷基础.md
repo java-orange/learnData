@@ -1201,7 +1201,7 @@ WHERE department_id = 90 ;
 - 语法：
 
 ```sql
-select 分组函数，列（要求出现在group by的后面）
+select 列，分组函数（要求出现在group by的后面）
 from 表
 【where 筛选条件】
 group by 分组的列表
@@ -1315,7 +1315,7 @@ HAVING 员工个数 > 2 ;
 ```
 
 
-- 添加分组后的筛选用having，分组前的用where
+- **添加分组后的筛选用having，分组前的用where**
 
 - 查询每个工种有奖金的员工的最高工资>12000的工种编号和最高工资
 
@@ -1905,10 +1905,10 @@ ON e.`department_id` = d.`department_id` ;
 
 ```sql
 SELECT 
-  last_name,
-  job_title 
+	  last_name,
+  	  job_title 
 FROM
-  employees e 
+  	  employees e 
 INNER JOIN 
       jobs j 
 ON 
@@ -1964,9 +1964,9 @@ SELECT
   job_title 
 FROM
   employees e 
-  INNER JOIN departments d 
+INNER JOIN departments d 
     ON e.`department_id` = d.`department_id` 
-  INNER JOIN jobs j 
+INNER JOIN jobs j 
     ON e.`job_id` = j.`job_id` 
 ORDER BY d.`department_id` DESC ;
 
@@ -1976,7 +1976,7 @@ ORDER BY d.`department_id` DESC ;
 
       -  非等值连接
     
-         -  查询员工的工资级别
+      -  查询员工的工资级别
 
 ```sql
 SELECT 
@@ -1984,8 +1984,8 @@ SELECT
   grade_level 
 FROM
   employees e 
-  INNER JOIN job_grades g 
-    ON e.`salary` BETWEEN g.`lowest_sal`  AND g.`highest_sal` ;
+INNER JOIN job_grades g 
+ON e.`salary` BETWEEN g.`lowest_sal`  AND g.`highest_sal` ;
 
           
 ```
@@ -2018,8 +2018,8 @@ SELECT
   m.last_name 
 FROM
   employees e 
-  INNER JOIN employees m 
-    ON e.`manager_id` = m.`employee_id` ;
+INNER JOIN employees m 
+ON e.`manager_id` = m.`employee_id` ;
 
 ```
 
@@ -2032,8 +2032,8 @@ SELECT
   m.last_name 
 FROM
   employees e 
-  INNER JOIN employees m 
-    ON e.`manager_id` = m.`employee_id` 
+INNER JOIN employees m 
+ON e.`manager_id` = m.`employee_id` 
 WHERE e.`last_name` LIKE "%k%" ;
 
 ```
@@ -2055,9 +2055,9 @@ WHERE e.`last_name` LIKE "%k%" ;
 
          - 左外和右外交换两个表的顺序，可以实现同样的效果
 
-         - 圈外链接=内连接的结果+表1中有但表2中没有的+表2中有但表1中没有的
+         - 全外链接=内连接的结果+表1中有但表2中没有的+表2中有但表1中没有的
 
-      -  查询没有男朋友的女神名
+-  查询没有男朋友的女神名
 
 ```sql
 SELECT 
@@ -2733,25 +2733,25 @@ limit offset，size；
 
 
 
-offset：要显示条目的起始索引（从0开始）
+**`offset`：要显示条目的起始索引（从0开始）**
 
-size：要显示的条目个数
+**`size`：要显示的条目个数**
 
 - 特点：
 
    -  limit语句放在查询语句的最后
 
-   - 公式：
+   -  公式：`（page - 1）* size， size`
    
-     ```sql
-     要显示的页数page，每页的条目数size
-     
-     select 查询列表
-     
-     from 表
-     
-     limit （page - 1）* size， size；
-     ```
+   ```sql
+   要显示的页数page，每页的条目数size
+   
+   select 查询列表
+   
+   from 表
+   
+   limit （page - 1）* size， size；
+   ```
 
 
 
@@ -2786,10 +2786,9 @@ LIMIT 10 ;
 
 ```
 
+###### 经典案例：
 
-- 经典案例1：
-
-   1.  查询工资最低的员工信息：last_name, salary
+1.  查询工资最低的员工信息：last_name, salary
 
 ```sql
 SELECT 
@@ -3041,9 +3040,11 @@ limit 排序列表 9
 
 - 方式1：
 
-   -  语法：`insert into 表名（列名，…） values（值1，…）`
+   - 语法：
 
-   -  示例1：插入的值的类型要与列的类型一致或兼容
+     `insert into 表名（列名，…） values（值1，…）`
+   
+-  示例1：插入的值的类型要与列的类型一致或兼容
 
 ```sql
 INSERT INTO beauty (
@@ -3395,7 +3396,7 @@ create table 【if not exists】 表名(
    -  案例1：创建表 book
 
 ```sql
-CREATE TABLE book (
+CREATE TABLE if not exists book (
   id INT,
   bname VARCHAR (20),
   price DOUBLE,
@@ -3409,7 +3410,7 @@ CREATE TABLE book (
    -  案例2：创建表author
 
 ```sql
-CREATE TABLE author (
+CREATE TABLE if not exists author (
   id INT,
   au_name VARCHAR (20),
   nation VARCHAR (10)
@@ -3561,7 +3562,7 @@ WHERE 0 ;
 
 ```sql
 USE myemployees;
-CREATE TABLE dept1 (id INT (7), NAME VARCHAR (25)) ;
+CREATE TABLE if not exists dept1 (id INT (7), NAME VARCHAR (25)) ;
 
 ```
 
@@ -3582,7 +3583,7 @@ FROM
    -  创建表emp5
 
 ```sql
-CREATE TABLE emp5 (
+CREATE TABLE if not exists emp5 (
   id INT (7),
   first_name VARCHAR (25),
   last_name VARCHAR (25),
