@@ -1,0 +1,9 @@
+#dev配置
+spring:
+  datasource:
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    username: sa
+    password: xxxxxxxx
+    url: jdbc:sqlserver://localhost:1433;database=demo
+pagehelper:
+  helper-dialect: sqlserver

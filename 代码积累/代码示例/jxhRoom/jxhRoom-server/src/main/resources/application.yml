@@ -1,0 +1,130 @@
+#默认公共配置
+#开启feign的hystrix熔断功能
+feign:
+  hystrix:
+    enabled: false
+spring:
+  # war包重复部署如果设置开启会有问题。jar包部署可以打开
+  jmx:
+    enabled: false
+  cloud:
+    refresh:
+      #为了解决springboot与spring cloud数据库初始化检查添加的配置项的循环依赖问题所添加
+      refreshable: none
+  profiles:
+    #默认配置为mysql配置
+    active: mysql
+  http:
+    encoding:
+      force: true
+    charset: UTF-8
+    enabled: true
+  tomcat:
+    uri-encoding: UTF-8
+  #使用redis作为缓存
+  cache:
+    type: redis
+  #redis 地址和端口号
+  redis:
+    host: localhost
+    port: 6379
+  #序列化时间格式
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  jpa:
+    properties:
+      hibernate:
+        enable_lazy_load_no_trans: true
+        # 格式化sql
+        format_sql: true
+    #是否打印Jpa生成的sql语句
+    show-sql: true
+    #数据库生成策略，如果打开会根据entity对象生成数据库。生产环境尽量不要使用
+    hibernate:
+      ddl-auto: update
+  #服务注册名(此名称非常重要，是作为微服务框架中唯一标识一个服务的名称，相同名称的服务会被认为是提供一致接口的服务）
+  application:
+    name: jxhRoom-service
+  #国际化配置
+  messages:
+    basename: i18n/messages
+    cache-seconds: -1
+    encoding: utf-8
+  # 邮箱配置
+  mail:
+    host: smtp.qq.com
+    port: 25
+    username: 823743453@qq.com
+    password: mulklrietisbbfgh
+    protocol: smtp
+    default-encoding: UTF-8
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+      mail.smtp.starttls.required: true
+      mail.smtp.socketFactory.port: 465
+      mail.smtp.socketFactory.class: javax.net.ssl.SSLSocketFactory
+      mail.smtp.socketFactory.fallback: false
+
+# jpa sql参数追第
+logging:
+  level:
+    org.hibernate.type.descriptor.sql.BasicBinder: trace
+
+ribbon:
+  #请求处理的超时时间
+  ReadTimeout: 120000
+  #请求连接的超时时间
+  ConnectTimeout: 30000
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  typeAliasesPackage: com.hvisions.archetype.dto
+  mapperLocations: classpath:mapper/*.xml
+pagehelper:
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+  page-size-zero: true
+server:
+  port: 9999
+#开启所有的健康监控信息
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
+#info标签：可以在springboot admin的Insights界面Detail中进行展示,也可以再eureka界面点击实例名称查看
+info:
+  build:
+    artifact: '@project.artifactId@'
+    version: '@project.version@'
+    server-name: ${h-visions.service-name}
+eureka:
+  instance:
+    prefer-ip-address: true
+    #实例名
+    instance-id: jxhRoom:${server.port}
+    ip-address: 192.168.10.138
+  client:
+    service-url:
+      #euraka地址
+      defaultZone: http://192.168.10.131:8763/eureka/
+h-visions:
+  #是否添加所有控制器请求记录到log服务
+  log:
+    enable: false
+  #服务名称,可以使用中文，日志服务会将这个字段传递
+  service-name: jxhRoom-service
+  # 此处配置为audit信息的创建方式。dto 为当请求控制器的时候如果入参为SysDTO可以自动赋值。jpa为使用jpa的audit方式进行实现。
+  #可以使用swagger的接口，使用对应的测试方法，生成api文档，支持markdown和ascii
+  swagger:
+    # 如果为false或者没有此属性。swagger界面将不会加载
+    enable: true
+    api-url: http://localhost:${server.port}/v2/api-docs;
+    asciidoc-dir: ./build/asciidoc/
+    markdown-dir: ./build/markdown/

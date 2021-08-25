@@ -1,0 +1,13 @@
+#dev配置
+spring:
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+  datasource:
+    #数据库驱动，mysql8.0
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root123456
+#    url: jdbc:mysql://localhost:3306/demo?characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
+    url: jdbc:mysql://192.168.10.131:3306/jxh2?characterEncoding=utf-8&useSSL=false&serverTimezone=GMT%2B8
+pagehelper:
+  helperDialect: mysql

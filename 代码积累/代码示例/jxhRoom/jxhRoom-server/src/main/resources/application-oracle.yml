@@ -1,0 +1,29 @@
+server:
+  port: 9010
+spring:
+  rabbitmq:
+    host: localhost
+    username: admin
+    password: admin
+  redis:
+    host: localhost
+    port: 6379
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    username: xxxx
+    password: xxxx
+    url: jdbc:oracle:thin:@192.168.1.1:1521:ORCL
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.Oracle10gDialect
+    show-sql: true
+eureka:
+  instance:
+    prefer-ip-address: true
+    instance-id: demo:${server.port}
+  client:
+    service-url:
+      defaultZone: http://localhost:8763/eureka/
+pagehelper:
+  helperDialect: oracle
