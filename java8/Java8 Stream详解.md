@@ -137,7 +137,7 @@ stream流在管道中经过中间操作（intermediate operation）的处理，�
 > public void sorted(){
 >     List<String> strings1 = Arrays.asList("abc", "abd", "aba", "efg", "abcd","jkl", "jkl");
 >     List<String> strings2 = Arrays.asList("张三", "李四", "王五", "赵柳", "张哥","李哥", "王哥");
->     List<Integer> strings3 = Arrays.asList(10, 2, 30, 22, 1,0, -9);
+>     List<Integer> strings3 = Arrays.asList(10, 2, 30, ·22, 1,0, -9);
 >     List<String> sorted1 = strings1.stream().sorted().collect(Collectors.toList());
 >     List<String> sorted2 = strings2.stream().sorted(Collections.reverseOrder(Collator.getInstance(Locale.CHINA))).collect(Collectors.toList());
 >     List<Integer> sorted3 = strings3.stream().sorted().collect(Collectors.toList());
