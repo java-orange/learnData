@@ -303,3 +303,135 @@ spring:
         };
 ```
 
+
+
+#### SpringJpa 跳过空值覆盖
+
+​	jpa若传递单字段，则spring以其余均为null作为对象接受，若使用save() 保存方法，则null值覆盖掉原有值，
+
+重写监听器，进行null值跳过。
+
+```java
+package com.hvisions.log.content;
+
+import org.hibernate.bytecode.enhance.spi.LazyPropertyInitializer;
+import org.hibernate.engine.spi.SessionImplementor;
+import org.hibernate.event.internal.DefaultMergeEventListener;
+import org.hibernate.persister.entity.EntityPersister;
+import org.hibernate.property.access.internal.PropertyAccessStrategyBackRefImpl;
+import org.hibernate.type.Type;
+
+import java.util.Map;
+
+/**
+ * <p>Title: IgnoreNullEventListener</p>
+ * <p>Description:
+ *      自定义监听器  忽略空值
+ * </p>
+ * <p>Company: www.h-visions.com</p>
+ * <p>create date: 2021/11/10</p>
+ *
+ * @author : xhjing
+ * @version :1.0.0
+ */
+public class IgnoreNullEventListener extends DefaultMergeEventListener {
+ 
+    public static final IgnoreNullEventListener INSTANCE = new IgnoreNullEventListener();
+
+    @Override
+    protected void copyValues(EntityPersister persister, Object entity, Object target, SessionImplementor source, Map copyCache) {
+        //源目标
+        Object[] original = persister.getPropertyValues( entity );
+        //存储目标
+        Object[] targets = persister.getPropertyValues(target);
+
+        Type[] types = persister.getPropertyTypes();
+ 
+        Object[] copied = new Object[original.length];
+        for ( int i = 0; i < types.length; i++ ) {
+            if ( original[i] == null ||
+                    original[i] == LazyPropertyInitializer.UNFETCHED_PROPERTY ||
+                    original[i] == PropertyAccessStrategyBackRefImpl.UNKNOWN
+            ){
+                copied[i] = targets[i];
+            } else {
+                copied[i] = types[i].replace( original[i], targets[i], source, target, copyCache );
+            }
+        }
+ 
+        persister.setPropertyValues( target, copied );
+    }
+}
+```
+
+```java
+package com.hvisions.log.configuration;
+
+import com.hvisions.log.content.IgnoreNullEventListener;
+import com.hvisions.log.entity.Setting;
+import com.hvisions.log.repository.SettingRepository;
+import lombok.extern.slf4j.Slf4j;
+import org.hibernate.event.service.spi.EventListenerRegistry;
+import org.hibernate.event.spi.EventType;
+import org.hibernate.internal.SessionFactoryImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import javax.annotation.PostConstruct;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
+
+/**
+ * <p>Title: ProjectInitialization</p>
+ * <p>Description: 项目初始化</p>
+ * <p>Company: www.h-visions.com</p>
+ * <p>create date: 2021/11/9</p>
+ *
+ * @author : xhjing
+ * @version :1.0.0
+ */
+@Component
+@Slf4j
+public class ProjectConfig {
+
+    @Autowired
+    private SettingRepository settingRepository;
+
+    @PersistenceUnit
+    private EntityManagerFactory emf;
+
+    @PostConstruct // 构造函数之后执行
+    public void init(){
+        replaceListener();
+        initSql();
+    }
+
+    /**
+     * 使用自定义监听器， 将空值忽略
+     */
+    private void replaceListener() {
+        SessionFactoryImpl sessionFactory = emf.unwrap(SessionFactoryImpl.class);
+        EventListenerRegistry registry = sessionFactory.getServiceRegistry().getService(EventListenerRegistry.class);
+        registry.getEventListenerGroup(EventType.MERGE).clear();
+        registry.getEventListenerGroup(EventType.MERGE).prependListener(IgnoreNullEventListener.INSTANCE);
+    }
+
+    /**
+     * 初始化sql
+     */
+    private void initSql() {
+        Setting setting = settingRepository.findById(1).orElse(null);
+        if (setting == null) {
+            log.info("Initialize the database, the default save time is always 90 days");
+            setting = new Setting();
+            setting.setId(1);
+            setting.setEventLogSaveDuration(90L);
+            setting.setConnLogSaveDuration(90L);
+            setting.setSysLogSaveDuration(90L);
+            settingRepository.save(setting);
+        }
+    }
+
+}
+```
+
