@@ -1288,3 +1288,39 @@ StaticTest.main
 
 
 因此， static静态变量并非项目启动便进行初始化，而是在用到的时候，在构造方法执行之前才进行初始化，不用不加载。
+
+
+
+
+
+## 正则表达式获取字符串中的整数和浮点数
+
+
+
+```java
+public static void main(String[] args) {
+
+    String s="房租:2189元 水费:112.9元 电费:569元 物业费:832元";
+
+    String regex="[0-9]+(\\.[0-9]+)?";
+
+    float sum=0;
+
+    Pattern p = Pattern.compile(regex);
+
+    Matcher m = p.matcher(s);
+
+    while(m.find()){
+        System.out.println(m.group());
+
+        sum=sum+Float.parseFloat(m.group());
+
+    }
+
+    System.out.println("总金额为:"+sum);
+
+}
+```
+
+
+

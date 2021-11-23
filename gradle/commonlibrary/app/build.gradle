@@ -1,0 +1,132 @@
+apply plugin: 'com.android.application'
+apply plugin: 'realm-android' //依赖Realm数据库，插件化依赖
+apply from: './tinker.gradle'
+apply plugin: 'com.imooc.gradle.study'
+
+android {
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion rootProject.ext.android.buildToolsVersion
+
+    defaultConfig {
+        applicationId rootProject.ext.android.applicationId
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        versionCode rootProject.ext.android.versionCode
+        versionName rootProject.ext.android.versionName
+        multiDexEnabled rootProject.ext.android.multiDexEnabled //突破应用方法数65535的一个限制
+        manifestPlaceholders = rootProject.ext.android.manifestPlaceholders
+    }
+
+    signingConfigs {
+        //签名打包
+        release {
+            storeFile file(rootProject.ext.signConfigs.storeFile)
+            storePassword rootProject.ext.signConfigs.storePassword
+            keyAlias rootProject.ext.signConfigs.keyAlias
+            keyPassword rootProject.ext.signConfigs.keyPassword
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+
+    lintOptions {
+        abortOnError false
+        lintConfig file("lint.xml")
+    }
+
+    //recommend
+    dexOptions {
+        jumboMode = true
+    }
+
+    compileOptions {
+        sourceCompatibility rootProject.ext.java.javaVersion
+        targetCompatibility rootProject.ext.java.javaVersion
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs'] //修改so库存放位置
+
+            res.srcDirs = ['src/main/res',
+                           'src/main/res-ad',
+                           'src/main/res-player']
+        }
+    }
+
+    productFlavors {
+        baidu {}
+        google {}
+    }
+}
+
+//为应用程序添加第三方库依赖
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile rootProject.ext.dependence.libSupportV7
+    compile rootProject.ext.dependence.libSupportMultidex
+    //依赖library工程
+    compile project(rootProject.ext.dependence.libCommonLibrary)
+    compile project(rootProject.ext.dependence.libPullAlive)
+    compile rootProject.ext.dependence.libCircleImageView
+    compile rootProject.ext.dependence.libSystembarTint
+    //添加友盟统计
+    compile rootProject.ext.dependence.libUmengAnalytics
+    compile rootProject.ext.dependence.libUniversalImageLoader
+    compile rootProject.ext.dependence.libOkhttp
+    //okttp依赖
+    //compile 'com.github.chrisbanes:PhotoView:1.3.0'
+    compile(rootProject.ext.dependence.libAutoScrollViewPager) {
+        exclude module: 'support-v4' //排除依赖
+        transitive false //禁止传递依赖
+    }
+    compile rootProject.ext.dependence.libSlidableActivity
+    //滑动关闭Activity库
+    compile rootProject.ext.dependence.libAndfix
+    //阿里热修复andfix
+    compile rootProject.ext.dependence.libLogger
+    //日志库logger
+    //Tinker相关依赖
+    compile(rootProject.ext.dependence.libTinker) {
+        changing = true //每次都从服务端拉取
+    }
+    provided(rootProject.ext.dependence.libTinkerAndroid) { changing = true }
+}
+
+repositories {
+    flatDir {
+        dirs 'libs'
+    }
+}
+
+/**
+ * 为自定义插件传递参数
+ */
+imoocReleaseInfo {
+    versionCode = rootProject.ext.android.versionCode
+    versionName = rootProject.ext.android.versionName
+    versionInfo = '第8个版本。。。'
+    fileName = 'releases.xml'
+}
+
+this.afterEvaluate {
+    this.android.applicationVariants.all { variant ->
+//        def output = variant.outputs.first()
+//        def apkName = "app-${variant.baseName}" +
+//                "-${variant.versionName}.apk"
+//        output.outputFile = new File(output.outputFile.parent,
+//                apkName)
+//        println output.outputFile.name
+
+        def task = variant.checkManifest
+        println task.name
+    }
+}
+
+

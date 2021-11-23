@@ -1,0 +1,278 @@
+//是否需要把项目发送到远程maven库
+ext.publishToRemote = true
+ext.publishDefaultArtifact = !"true".equals(project.getProperties().get("org.gradle.parallel"))
+ext.publishApk = false
+ext.isApplication = false
+
+if (!project.getBuildFile().exists()) {
+    return;
+}
+
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+
+configurations {
+    providedCompile
+    compile.extendsFrom providedCompile
+}
+
+repositories {
+//    mavenLocal()
+    maven {
+        url "http://localhost:8081/nexus/content/repositories/"
+    }
+}
+
+
+if (!project.getRootProject().hasProperty("aarMap")) {
+    project.getRootProject().ext.set("aarMap", new HashSet<String>())
+}
+
+def deployVersion = System.getProperty('deployVersion')
+
+project.afterEvaluate {
+    if (project.plugins.hasPlugin("com.android.library")) {
+        project.getRootProject().aarMap.add(project.name)
+    }
+
+    ext.isApplication = (project.plugins.hasPlugin("com.android.application"))
+
+    tasks.whenTaskAdded { task ->
+        if (task.name.startsWith("generatePomFileForMavenPublication")) {
+            task.doFirst {
+                project.publishing.publications.maven(MavenPublication) {
+                    if (!components.hasWithName("java") && !isApplication) {
+
+                        File f = file("${project.buildDir}/outputs/awb/${project.name}-release.awb");
+
+                        if (!f.exists()) {
+                            f = file("${project.buildDir}/outputs/aar/${project.name}-release.aar");
+                        }
+                        if (!f.exists()) {
+                            f = file("${project.buildDir}/outputs/awb/${project.name}-debug.awb");
+                        }
+                        if (!f.exists()) {
+                            f = file("${project.buildDir}/outputs/aar/${project.name}-debug.aar");
+                        }
+
+                        artifact f.getPath()
+                    }
+                }
+            }
+        }
+
+        if (isApplication && !publishApk) {
+            if (task.name.startsWith("publish")) {
+                task.setEnabled(false)
+            }
+        }
+    }
+}
+
+
+def HashMap getAccount() {
+    HashMap accountMap = new HashMap()
+    def parsedSettingsXml
+    def settingsFile = '/Users/renzhiqiang/Downloads/android/apache-maven-3.3.9/conf/settings.xml'
+    def defaultSettingsFile = System.getProperty("user.home") + "/.m2/settings.xml"
+
+    if (file(settingsFile).exists() || file(defaultSettingsFile).exists()) {
+        if (file(settingsFile).exists()) {
+            parsedSettingsXml = (new XmlParser()).parse(settingsFile);
+        } else if (file(defaultSettingsFile).exists()) {
+            parsedSettingsXml = (new XmlParser()).parse(defaultSettingsFile);
+        }
+
+        parsedSettingsXml.servers[0].server.each { server ->
+            if ("releases" == server.id.text()) {
+                accountMap.put("id", server.id.text())
+                accountMap.put("username", server.username.text())
+                accountMap.put("password", server.password.text())
+            }
+        }
+
+    } else {
+        accountMap.put("id", "releases")
+        accountMap.put("username", "admin")
+        accountMap.put("password", "admin123")
+    }
+    return accountMap
+}
+
+publishing {
+    if (null != deployVersion) {
+        version = deployVersion
+    }
+
+    publications {
+        maven(MavenPublication) {
+            version version
+            task sourceJar(type: Jar) {
+                classifier = 'source'
+                version = version
+                try {
+                    if (components.hasWithName("java")) {
+                        from sourceSets.main.allJava
+                    } else {
+                        from android.sourceSets.main.java.srcDirs
+                    }
+                } catch (Throwable e) {
+                }
+            }
+            artifact sourceJar
+            if (components.hasWithName("java") || components.hasWithName("android")) {
+
+                if (components.hasWithName("java")) {
+                    from components.java
+                } else if (!isApplication) {
+                    from components.android
+                }
+
+                pom.withXml {
+                    asNode().dependencies.'*'.each {
+                        if (it.scope.text() == 'runtime') {
+                            if (project.configurations.providedCompile.allDependencies.find { dep -> dep.name == it.artifactId.text() }) {
+                                it.scope*.value = 'provided'
+                            } else if (project.configurations.compile.allDependencies.find { dep -> dep.name == it.artifactId.text() }) {
+                                it.scope*.value = 'compile'
+                            }
+                        }
+                    }
+                }
+
+                pom.withXml {
+                    asNode().dependencies.'*'.findAll() {
+                        it.groupId.text() == groupId && project.getRootProject().aarMap.contains(it.artifactId.text())
+                    }.each { it.appendNode('type', 'aar') }
+                }
+
+                if (!components.hasWithName("java") && !isApplication) {
+                    pom.withXml {
+                        def dependenciesNode = asNode().dependencies[0]
+                        if (getGradle().startParameter.toString().contains("assembleDebug")) {
+                            configurations.debugCompile.allDependencies.each {
+                                if (it.group != null && (it.name != null || "unspecified".equals(it.name)) && it.version != null) {
+
+                                    def dependencyNode = dependenciesNode.appendNode('dependency')
+                                    dependencyNode.appendNode('groupId', it.group)
+                                    dependencyNode.appendNode('artifactId', it.name)
+                                    dependencyNode.appendNode('version', it.version)
+                                    if (it.group == groupId && project.getRootProject().aarMap.contains(it.name)) {
+                                        dependencyNode.appendNode('type', 'aar')
+                                    }
+                                }
+                            }
+                        } else {
+                            configurations.releaseCompile.allDependencies.each {
+                                if (it.group != null && (it.name != null || "unspecified".equals(it.name)) && it.version != null) {
+
+                                    def dependencyNode = dependenciesNode.appendNode('dependency')
+                                    dependencyNode.appendNode('groupId', it.group)
+                                    dependencyNode.appendNode('artifactId', it.name)
+                                    dependencyNode.appendNode('version', it.version)
+                                    if (it.group == groupId && project.getRootProject().aarMap.contains(it.name)) {
+                                        dependencyNode.appendNode('type', 'aar')
+                                    }
+
+                                }
+                            }
+                        }
+                    }
+                }
+
+            } else if (!isApplication) {
+
+                pom.withXml {
+
+                    def dependenciesNode = asNode().appendNode('dependencies')
+
+                    def providedCompiles = new HashSet();
+
+                    configurations.providedCompile.allDependencies.each {
+                        if (it.group != null && (it.name != null || "unspecified".equals(it.name)) && it.version != null) {
+                            def dependencyNode = dependenciesNode.appendNode('dependency')
+                            dependencyNode.appendNode('groupId', it.group)
+                            dependencyNode.appendNode('artifactId', it.name)
+                            dependencyNode.appendNode('version', it.version)
+                            dependencyNode.appendNode('scope', 'provided')
+                            if (it.group == groupId && project.getRootProject().aarMap.contains(it.name)) {
+                                dependencyNode.appendNode('type', 'aar')
+                            }
+                            providedCompiles.add(it.group + "." + it.name)
+                        }
+                    }
+
+                    configurations.compile.allDependencies.each {
+                        if (it.group != null && (it.name != null || "unspecified".equals(it.name)) && it.version != null) {
+
+                            if (!providedCompiles.contains(it.group + "." + it.name)) {
+                                def dependencyNode = dependenciesNode.appendNode('dependency')
+                                dependencyNode.appendNode('groupId', it.group)
+                                dependencyNode.appendNode('artifactId', it.name)
+                                dependencyNode.appendNode('version', it.version)
+                                if (it.group == groupId && project.getRootProject().aarMap.contains(it.name)) {
+                                    dependencyNode.appendNode('type', 'aar')
+                                }
+                            }
+                        }
+                    }
+
+                    if (getGradle().startParameter.toString().contains("assembleDebug")) {
+                        configurations.debugCompile.allDependencies.each {
+                            if (it.group != null && (it.name != null || "unspecified".equals(it.name)) && it.version != null) {
+                                if (!providedCompiles.contains(it.group + "." + it.name)) {
+                                    def dependencyNode = dependenciesNode.appendNode('dependency')
+                                    dependencyNode.appendNode('groupId', it.group)
+                                    dependencyNode.appendNode('artifactId', it.name)
+                                    dependencyNode.appendNode('version', it.version)
+                                    if (it.group == groupId && project.getRootProject().aarMap.contains(it.name)) {
+                                        dependencyNode.appendNode('type', 'aar')
+                                    }
+                                }
+                            }
+                        }
+                    } else {
+                        configurations.releaseCompile.allDependencies.each {
+                            if (it.group != null && (it.name != null || "unspecified".equals(it.name)) && it.version != null) {
+
+                                if (!providedCompiles.contains(it.group + "." + it.name)) {
+                                    def dependencyNode = dependenciesNode.appendNode('dependency')
+                                    dependencyNode.appendNode('groupId', it.group)
+                                    dependencyNode.appendNode('artifactId', it.name)
+                                    dependencyNode.appendNode('version', it.version)
+                                    if (it.group == groupId && project.getRootProject().aarMap.contains(it.name)) {
+                                        dependencyNode.appendNode('type', 'aar')
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    repositories {
+        mavenLocal()
+        if (publishToRemote) {
+            if (version.endsWith("-SNAPSHOT")) {
+                maven {
+                    url "http://localhost:8081/nexus/content/repositories/snapshots"
+                    credentials {
+                        username = "admin"
+                        password = "admin123"
+                    }
+                }
+            } else {
+                def accountMap = getAccount();
+                maven {
+                    url "http://localhost:8081/nexus/content/repositories/releases"
+                    credentials {
+                        username = accountMap.get("username")
+                        password = accountMap.get("password")
+                    }
+                }
+            }
+        }
+    }
+}

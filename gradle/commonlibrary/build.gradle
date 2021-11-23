@@ -1,0 +1,51 @@
+apply from: this.file('common.gradle')
+//引入task依赖关系图生成插件
+apply plugin: 'cz.malohlava.visteg'
+visteg {
+    enabled = true
+    colouredNodes = true
+    colouredEdges = true
+    destination = 'build/reports/visteg.dot'
+    exporter = 'dot'
+    colorscheme = 'spectral11'
+    nodeShape = 'box'
+    startNodeShape = 'hexagon'
+    endNodeShape = 'doubleoctagon'
+}
+
+subprojects { project -> project.apply from: '../publishToMaven.gradle' //引入一个写好的脚本
+}
+
+buildscript {
+    //配置工程的仓库地址
+    repositories {
+        jcenter()
+        maven {
+            url 'http://localhost:8081/nexus/repositories/'
+        }
+    }
+    //配置工程的"插件"依赖地址
+    dependencies {
+        classpath "com.android.tools.build:gradle:2.2.2"
+        classpath "io.realm:realm-gradle-plugin:2.1.1" //添加realm插件
+        classpath "com.tencent.tinker:tinker-patch-gradle-plugin:1.7.7" //引入Tinker
+        classpath 'cz.malohlava:visteg:1.0.3' //依赖关系图生成插件
+    }
+}
+
+// 配置阶段开始之前进行监听 （初始化阶段和配置阶段之间的监听）
+this.beforeEvaluate {
+    println ""
+}
+
+// 配置阶段之后， 执行阶段之前的监听
+this.afterEvaluate {
+    println "配置阶段执行完毕"
+}
+
+// gradle 生命周期执行完成之后的监听
+this.gradle.buildFinished {
+    println "执行阶段执行完毕"
+}
+
+

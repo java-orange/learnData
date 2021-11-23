@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Test/Test.iml" filepath="$PROJECT_DIR$/Test/Test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/commonlibrary.iml" filepath="$PROJECT_DIR$/commonlibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib_pullalive/lib_pullalive.iml" filepath="$PROJECT_DIR$/lib_pullalive/lib_pullalive.iml" />
+    </modules>
+  </component>
+</project>

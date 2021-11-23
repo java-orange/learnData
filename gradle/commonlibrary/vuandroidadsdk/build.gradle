@@ -1,0 +1,74 @@
+apply plugin: 'com.android.library'
+apply plugin: 'realm-android'
+
+android {
+  compileSdkVersion rootProject.ext.android.compileSdkVersion
+  buildToolsVersion rootProject.ext.android.buildToolsVersion
+
+  defaultConfig {
+    minSdkVersion rootProject.ext.android.minSdkVersion
+    targetSdkVersion rootProject.ext.android.targetSdkVersion
+    versionCode rootProject.ext.android.versionCode
+    versionName rootProject.ext.android.versionName
+    //consumerProguardFiles 'proguard-rules.pro'
+  }
+
+  dexOptions {
+    jumboMode = true
+  }
+
+  lintOptions {
+    abortOnError false
+  }
+
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+      //            //指定输出文件名
+      //            libraryVariants.all { variant ->
+      //                variant.outputs.each { output ->
+      //                    def outputFile = output.outputFile
+      //                    if (outputFile != null && outputFile.name.endsWith('aar')) {
+      //                        def fileName = "vuandroidadsdk.aar"
+      //                        output.outputFile = new File(outputFile.parent, fileName)
+      //                    }
+      //                }
+      //            }
+    }
+  }
+}
+
+dependencies {
+  compile fileTree(dir: 'libs', include: ['*.jar'])
+  compile rootProject.ext.dependence.libSupportV7
+
+  compile rootProject.ext.dependence.libOkhttp //okttp依赖
+  compile rootProject.ext.dependence.libUniversalImageLoader
+
+  //retrofit基于okhttp的一个新的请求框架
+  //compile 'com.squareup.retrofit2:retrofit:2.1.0'
+  //compile 'com.squareup.retrofit2:converter-gson:2.0.2'//与app的gson会产生冲突，
+  //compile "com.squareup.retrofit2:adapter-rxjava:2.1.0"
+  //RxJava/android相关
+  //compile 'io.reactivex:rxandroid:1.2.0'
+  //compile 'io.reactivex:rxjava:1.1.4'
+  //compile 'io.reactivex:rxjava-math:1.0.0'
+  //compile 'com.jakewharton.rxbinding:rxbinding:0.2.0'
+  //compile 'com.jakewharton.rxrelay:rxrelay:1.2.0'
+}
+
+publishing {
+  publications {
+    maven(MavenPublication) {
+      artifactId 'vuandroidadsdk'
+    }
+  }
+}
+
+repositories {
+  flatDir {
+    dirs 'libs'
+  }
+}

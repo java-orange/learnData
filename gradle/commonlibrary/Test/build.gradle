@@ -1,0 +1,59 @@
+apply plugin: 'com.android.application'
+apply plugin: 'realm-android'
+
+android {
+  compileSdkVersion mCompileSdkVersion.toInteger()
+  buildToolsVersion "25.0.0"
+
+  defaultConfig {
+    applicationId "com.imooc.viewpagertest"
+    minSdkVersion 14
+    targetSdkVersion 23
+    versionCode 1
+    versionName '1.0.0'
+    vectorDrawables.useSupportLibrary = true
+  }
+
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+
+  lintOptions {
+    abortOnError false
+    lintConfig file("lint.xml")
+  }
+
+  //使AS知道.so文件的位置
+  sourceSets {
+    main {
+      jniLibs.srcDirs = ['libs']
+    }
+  }
+}
+
+dependencies {
+  compile fileTree(dir: 'libs', include: ['*.jar'])
+  //compile project(':vuandroidadsdk')
+  compile this.libAndroidDesign
+  compile 'com.android.support:appcompat-v7:25.0.0'
+
+  //retrofit基于okhttp的一个新的请求框架
+  compile 'com.squareup.retrofit2:retrofit:2.1.0'
+  compile 'com.squareup.retrofit2:converter-gson:2.0.2'
+  compile "com.squareup.retrofit2:adapter-rxjava:2.1.0"
+  //RxJava/android相关
+  compile 'io.reactivex:rxandroid:1.2.0'
+  compile 'io.reactivex:rxjava:1.1.4'
+  compile 'io.reactivex:rxjava-math:1.0.0'
+  compile 'com.jakewharton.rxbinding:rxbinding:0.2.0'
+  compile 'com.jakewharton.rxrelay:rxrelay:1.2.0'
+}
+
+repositories {
+  flatDir {
+    dirs 'libs'
+  }
+}

@@ -1,0 +1,38 @@
+//用来存放应用中的所有配置变量，统一管理，而不再是每个moudle里都自己写一份，修改起来更加的方便
+
+ext {
+
+  android = [compileSdkVersion   : 25,
+             buildToolsVersion   : '25.0.0',
+             applicationId       : 'com.youdu',
+             minSdkVersion       : 16,
+             targetSdkVersion    : 23,
+             versionCode         : 1,
+             versionName         : '1.0.0',
+             multiDexEnabled     : true,
+             manifestPlaceholders: [UMENG_CHANNEL_VALUE: 'imooc']]
+
+  signConfigs = ['storeFile'    : 'youdo.jks',
+                 'storePassword': 'rzq123456',
+                 'keyAlias'     : 'qndroid',
+                 'keyPassword'  : 'rzq123456']
+
+  java = ['javaVersion': JavaVersion.VERSION_1_7]
+
+
+  dependence = ['libSupportV7'           : 'com.android.support:appcompat-v7:25.0.0',
+                'libSupportMultidex'     : 'com.android.support:multidex:1.0.1',
+                'libCommonLibrary'       : ':vuandroidadsdk',
+                'libPullAlive'           : ':lib_pullalive',
+                'libCircleImageView'     : 'de.hdodenhof:circleimageview:2.1.0',
+                'libSystembarTint'       : 'com.readystatesoftware.systembartint:systembartint:1.0.3',
+                'libUmengAnalytics'      : 'com.umeng.analytics:analytics:latest.integration',
+                'libUniversalImageLoader': 'com.nostra13.universalimageloader:universal-image-loader:1.9.5',
+                'libOkhttp'              : 'com.squareup.okhttp3:okhttp:3.3.0',
+                'libAutoScrollViewPager' : 'cn.trinea.android.view.autoscrollviewpager:android-auto-scroll-view-pager:1.1.2',
+                'libSlidableActivity'    : 'com.r0adkll:slidableactivity:2.0.5',
+                'libAndfix'              : 'com.alipay.euler:andfix:0.5.0@aar',
+                'libLogger'              : 'com.orhanobut:logger:+',
+                'libTinker'              : "com.tencent.tinker:tinker-android-lib:1.7.7",
+                'libTinkerAndroid'       : "com.tencent.tinker:tinker-android-anno:1.7.7"]
+}
