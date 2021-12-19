@@ -1,0 +1,65 @@
+version: "3.2"
+
+services:
+  tomcat01: #服务名称
+    container_name: tomcat01 # 相当于run 的 --name
+    image: tomcat:8.0-jre8 #使用哪个镜像  相当于run image
+    ports:  #用来完成host与容器的端口映射关系  相当于run -p
+      - "8080:8080"
+    volumes: #完成宿主机与容器中目录数据卷共享  相当于run -v
+      #- /root/apps:/usr/local/tomcat/webapps #使用自定义路径映射
+      - tomcatwebapps01:/usr/local/tomcat/webapps
+    networks: #代表当前服务使用哪个网络桥     相当于run --networ
+      - hello
+
+  tomcat02: #服务名称
+    container_name: tomcat02
+    image: tomcat:8.0-jre8 #使用哪个镜像
+    ports:  #用来完成host与容器的端口映射关系
+      - "8081:8080"
+    volumes: #完成宿主机与容器中目录数据卷共享
+      #- /root/apps:/usr/local/tomcat/webapps #使用自定义路径映射
+      - tomcatwebapps02:/usr/local/tomcat/webapps
+    networks: #代表当前服务使用哪个网络桥
+      - hello
+
+  mysql:
+    image: mysql:5.7.32
+    container_name: mysql
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysqldata:/var/lib/mysql
+      - mysqlconf:/etc/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    networks:
+      - hello
+
+  redis:
+    image: redis:5.0.10
+    container_name: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redisdata:/data
+    networks:
+      - hello
+    command: "redis-server --appendonly yes" #run 镜像之后用来覆盖容器内容默认命令
+
+
+
+
+volumes:  #声明上面服务所使用的自动创建的卷名
+  tomcatwebapps01: #声明指令的卷名  compose自动创建该卷名但是会在之前加入项目名
+    external:    #使用自定义卷名
+      false       #true确定使用指定卷名  注意:一旦使用外部自定义卷名启动服务之前必须手动创建
+  tomcatwebapps02:
+  mysqldata:
+  mysqlconf:
+  redisdata:
+
+networks: #定义服务用到桥
+  hello: #定义上面的服务用到的网桥名称 默认创建就是 bridge
+    external:
+      true   #使用外部指定网桥  注意:网桥必须存在
