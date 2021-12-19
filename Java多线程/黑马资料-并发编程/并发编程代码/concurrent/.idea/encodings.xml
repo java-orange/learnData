@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/case_java7" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/case_java7/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/case_java7/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/case_monitor" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/case_monitor/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/case_thirdpart" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/case_thirdpart/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/case_tomcat" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/case_tomcat/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/case_tomcat/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jcstress_ordering" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jcstress_ordering/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jmh_eliminate_locks" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jmh_eliminate_locks/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jmh_performance" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/jmh_performance/src/main/java" charset="UTF-8" />
+  </component>
+</project>

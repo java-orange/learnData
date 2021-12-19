@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/case_java7/case_java7.iml" filepath="$PROJECT_DIR$/case_java7/case_java7.iml" />
+      <module fileurl="file://$PROJECT_DIR$/case_java8/case_java8.iml" filepath="$PROJECT_DIR$/case_java8/case_java8.iml" />
+      <module fileurl="file://$PROJECT_DIR$/case_monitor/case_monitor.iml" filepath="$PROJECT_DIR$/case_monitor/case_monitor.iml" />
+      <module fileurl="file://$PROJECT_DIR$/case_thirdpart/case_thirdpart.iml" filepath="$PROJECT_DIR$/case_thirdpart/case_thirdpart.iml" />
+      <module fileurl="file://$PROJECT_DIR$/case_tomcat/case_tomcat.iml" filepath="$PROJECT_DIR$/case_tomcat/case_tomcat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jcstress_ordering/jcstress_ordering.iml" filepath="$PROJECT_DIR$/jcstress_ordering/jcstress_ordering.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jmh_eliminate_locks/jmh_eliminate_locks.iml" filepath="$PROJECT_DIR$/jmh_eliminate_locks/jmh_eliminate_locks.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jmh_performance/jmh_performance.iml" filepath="$PROJECT_DIR$/jmh_performance/jmh_performance.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../../../../Java_workspace/jxhTest/jxhTest.iml" filepath="$PROJECT_DIR$/../../../../../Java_workspace/jxhTest/jxhTest.iml" />
+    </modules>
+  </component>
+</project>
