@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f2d2170-e3f0-48f0-ab5e-52200f036aa8" name="Default Changelist" comment="" />
+    <list default="true" id="4f2d2170-e3f0-48f0-ab5e-52200f036aa8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/case_java8/src/main/java/cn/itcast/test/Test20_1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/case_java8/src/main/java/cn/itcast/n4/TestBiased.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/case_java8/src/main/java/cn/itcast/n4/TestCorrectPostureStep5.java" beforeDir="false" afterPath="$PROJECT_DIR$/case_java8/src/main/java/cn/itcast/n4/TestCorrectPostureStep5.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/case_java8/src/main/java/cn/itcast/test/TestBiased.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -101,7 +106,7 @@
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="TEXT&#10;GenericSQL" />
     <property name="extract.method.default.visibility" value="private" />
     <property name="jdk.selected.JAVA_MODULE" value="1.7" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../Java_workspace/jxhTest/src/main/resources" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../Java_workspace/iot-streaming" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -141,23 +146,10 @@
       </set>
     </option>
   </component>
-  <component name="RunManager" selected="Application.Test17 (1)">
-    <configuration name="Test16" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="helloworld.Test16" />
-      <module name="jxhTest" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="helloworld.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Test17 (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="cn.itcast.test.Test17" />
-      <module name="jxhTest" />
+  <component name="RunManager" selected="Application.TestParkUnpark">
+    <configuration name="Test20 (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.itcast.test.Test20" />
+      <module name="case_java8" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="cn.itcast.test.*" />
@@ -168,8 +160,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test17" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="helloworld.Test17" />
+    <configuration name="Test20" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="helloworld.Test20" />
       <module name="jxhTest" />
       <extension name="coverage">
         <pattern>
@@ -181,8 +173,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="TestState" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="helloworld.TestState" />
+    <configuration name="Test21 (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.itcast.test.Test21" />
+      <module name="case_java8" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cn.itcast.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Test21" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="helloworld.Test21" />
       <module name="jxhTest" />
       <extension name="coverage">
         <pattern>
@@ -194,12 +199,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ThreadHelloWorld" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="helloworld.ThreadHelloWorld" />
-      <module name="jxhTest" />
+    <configuration name="TestParkUnpark" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="cn.itcast.n4.TestParkUnpark" />
+      <module name="case_java8" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="helloworld.*" />
+          <option name="PATTERN" value="cn.itcast.n4.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -207,15 +212,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -381,23 +384,23 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.ThreadHelloWorld" />
       <item itemvalue="Spring Boot.MonitorApplication" />
       <item itemvalue="Spring Boot.CaseThirdpartApplication" />
       <item itemvalue="Spring Boot.ThirdpartApplication" />
       <item itemvalue="Spring Boot.MonitorApplication (1)" />
-      <item itemvalue="Application.TestState" />
-      <item itemvalue="Application.Test16" />
-      <item itemvalue="Application.Test17" />
-      <item itemvalue="Application.Test17 (1)" />
+      <item itemvalue="Application.Test20" />
+      <item itemvalue="Application.Test20 (1)" />
+      <item itemvalue="Application.Test21" />
+      <item itemvalue="Application.Test21 (1)" />
+      <item itemvalue="Application.TestParkUnpark" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Test17 (1)" />
-        <item itemvalue="Application.Test17" />
-        <item itemvalue="Application.Test16" />
-        <item itemvalue="Application.TestState" />
-        <item itemvalue="Application.ThreadHelloWorld" />
+        <item itemvalue="Application.TestParkUnpark" />
+        <item itemvalue="Application.Test21" />
+        <item itemvalue="Application.Test21 (1)" />
+        <item itemvalue="Application.Test20 (1)" />
+        <item itemvalue="Application.Test20" />
       </list>
     </recent_temporary>
   </component>
@@ -462,6 +465,9 @@
       <workItem from="1576147147832" duration="359000" />
       <workItem from="1639798256025" duration="5862000" />
       <workItem from="1639838073542" duration="5117000" />
+      <workItem from="1640235476534" duration="6895000" />
+      <workItem from="1640657958211" duration="666000" />
+      <workItem from="1641379640509" duration="5291000" />
     </task>
     <servers />
   </component>

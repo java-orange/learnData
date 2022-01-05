@@ -11,15 +11,15 @@ public class TestCorrectPostureStep5 {
     static boolean hasTakeout = false;
 
     public static void main(String[] args) {
-
-
         new Thread(() -> {
             synchronized (room) {
                 log.debug("有烟没？[{}]", hasCigarette);
                 while (!hasCigarette) {
                     log.debug("没烟，先歇会！");
                     try {
+                        log.debug("-------------等待之前" );
                         room.wait();
+                        log.debug("-------------等待之后" );
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -40,7 +40,9 @@ public class TestCorrectPostureStep5 {
                 while (!hasTakeout) {
                     log.debug("没外卖，先歇会！");
                     try {
+                        log.debug("-------------等待之前" );
                         room.wait();
+                        log.debug("-------------等待之后" );
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

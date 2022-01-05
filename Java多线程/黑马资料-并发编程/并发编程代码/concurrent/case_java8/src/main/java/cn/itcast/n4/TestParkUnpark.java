@@ -11,14 +11,14 @@ public class TestParkUnpark {
     public static void main(String[] args) {
         Thread t1 = new Thread(() -> {
             log.debug("start...");
-            sleep(2);
+            sleep(1);
             log.debug("park...");
             LockSupport.park();
             log.debug("resume...");
         }, "t1");
         t1.start();
 
-        sleep(1);
+        sleep(2);
         log.debug("unpark...");
         LockSupport.unpark(t1);
     }
