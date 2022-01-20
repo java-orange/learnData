@@ -33,5 +33,7 @@
     <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.25" level="project" />
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.48" level="project" />
     <orderEntry type="library" name="Maven: org.openjdk.jol:jol-core:0.16" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-autoconfigure:2.5.5" level="project" />
+    <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot:2.5.5" level="project" />
   </component>
 </module>
