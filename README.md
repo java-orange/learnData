@@ -134,16 +134,16 @@ markdown 语法
 | /etc/shadow和/etc/passwd   | 系统存在的所有用户名                                         |
 | find / -name httpd.conf    | #在根目录下查找文件httpd.conf,表示在整个硬盘查找             |
 | find /etc -name httpd.conf | #在/etc目录下文件httpd.conf                                  |
-| find /etc -name '*srm*'    | #使用通配符*(0或者任意多个)。表示在/etc目录下查找文件名中含有字符串‘srm’的文件 |
+| find /etc -name '*srm*'    | #使用通配符*(0或者任意多个)。<br />表示在/etc目录下查找文件名中含有字符串‘srm’的文件 |
 | find . -name 'srm*'        | #表示当前目录下查找文件名开头是字符串‘srm’的文件             |
 | ip a                       | 查看ip地址                                                   |
 | curl ifconfig.me           | 使用curl 命令获取外网ip地址                                  |
-| netstat -tlnp              | TCP类型的端口                                                |
+| netstat -tlnp              | **TCP类型的端口**                                            |
 | netstat -anp               | 显示系统端口使用情况                                         |
 | netstat -nupl              | UDP类型的端口                                                |
 | netstat -l                 | 只显示所有监听端口                                           |
 | netstat -lt                | 只显示所有监听tcp端口                                        |
-|                            |                                                              |
+| cat /proc/version          | 查看系统版本                                                 |
 |                            |                                                              |
 |                            |                                                              |
 |                            |                                                              |
