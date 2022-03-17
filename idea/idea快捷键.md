@@ -48,6 +48,6 @@ idea全套快捷键
 | 查看接口的实现                               | ctrl + t              |
 | 查看方法在哪里被调用                         | ctrl + g              |
 | 去掉没有引用的import                         | Ctrl + shift + o      |
-|                                              |                       |
+| 打开类的继承树（type hierarchy）             | ctrl + h              |
 |                                              |                       |
 
