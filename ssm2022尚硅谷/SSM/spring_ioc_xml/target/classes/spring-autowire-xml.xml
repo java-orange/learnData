@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="userController"
+          class="com.atguigu.spring.controller.UserController" autowire="byType">
+    </bean>
+    <bean id="userService"
+          class="com.atguigu.spring.service.impl.UserServiceImpl" autowire="byType">
+    </bean>
+    <bean id="userDao" class="com.atguigu.spring.dao.impl.UserDaoImpl"></bean>
+
+
+
+
+<!--    <bean id="userController"-->
+<!--          class="com.atguigu.spring.controller.UserController" autowire="byName">-->
+<!--    </bean>-->
+<!--    <bean id="userService"-->
+<!--          class="com.atguigu.spring.service.impl.UserServiceImpl" autowire="byName">-->
+<!--    </bean>-->
+<!--    <bean id="userServiceImpl"-->
+<!--          class="com.atguigu.spring.service.impl.UserServiceImpl" autowire="byName">-->
+<!--    </bean>-->
+<!--    <bean id="userDao" class="com.atguigu.spring.dao.impl.UserDaoImpl"></bean>-->
+<!--    <bean id="userDaoImpl" class="com.atguigu.spring.dao.impl.UserDaoImpl">-->
+<!--    </bean>-->
+
+</beans>

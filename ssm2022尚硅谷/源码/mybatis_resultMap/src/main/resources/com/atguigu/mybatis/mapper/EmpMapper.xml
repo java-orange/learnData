@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.atguigu.mybatis.mapper.EmpMapper">
+
+    <!--
+        字段名和属性名不一致的情况，如何处理映射关系
+        1、为查询的字段设置别名，和属性名保持一致
+        2、当字段符合MySQL的要求使用_，而属性符合java的要求使用驼峰
+        此时可以在MyBatis的核心配置文件中设置一个全局配置，可以自动将下划线映射为驼峰
+        emp_id:empId,emp_name:empName
+        3、使用resultMap自定义映射处理
+        处理多对一的映射关系：
+        1、级联方式处理
+        2、association
+        3、分步查询
+
+        处理一对多的映射关系：
+        1、collection
+        2、分步查询
+    -->
+
+    <!--
+        resultMap：设置自定义的映射关系
+        id：唯一标识
+        type：处理映射关系的实体类的类型
+        常用的标签：
+        id：处理主键和实体类中属性的映射关系
+        result：处理普通字段和实体类中属性的映射关系
+        association：处理多对一的映射关系（处理实体类类型的属性）
+        collection：处理一对多的映射关系（处理集合类型的属性）
+        column：设置映射关系中的字段名，必须是sql查询出的某个字段
+        property：设置映射关系中的属性的属性名，必须是处理的实体类类型中的属性名
+    -->
+    <resultMap id="empResultMap" type="Emp">
+        <id column="emp_id" property="empId"></id>
+        <result column="emp_name" property="empName"></result>
+        <result column="age" property="age"></result>
+        <result column="gender" property="gender"></result>
+    </resultMap>
+
+    <!--Emp getEmpByEmpId(@Param("empId") Integer empId);-->
+    <select id="getEmpByEmpId" resultMap="empResultMap">
+        select * from t_emp where emp_id = #{empId}
+    </select>
+
+    <select id="getEmpByEmpIdOld" resultType="Emp">
+        <!--select emp_id empId,emp_name empName,age,gender from t_emp where emp_id = #{empId}-->
+        select * from t_emp where emp_id = #{empId}
+    </select>
+
+    <resultMap id="empAndDeptResultMapOne" type="Emp">
+        <id column="emp_id" property="empId"></id>
+        <result column="emp_name" property="empName"></result>
+        <result column="age" property="age"></result>
+        <result column="gender" property="gender"></result>
+        <result column="dept_id" property="dept.deptId"></result>
+        <result column="dept_name" property="dept.deptName"></result>
+    </resultMap>
+
+    <resultMap id="empAndDeptResultMap" type="Emp">
+        <id column="emp_id" property="empId"></id>
+        <result column="emp_name" property="empName"></result>
+        <result column="age" property="age"></result>
+        <result column="gender" property="gender"></result>
+        <!--
+            association：处理多对一的映射关系（处理实体类类型的属性）
+            property：设置需要处理映射关系的属性的属性名
+            javaType：设置要处理的属性的类型
+        -->
+        <association property="dept" javaType="Dept">
+            <id column="dept_id" property="deptId"></id>
+            <result column="dept_name" property="deptName"></result>
+        </association>
+    </resultMap>
+
+    <!--Emp getEmpAndDeptByEmpId(@Param("empId") Integer empId);-->
+    <select id="getEmpAndDeptByEmpId" resultMap="empAndDeptResultMap">
+        select
+        t_emp.*,t_dept.*
+        from t_emp
+        left join t_dept
+        on t_emp.dept_id = t_dept.dept_id
+        where t_emp.emp_id = #{empId}
+    </select>
+
+    <resultMap id="empAndDeptByStepResultMap" type="Emp">
+        <id column="emp_id" property="empId"></id>
+        <result column="emp_name" property="empName"></result>
+        <result column="age" property="age"></result>
+        <result column="gender" property="gender"></result>
+        <!--
+            property：设置需要处理映射关系的属性的属性名
+            select：设置分步查询的sql的唯一标识
+            column：将查询出的某个字段作为分步查询的sql的条件
+            fetchType：在开启了延迟加载的环境中，通过该属性设置当前的分步查询是否使用延迟加载
+            fetchType="eager(立即加载)|lazy(延迟加载)"
+        -->
+        <association property="dept" fetchType="eager"
+                     select="com.atguigu.mybatis.mapper.DeptMapper.getEmpAndDeptByStepTwo"
+                     column="dept_id"></association>
+    </resultMap>
+
+    <!--Emp getEmpAndDeptByStepOne(@Param("empId") Integer empId);-->
+    <select id="getEmpAndDeptByStepOne" resultMap="empAndDeptByStepResultMap">
+        select * from t_emp where emp_id = #{empId}
+    </select>
+
+    <!--List<Emp> getDeptAndEmpByStepTwo(@Param("deptId") Integer deptId);-->
+    <select id="getDeptAndEmpByStepTwo" resultType="Emp">
+        select * from t_emp where dept_id = #{deptId}
+    </select>
+    
+</mapper>

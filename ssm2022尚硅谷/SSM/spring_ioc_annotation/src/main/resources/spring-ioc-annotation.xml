@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:component-scan base-package="com.atguigu.spring"></context:component-scan>
+
+
+<!--    <context:component-scan base-package="com.atguigu.spring">-->
+<!--        &lt;!&ndash; context:exclude-filter标签：指定排除规则 &ndash;&gt;-->
+<!--        &lt;!&ndash;-->
+<!--        type：设置排除或包含的依据-->
+<!--        type="annotation"，根据注解排除，expression中设置要排除的注解的全类名-->
+<!--        type="assignable"，根据类型排除，expression中设置要排除的类型的全类名-->
+<!--        &ndash;&gt;-->
+<!--        <context:exclude-filter type="annotation"-->
+<!--                                expression="org.springframework.stereotype.Controller"/>-->
+<!--&lt;!&ndash;        <context:exclude-filter type="assignable"&ndash;&gt;-->
+<!--&lt;!&ndash;        expression="com.atguigu.spring.controller.UserController"/>&ndash;&gt;-->
+<!--    </context:component-scan>-->
+
+
+<!--    <context:component-scan base-package="com.atguigu.spring" use-default-filters="false">-->
+<!--        &lt;!&ndash; context:include-filter标签：指定在原有扫描规则的基础上追加的规则 &ndash;&gt;-->
+<!--        &lt;!&ndash; use-default-filters属性：取值false表示关闭默认扫描规则 &ndash;&gt;-->
+<!--        &lt;!&ndash; 此时必须设置use-default-filters="false"，因为默认规则即扫描指定包下所有类 &ndash;&gt;-->
+<!--        &lt;!&ndash;-->
+<!--        type：设置排除或包含的依据-->
+<!--        type="annotation"，根据注解排除，expression中设置要排除的注解的全类名-->
+<!--        type="assignable"，根据类型排除，expression中设置要排除的类型的全类名-->
+<!--        &ndash;&gt;-->
+<!--        <context:include-filter type="annotation"-->
+<!--                                expression="org.springframework.stereotype.Controller"/>-->
+<!--        &lt;!&ndash;<context:include-filter type="assignable"-->
+<!--        expression="com.atguigu.controller.UserController"/>&ndash;&gt;-->
+<!--    </context:component-scan>-->
+
+
+
+</beans>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--<mapper namespace="com.atguigu.mybatis.mapper.UserMapper">-->
+<mapper namespace="com.atguigu.mybatis.mapper.DynamicSQLMapper">
+
+<!--    List<Emp> getEmpListByCondition(Emp emp);-->
+    <select id="getEmpListByConditionOne" resultType="Emp">
+        select * from t_emp where 1 = 1
+        <if test="empName != '' and empName != null">
+            and emp_name = #{empName}
+        </if>
+        <if test="age != '' and age != null">
+            and age = #{age}
+        </if>
+        <if test="gender != '' and gender != null">
+            and gender = #{gender}
+        </if>
+    </select>
+
+    <select id="getEmpListByConditionTwo" resultType="Emp">
+        select * from t_emp
+        <where>
+            <if test="empName != '' and empName != null">
+                emp_name = #{empName}
+            </if>
+            <if test="age != '' and age != null">
+                and age = #{age}
+            </if>
+            <if test="gender != '' and gender != null">
+                and gender = #{gender}
+            </if>
+        </where>
+    </select>
+
+    <select id="getEmpListByCondition" resultType="Emp">
+        select * from t_emp
+        <trim prefix="where" suffixOverrides="and">
+            <if test="empName != '' and empName != null">
+                emp_name = #{empName} and
+            </if>
+            <if test="age != '' and age != null">
+                age = #{age} and
+            </if>
+            <if test="gender != '' and gender != null">
+                gender = #{gender}
+            </if>
+        </trim>
+    </select>
+
+<!--    void insertMoreEmp(@Param("emps") List<Emp> emps);-->
+    <select id="insertMoreEmp" >
+        insert into t_emp values
+        <foreach collection="emps" item="emp" separator=",">
+            (null,#{emp.empName},#{emp.age},#{emp.gender},null)
+        </foreach>
+    </select>
+
+<!--    void deleteMoreEmp(@Param("empIds") Integer[] empIds);-->
+    <delete id="deleteMoreEmp" >
+        delete from t_emp where emp_id in
+            <foreach collection="empIds" item="empId" separator="," open="(" close=")">
+                #{empId}
+            </foreach>
+    </delete>
+
+
+
+</mapper>

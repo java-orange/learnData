@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <!--扫描组件-->
+    <context:component-scan base-package="com.atguigu.spring"></context:component-scan>
+
+    <!-- 导入外部属性文件 -->
+    <context:property-placeholder location="classpath:jdbc.properties" />
+    <!-- 配置数据源 -->
+    <bean id="druidDataSource" class="com.alibaba.druid.pool.DruidDataSource">
+        <property name="url" value="${jdbc.url}"/>
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+    <!-- 配置 JdbcTemplate -->
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <!-- 装配数据源 -->
+        <property name="dataSource" ref="druidDataSource"/>
+    </bean>
+
+
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="druidDataSource"></property>
+    </bean>
+
+    <aop:config>
+        <!-- 配置事务通知和切入点表达式 -->
+        <aop:advisor advice-ref="txAdvice" pointcut="execution(* com.atguigu.spring.service.impl.*.*(..))"></aop:advisor>
+    </aop:config>
+    <!-- tx:advice标签：配置事务通知 -->
+    <!-- id属性：给事务通知标签设置唯一标识，便于引用 -->
+    <!-- transaction-manager属性：关联事务管理器 -->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <!-- tx:method标签：配置具体的事务方法 -->
+            <!-- name属性：指定方法名，可以使用星号代表多个字符 -->
+            <tx:method name="buyBook"/>
+            <tx:method name="*"/>
+            <tx:method name="get*" read-only="true"/>
+            <tx:method name="query*" read-only="true"/>
+            <tx:method name="find*" read-only="true"/>
+            <!-- read-only属性：设置只读属性 -->
+            <!-- rollback-for属性：设置回滚的异常 -->
+            <!-- no-rollback-for属性：设置不回滚的异常 -->
+            <!-- isolation属性：设置事务的隔离级别 -->
+            <!-- timeout属性：设置事务的超时属性 -->
+            <!-- propagation属性：设置事务的传播行为 -->
+<!--            <tx:method name="save*" read-only="false" rollbackfor="java.lang.Exception" propagation="REQUIRES_NEW"/>-->
+<!--            <tx:method name="update*" read-only="false" rollbackfor="java.lang.Exception" propagation="REQUIRES_NEW"/>-->
+<!--            <tx:method name="delete*" read-only="false" rollbackfor="java.lang.Exception" propagation="REQUIRES_NEW"/>-->
+        </tx:attributes>
+    </tx:advice>
+
+</beans>

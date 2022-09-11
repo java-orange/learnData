@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>index.html</h1>
+<a th:href="@{/test/hello}">测试测试@RequestMapping的value属性</a>
+<br>
+<a th:href="@{/hello}">测试@RequestMapping的value属性-->/test</a>
+<br>
+<a th:href="@{/abc}">测试@RequestMapping的value属性-->/test</a>
+<br>
+<a th:href="@{/test}">测试@RequestMapping的value属性-->/test</a><br>
+
+<form th:action="@{/hello}" method="post">
+    <input type="submit">
+</form>
+<a th:href="@{/test(username='admin',password=123456)}">测试@RequestMapping的params属性-->/test</a>
+<br>
+
+<a th:href="@{/test/admin/123}">测试路径中的占位符-->/testRest</a><br>
+
+<hr>
+<!--<form th:action="@{/param/servletAPI}" method="post">-->
+<form th:action="@{/param}" method="post">
+    用户名：<input type="text" name="username"><br>
+    密码：<input type="text" name="password"><br>
+    <input type="submit" value="登录"><br>
+</form>
+<a th:href="@{/testParam(username='admin',password=123456)}">测试获取请求参数-- >/testParam</a><br>
+
+<hr>
+<form th:action="@{/param/pojo}" method="post">
+    id：<input type="text" name="id"><br>
+    用户名：<input type="text" name="username"><br>
+    密码：<input type="text" name="password"><br>
+    <input type="submit" value="登录"><br>
+</form>
+<hr>
+<a th:href="@{/test/mav}">测试modelandview</a><br>
+<a th:href="@{/test/model}">测试model</a><br>
+<a th:href="@{/test/modelMap}">测试modelMap</a><br>
+<a th:href="@{/test/map}">测试map</a><br>
+<hr>
+<a th:href="@{/test/session}">测试会话域</a><br>
+<a th:href="@{/test/application}">测试应用域</a><br>
+<hr>
+<a th:href="@{/test/view/thymeleaf}">测试thymeleaf</a><br>
+<a th:href="@{/test/view/forward}">测试forward</a><br>
+<a th:href="@{/test/view/redirect}">测试redirect</a><br>
+</body>
+</html>
