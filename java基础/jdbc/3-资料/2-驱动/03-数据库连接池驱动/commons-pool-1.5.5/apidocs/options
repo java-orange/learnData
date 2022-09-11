@@ -1,0 +1,28 @@
+-classpath
+'/Users/philsteitz/pool/tags/POOL_1_5_5_RC2/target/classes'
+-encoding
+'iso-8859-1'
+-protected
+-quiet
+-source
+'1.3'
+-sourcepath
+'/Users/philsteitz/pool/tags/POOL_1_5_5_RC2/src/java'
+-author
+-bottom
+'Copyright &#169; 2001-2010 <a href="http://www.apache.org/">The Apache Software Foundation</a>. All Rights Reserved.'
+-charset
+'UTF-8'
+-d
+'/Users/philsteitz/pool/tags/POOL_1_5_5_RC2/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'Commons Pool 1.5.5 API'
+-link
+'http://java.sun.com/javase/6/docs/api'
+-linksource
+-use
+-version
+-windowtitle
+'Commons Pool 1.5.5 API'
