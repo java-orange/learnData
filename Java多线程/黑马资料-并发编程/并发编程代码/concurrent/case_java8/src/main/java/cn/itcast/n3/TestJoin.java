@@ -2,6 +2,9 @@ package cn.itcast.n3;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.TimeUnit;
 
 import static cn.itcast.n2.util.Sleeper.sleep;
@@ -16,10 +19,12 @@ public class TestJoin {
         test3();
     }
 
+
     public static void test3() throws InterruptedException {
         Thread t1 = new Thread(() -> {
-            sleep(2);
+            sleep(5);
             r1 = 10;
+            log.debug("thread finish");
         });
 
         long start = System.currentTimeMillis();
@@ -27,7 +32,7 @@ public class TestJoin {
 
         // 线程执行结束会导致 join 结束
         log.debug("join begin");
-        t1.join(3000);
+        t1.join(1000);
         long end = System.currentTimeMillis();
         log.debug("r1: {} r2: {} cost: {}", r1, r2, end - start);
     }

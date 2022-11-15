@@ -9,7 +9,7 @@ import static cn.itcast.n2.util.Sleeper.sleep;
 @Slf4j(topic = "c.TestInterrupt")
 public class TestInterrupt {
     public static void main(String[] args) throws InterruptedException {
-        test1();
+        test4();
     }
     private static void test4() {
         Thread t1 = new Thread(() -> {
@@ -17,6 +17,7 @@ public class TestInterrupt {
                 log.debug("park...");
                 LockSupport.park();
                 log.debug("打断状态：{}", Thread.interrupted());
+//                log.debug("打断状态：{}", Thread.currentThread().isInterrupted());
             }
         });
         t1.start();
@@ -36,6 +37,7 @@ public class TestInterrupt {
 
 
         sleep(0.5);
+        log.debug("main");
         t1.interrupt();
     }
     private static void test2() throws InterruptedException {
@@ -51,7 +53,7 @@ public class TestInterrupt {
         }, "t2");
         t2.start();
 
-        sleep(0.5);
+        sleep(1.5);
         t2.interrupt();
     }
     private static void test1() throws InterruptedException {

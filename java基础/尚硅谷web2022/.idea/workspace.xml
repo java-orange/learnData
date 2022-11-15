@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f48ec330-2f27-45d2-8fb1-2db11e752b7d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../jdbc/3-资料/6-JDBC全程复习.edf" beforeDir="false" afterPath="$PROJECT_DIR$/../jdbc/3-资料/6-JDBC全程复习.edf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../小工具/复习ediary/Config.ini" beforeDir="false" afterPath="$PROJECT_DIR$/../../小工具/复习ediary/Config.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ssm2022尚硅谷/源码/mybatis_helloworld/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ssm2022尚硅谷/源码/mybatis_helloworld/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../ssm2022尚硅谷/源码/mybatis_parameter/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ssm2022尚硅谷/源码/mybatis_parameter/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,13 +47,11 @@
       <option name="presentableId" value="Default" />
       <updated>1663410362310</updated>
       <workItem from="1663410363663" duration="391000" />
+      <workItem from="1665914985848" duration="6000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
   </component>
 </project>
