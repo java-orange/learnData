@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/bio_chat_demo/bio_chat_demo.iml" filepath="$PROJECT_DIR$/bio_chat_demo/bio_chat_demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bio_demo/bio_demo.iml" filepath="$PROJECT_DIR$/bio_demo/bio_demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bio_instant_messaging/bio_instant_messaging.iml" filepath="$PROJECT_DIR$/bio_instant_messaging/bio_instant_messaging.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nio_buffer/nio_buffer.iml" filepath="$PROJECT_DIR$/nio_buffer/nio_buffer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nio_channel/nio_channel.iml" filepath="$PROJECT_DIR$/nio_channel/nio_channel.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nio_selector/nio_selector.iml" filepath="$PROJECT_DIR$/nio_selector/nio_selector.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/代码.iml" filepath="$PROJECT_DIR$/.idea/代码.iml" />
+    </modules>
+  </component>
+</project>
