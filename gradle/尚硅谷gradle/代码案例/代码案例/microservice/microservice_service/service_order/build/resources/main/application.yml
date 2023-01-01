@@ -1,0 +1,20 @@
+server:
+  profiles:
+    active: dev
+  port: 7778
+
+spring:
+  application:
+    name: service-order
+  datasource:
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/micro_order
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

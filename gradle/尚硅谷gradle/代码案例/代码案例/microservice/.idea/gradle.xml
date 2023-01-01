@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="distributionType" value="DEFAULT_WRAPPED" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="gradleHome" value="$PROJECT_DIR$/../../../software/gradle-7.4" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/microservice_bean" />
+            <option value="$PROJECT_DIR$/microservice_common" />
+            <option value="$PROJECT_DIR$/microservice_gateway" />
+            <option value="$PROJECT_DIR$/microservice_service" />
+            <option value="$PROJECT_DIR$/microservice_service/service_order" />
+            <option value="$PROJECT_DIR$/microservice_service/service_user" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>

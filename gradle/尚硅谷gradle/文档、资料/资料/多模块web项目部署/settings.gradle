@@ -1,0 +1,27 @@
+
+pluginManagement {
+    repositories {
+        maven{ url 'https://maven.aliyun.com/repository/central'}
+        maven { url 'https://repo.spring.io/plugins-release' }
+        gradlePluginPortal()
+        jcenter()
+    }
+}
+
+dependencyResolutionManagement {
+    repositories {
+        maven{ url "https://maven.aliyun.com/nexus/content/repositories/central/"}
+        mavenCentral()
+    }
+}
+
+rootProject.name = 'meinian-parent'
+include 'meinian-bean'
+include 'meinian-dao'
+include 'meinian-service'
+include 'meinian-web'
+include 'meinian-mobile-web'
+
+
+
+

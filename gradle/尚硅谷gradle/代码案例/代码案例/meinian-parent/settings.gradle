@@ -1,0 +1,10 @@
+rootProject.name = 'meinian-parent'
+include 'meinian-bean'
+include 'meinian-dao'
+include 'meinian-service'
+include 'meinian-web'
+include 'meinian-mobile-web'
+
+
+
+

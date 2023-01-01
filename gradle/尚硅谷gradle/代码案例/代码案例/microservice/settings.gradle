@@ -1,0 +1,12 @@
+
+rootProject.name = 'microservice'
+include 'microservice_bean'
+include 'microservice_common'
+include 'microservice_gateway'
+include 'microservice_service'
+include 'microservice_service:service_user'
+
+findProject(':microservice_service:service_user')?.name = 'service_user'
+include 'microservice_service:service_order'
+findProject(':microservice_service:service_order')?.name = 'service_order'
+

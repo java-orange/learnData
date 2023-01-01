@@ -1,0 +1,17 @@
+server:
+  profiles:
+    active: dev
+  port: 7777
+
+spring:
+  datasource:
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/micro_user
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848
+  application:
+    name: service-user

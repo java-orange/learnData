@@ -1,0 +1,25 @@
+
+
+
+apply plugin: 'java'
+
+
+
+group 'com.atguigu'
+version '1.0-SNAPSHOT'
+
+
+repositories {
+    mavenCentral()
+}
+
+
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+//    implementation 'org.hibernate:hibernate-core:3.6.3.Final'
+//    implementation 'org.slf4j:slf4j-api:' //动态版本声明，不建议这么用
+}
+
+

@@ -1,0 +1,53 @@
+rootProject.name = 'root'
+include 'subproject01'
+include 'subproject02'
+include 'subproject03'
+
+def projectName=rootProject.getName() //定义项目名
+long beginOfSetting = System.currentTimeMillis() //初始化阶段开始时间
+def beginOfConfig //配置阶段开始时间
+def configHasBegin = false //配置阶段是否开始了，只执行一次
+def beginOfProjectConfig = new HashMap() //存放每个 build.gradle 执行之前的时间
+def beginOfTaskExecute //执行阶段开始时间
+gradle.projectsLoaded {  //初始化阶段执行完毕
+    println "${projectName}工程 初始化总耗时 ${System.currentTimeMillis() - beginOfSetting} ms"
+}
+
+
+//build.gradle 执行前
+gradle.beforeProject {Project project ->
+    if(!configHasBegin){
+        configHasBegin = true
+        beginOfConfig = System.currentTimeMillis()
+    }
+    beginOfProjectConfig.put(project,System.currentTimeMillis())
+}
+//build.gradle 执行后
+gradle.afterProject {Project project ->
+    def begin = beginOfProjectConfig.get(project)
+    if(project.name == projectName) {
+        println "根工程${projectName} 配置阶段耗时：${System.currentTimeMillis() - begin} ms"
+    }else{
+        println "子工程${project.name} 配置阶段耗时：${System.currentTimeMillis() - begin} ms"
+    }
+}
+
+gradle.taskGraph.whenReady {//配置阶段完毕
+    println "整个${projectName}项目在配置阶段总耗时：${System.currentTimeMillis() - beginOfConfig} ms"
+    beginOfTaskExecute = System.currentTimeMillis()
+}
+
+//执行阶段开始
+gradle.taskGraph.beforeTask {Task task ->
+    task.doFirst {
+        task.ext.beginOfTask = System.currentTimeMillis()
+    }
+    task.doLast {
+        println "${task.name}在执行阶段耗时：${System.currentTimeMillis() - task.ext.beginOfTask} ms"
+    }
+}
+
+gradle.buildFinished {//执行阶段完毕
+    println " 执行阶段总耗时：${System.currentTimeMillis() - beginOfTaskExecute} ms"
+    println " 整个构建过程耗时：${System.currentTimeMillis() - beginOfSetting} ms"
+}

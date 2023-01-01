@@ -1,0 +1,19 @@
+// 依赖版本管理
+ext {
+    version = [
+            "fastjsonVersion"   : "1.2.72",
+            "mybatisPlus" : "3.0.5",
+            "mysql" : "5.1.46",
+            "swaggerVersion": "2.7.0",
+            "jjwtVersion": "0.7.0"
+    ]
+
+    dependencies = [
+            "fastjson"                      : "com.alibaba:fastjson:${version.fastjsonVersion}",
+            "mybatis-plus-boot-starter"     : "com.baomidou:mybatis-plus-boot-starter:${version.mybatisPlus}",
+            "mysql"                         : "mysql:mysql-connector-java:${version.mysql}",
+            "swagger"                       : "io.springfox:springfox-swagger2:${version.swaggerVersion}",
+            "swaggerUI"                     : "io.springfox:springfox-swagger-ui:${version.swaggerVersion}",
+            "jjwt"                          : "io.jsonwebtoken:jjwt:${version.jjwtVersion}"
+    ]
+}

@@ -1,0 +1,86 @@
+plugins {
+    id 'java'
+}
+
+group 'com.atguigu'
+version '1.0-SNAPSHOT'
+
+subprojects {
+    //添加插件
+    apply plugin: 'java'
+    apply plugin: 'java-library'//支持api
+    //编码环境jdk版本
+    sourceCompatibility = 1.8
+    //编译时jdk版本
+    targetCompatibility = 1.8
+    group 'com.atguigu'
+    version '1.0-SNAPSHOT'
+
+//配置外部属性
+    ext {
+        spring_version = "4.3.6.RELEASE"
+    }
+
+    //依赖的配置
+    dependencies {
+        //lombok
+        testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
+        testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
+        implementation 'log4j:log4j:1.2.17'
+        //implementation 'org.slf4j:slf4j-api:1.7.25'
+    }
+    test {
+        useJUnitPlatform()
+    }
+}
+
+project("meinian-bean"){
+    dependencies {
+        api 'org.projectlombok:lombok:1.18.24'
+    }
+}
+project("meinian-dao"){
+    dependencies {
+        api project(':meinian-bean')
+        api 'org.mybatis:mybatis-spring:1.2.3'
+        api 'com.alibaba:druid:1.0.15'
+        api 'org.mybatis:mybatis:3.3.0'
+        api 'mysql:mysql-connector-java:5.1.36'
+    }
+}
+project("meinian-service"){
+    dependencies {
+        api project(':meinian-dao')
+        api 'org.springframework:spring-web:4.1.7.RELEASE'
+        api 'org.springframework:spring-test:4.0.5.RELEASE'
+        api 'org.springframework:spring-jdbc:4.1.7.RELEASE'
+        api 'org.aspectj:aspectjweaver:1.8.6'
+    }
+}
+project("meinian-web"){
+    apply plugin: 'war'
+    dependencies {
+        implementation project(':meinian-service')
+        implementation 'org.springframework:spring-webmvc:4.1.7.RELEASE'
+        implementation "com.fasterxml.jackson.core:jackson-databind:2.2.3"
+        implementation "com.fasterxml.jackson.core:jackson-annotations:2.2.3"
+        implementation "com.fasterxml.jackson.core:jackson-core:2.2.3"
+        compileOnly 'javax.servlet:servlet-api:2.5'
+        implementation 'jstl:jstl:1.2'
+    }
+}
+project("meinian-mobile-web"){
+    apply plugin: 'war'
+    dependencies {
+        //implementation project(':meinian-bean')
+        implementation project(':meinian-service')
+        implementation 'org.springframework:spring-webmvc:4.1.7.RELEASE'
+        implementation "com.fasterxml.jackson.core:jackson-databind:2.2.3"
+        implementation "com.fasterxml.jackson.core:jackson-annotations:2.2.3"
+        implementation "com.fasterxml.jackson.core:jackson-core:2.2.3"
+        implementation 'jstl:jstl:1.2'
+    }
+}
+//test {
+//    useJUnitPlatform()
+//}

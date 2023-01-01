@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.bj.test.AppTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-16T12:47:06" hostname="DESKTOP-764ENKF" time="0.023">
+  <properties/>
+  <testcase name="testMethod1()" classname="com.bj.test.AppTest" time="0.023"/>
+  <system-out><![CDATA[test bj method1
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
