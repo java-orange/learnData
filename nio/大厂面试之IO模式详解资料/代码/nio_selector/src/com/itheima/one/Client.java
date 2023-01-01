@@ -22,7 +22,7 @@ public class Client {
         while (true){
             System.out.println("请说：");
             String msg = sc.nextLine();
-            buf.put(("波妞："+msg).getBytes());
+            buf.put(("波2："+msg).getBytes());
             buf.flip();
             sChannel.write(buf);
             buf.clear();

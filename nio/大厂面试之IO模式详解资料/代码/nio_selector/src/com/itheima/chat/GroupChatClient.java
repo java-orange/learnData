@@ -24,7 +24,7 @@ public class GroupChatClient {
 
         selector = Selector.open();
         //连接服务器
-        socketChannel = socketChannel.open(new InetSocketAddress("127.0.0.1", PORT));
+        socketChannel = socketChannel.open(new InetSocketAddress(HOST, PORT));
         //设置非阻塞
         socketChannel.configureBlocking(false);
         //将channel 注册到selector
