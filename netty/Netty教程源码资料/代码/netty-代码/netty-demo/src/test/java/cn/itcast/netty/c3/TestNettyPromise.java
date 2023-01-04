@@ -30,7 +30,7 @@ public class TestNettyPromise {
         }).start();
         // 4. 接收结果的线程
         log.debug("等待结果...");
-        log.debug("结果是: {}", promise.get());
+        log.debug("结果是-=--------------------------: {}", promise.cause());
     }
 
 }

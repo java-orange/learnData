@@ -52,6 +52,7 @@ public class CloseFutureClient {
         closeFuture.sync();
         log.debug("处理关闭之后的操作");*/
         System.out.println(closeFuture.getClass());
+
         closeFuture.addListener((ChannelFutureListener) future -> {
             log.debug("处理关闭之后的操作");
             group.shutdownGracefully();
