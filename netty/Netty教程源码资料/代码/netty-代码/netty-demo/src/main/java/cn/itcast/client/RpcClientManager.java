@@ -25,7 +25,8 @@ public class RpcClientManager {
 
     public static void main(String[] args) {
         HelloService service = getProxyService(HelloService.class);
-        System.out.println(service.sayHello("zhangsan"));
+        String zhangsan = service.sayHello("zhangsan");
+        System.out.println("zhangsan = " + zhangsan);
 //        System.out.println(service.sayHello("lisi"));
 //        System.out.println(service.sayHello("wangwu"));
     }

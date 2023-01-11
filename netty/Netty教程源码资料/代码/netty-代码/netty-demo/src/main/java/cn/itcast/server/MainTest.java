@@ -1,9 +1,5 @@
 package cn.itcast.server;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Optional;
 
 /**
  * ClassName: MainTest
@@ -16,13 +12,9 @@ import java.util.Optional;
  */
 public class MainTest {
     public static void main(String[] args) {
-        Map<String, Integer> sizeMaps = new HashMap();
-        Optional<Map.Entry<String, Integer>> minEntry = sizeMaps.entrySet().stream().min(Comparator.comparingInt(Map.Entry::getValue));
-        String nodeId = null;
-        if (minEntry.isPresent()) {
-            nodeId = (String)((Map.Entry)minEntry.get()).getKey();
-        }
-        System.out.println("nodeId = " + nodeId);
+
+
+
 
     }
 }
