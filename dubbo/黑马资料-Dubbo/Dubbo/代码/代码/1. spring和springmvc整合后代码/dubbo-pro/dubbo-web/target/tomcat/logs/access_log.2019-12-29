@@ -1,0 +1,2 @@
+0:0:0:0:0:0:0:1 - - [29/Dec/2019:18:13:15 +0800] "GET /user/sayHello.do HTTP/1.1" 200 13 http-bio-8000-exec-1 1333
+0:0:0:0:0:0:0:1 - - [29/Dec/2019:18:13:16 +0800] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-8000-exec-2 16

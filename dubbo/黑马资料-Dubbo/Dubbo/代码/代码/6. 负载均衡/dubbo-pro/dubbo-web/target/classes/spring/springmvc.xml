@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+         http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+
+
+    <mvc:annotation-driven/>
+    <context:component-scan base-package="com.itheima.controller"/>
+
+
+    <!--dubbo的配置-->
+    <!--1.配置项目的名称,唯一-->
+    <dubbo:application name="dubbo-web" >
+        <dubbo:parameter key="qos.port" value="33333"/>
+    </dubbo:application>
+    <!--2.配置注册中心的地址-->
+    <dubbo:registry address="zookeeper://192.168.149.135:2181"/>
+    <!--3.配置dubbo包扫描-->
+    <dubbo:annotation package="com.itheima.controller" />
+
+
+
+</beans>

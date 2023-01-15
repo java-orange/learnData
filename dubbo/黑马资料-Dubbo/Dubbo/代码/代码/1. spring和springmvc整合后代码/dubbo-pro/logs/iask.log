@@ -1,0 +1,4 @@
+2019-12-29 18:13:03  org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:270)  Root WebApplicationContext: initialization started
+2019-12-29 18:13:04  org.springframework.web.context.ContextLoader.initWebApplicationContext(ContextLoader.java:306)  Root WebApplicationContext initialized in 793 ms
+2019-12-29 18:13:14  org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:524)  Initializing Servlet 'springmvc'
+2019-12-29 18:13:15  org.springframework.web.servlet.FrameworkServlet.initServletBean(FrameworkServlet.java:546)  Completed initialization in 1104 ms

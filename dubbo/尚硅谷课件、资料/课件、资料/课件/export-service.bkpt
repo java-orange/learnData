@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<breakpoints>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="13334" lineNumber="284" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="charStart" value="13334"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=boot-order-service-consumer/D:\/devsoft\/apache-maven-3.3.9\/repository\/com\/alibaba\/dubbo\/2.6.2\/dubbo-2.6.2.jar&lt;com.alibaba.dubbo.rpc.protocol.dubbo(DubboProtocol.class[DubboProtocol"/>
+<attrib name="charEnd" value="13392"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="1"/>
+<attrib name="message" value="Line breakpoint:DubboProtocol [line: 284] - createServer(URL)"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="com.alibaba.dubbo.rpc.protocol.dubbo.DubboProtocol"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=boot-order-service-consumer/D:\/devsoft\/apache-maven-3.3.9\/repository\/com\/alibaba\/dubbo\/2.6.2\/dubbo-2.6.2.jar&lt;com.alibaba.dubbo.rpc.protocol.dubbo(DubboProtocol.class"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="14247" lineNumber="333" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="charStart" value="14247"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=boot-order-service-consumer/D:\/devsoft\/apache-maven-3.3.9\/repository\/com\/alibaba\/dubbo\/2.6.2\/dubbo-2.6.2.jar&lt;com.alibaba.dubbo.config(ReferenceConfig.class[ReferenceConfig"/>
+<attrib name="charEnd" value="14278"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="message" value="Line breakpoint:ReferenceConfig [line: 333] - init()"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="com.alibaba.dubbo.config.ReferenceConfig"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=boot-order-service-consumer/D:\/devsoft\/apache-maven-3.3.9\/repository\/com\/alibaba\/dubbo\/2.6.2\/dubbo-2.6.2.jar&lt;com.alibaba.dubbo.config(ReferenceConfig.class"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="5183" lineNumber="131" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="charStart" value="5183"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=boot-order-service-consumer/D:\/devsoft\/apache-maven-3.3.9\/repository\/com\/alibaba\/dubbo\/2.6.2\/dubbo-2.6.2.jar&lt;com.alibaba.dubbo.registry.integration(RegistryProtocol.class[RegistryProtocol"/>
+<attrib name="charEnd" value="5266"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="1"/>
+<attrib name="message" value="Line breakpoint:RegistryProtocol [line: 131] - export(Invoker&lt;T&gt;)"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="com.alibaba.dubbo.registry.integration.RegistryProtocol"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=boot-order-service-consumer/D:\/devsoft\/apache-maven-3.3.9\/repository\/com\/alibaba\/dubbo\/2.6.2\/dubbo-2.6.2.jar&lt;com.alibaba.dubbo.registry.integration(RegistryProtocol.class"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="5638" lineNumber="142" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="charStart" value="5638"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=boot-order-service-consumer/D:\/devsoft\/apache-maven-3.3.9\/repository\/com\/alibaba\/dubbo\/2.6.2\/dubbo-2.6.2.jar&lt;com.alibaba.dubbo.registry.integration(RegistryProtocol.class[RegistryProtocol"/>
+<attrib name="charEnd" value="5737"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="1"/>
+<attrib name="message" value="Line breakpoint:RegistryProtocol [line: 142] - export(Invoker&lt;T&gt;)"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="com.alibaba.dubbo.registry.integration.RegistryProtocol"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=boot-order-service-consumer/D:\/devsoft\/apache-maven-3.3.9\/repository\/com\/alibaba\/dubbo\/2.6.2\/dubbo-2.6.2.jar&lt;com.alibaba.dubbo.registry.integration(RegistryProtocol.class"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="4894" lineNumber="123" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="charStart" value="4894"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=boot-order-service-consumer/D:\/devsoft\/apache-maven-3.3.9\/repository\/com\/alibaba\/dubbo\/2.6.2\/dubbo-2.6.2.jar&lt;com.alibaba.dubbo.config.spring(ServiceBean.class[ServiceBean"/>
+<attrib name="charEnd" value="4915"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="1"/>
+<attrib name="message" value="Line breakpoint:ServiceBean [line: 123] - onApplicationEvent(ContextRefreshedEvent)"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="com.alibaba.dubbo.config.spring.ServiceBean"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=boot-order-service-consumer/D:\/devsoft\/apache-maven-3.3.9\/repository\/com\/alibaba\/dubbo\/2.6.2\/dubbo-2.6.2.jar&lt;com.alibaba.dubbo.config.spring(ServiceBean.class"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="8195" lineNumber="216" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="charStart" value="8195"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=boot-order-service-consumer/D:\/devsoft\/apache-maven-3.3.9\/repository\/com\/alibaba\/dubbo\/2.6.2\/dubbo-2.6.2.jar&lt;com.alibaba.dubbo.config(ServiceConfig.class[ServiceConfig"/>
+<attrib name="charEnd" value="8218"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="1"/>
+<attrib name="message" value="Line breakpoint:ServiceConfig [line: 216] - export()"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="com.alibaba.dubbo.config.ServiceConfig"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=boot-order-service-consumer/D:\/devsoft\/apache-maven-3.3.9\/repository\/com\/alibaba\/dubbo\/2.6.2\/dubbo-2.6.2.jar&lt;com.alibaba.dubbo.config(ServiceConfig.class"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="12005" lineNumber="317" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="charStart" value="12005"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=boot-order-service-consumer/D:\/devsoft\/apache-maven-3.3.9\/repository\/com\/alibaba\/dubbo\/2.6.2\/dubbo-2.6.2.jar&lt;com.alibaba.dubbo.config(ServiceConfig.class[ServiceConfig"/>
+<attrib name="charEnd" value="12028"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="1"/>
+<attrib name="message" value="Line breakpoint:ServiceConfig [line: 317] - doExport()"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="com.alibaba.dubbo.config.ServiceConfig"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=boot-order-service-consumer/D:\/devsoft\/apache-maven-3.3.9\/repository\/com\/alibaba\/dubbo\/2.6.2\/dubbo-2.6.2.jar&lt;com.alibaba.dubbo.config(ServiceConfig.class"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="13468" lineNumber="358" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="charStart" value="13468"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=boot-order-service-consumer/D:\/devsoft\/apache-maven-3.3.9\/repository\/com\/alibaba\/dubbo\/2.6.2\/dubbo-2.6.2.jar&lt;com.alibaba.dubbo.config(ServiceConfig.class[ServiceConfig"/>
+<attrib name="charEnd" value="13535"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="1"/>
+<attrib name="message" value="Line breakpoint:ServiceConfig [line: 358] - doExportUrls()"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="com.alibaba.dubbo.config.ServiceConfig"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=boot-order-service-consumer/D:\/devsoft\/apache-maven-3.3.9\/repository\/com\/alibaba\/dubbo\/2.6.2\/dubbo-2.6.2.jar&lt;com.alibaba.dubbo.config(ServiceConfig.class"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="21991" lineNumber="503" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="charStart" value="21991"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=boot-order-service-consumer/D:\/devsoft\/apache-maven-3.3.9\/repository\/com\/alibaba\/dubbo\/2.6.2\/dubbo-2.6.2.jar&lt;com.alibaba.dubbo.config(ServiceConfig.class[ServiceConfig"/>
+<attrib name="charEnd" value="22167"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="1"/>
+<attrib name="message" value="Line breakpoint:ServiceConfig [line: 503] - doExportUrlsFor1Protocol(ProtocolConfig, List&lt;URL&gt;)"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="com.alibaba.dubbo.config.ServiceConfig"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=boot-order-service-consumer/D:\/devsoft\/apache-maven-3.3.9\/repository\/com\/alibaba\/dubbo\/2.6.2\/dubbo-2.6.2.jar&lt;com.alibaba.dubbo.config(ServiceConfig.class"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="22477" lineNumber="510" type="org.eclipse.jdt.debug.javaLineBreakpointMarker">
+<attrib name="charStart" value="22477"/>
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=boot-order-service-consumer/D:\/devsoft\/apache-maven-3.3.9\/repository\/com\/alibaba\/dubbo\/2.6.2\/dubbo-2.6.2.jar&lt;com.alibaba.dubbo.config(ServiceConfig.class[ServiceConfig"/>
+<attrib name="charEnd" value="22576"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="1"/>
+<attrib name="message" value="Line breakpoint:ServiceConfig [line: 510] - doExportUrlsFor1Protocol(ProtocolConfig, List&lt;URL&gt;)"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="com.alibaba.dubbo.config.ServiceConfig"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=boot-order-service-consumer/D:\/devsoft\/apache-maven-3.3.9\/repository\/com\/alibaba\/dubbo\/2.6.2\/dubbo-2.6.2.jar&lt;com.alibaba.dubbo.config(ServiceConfig.class"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="2941" lineNumber="-1" type="org.eclipse.jdt.debug.javaMethodBreakpointMarker">
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=boot-order-service-consumer/D:\/devsoft\/apache-maven-3.3.9\/repository\/com\/alibaba\/dubbo\/2.6.2\/dubbo-2.6.2.jar&lt;com.alibaba.dubbo.config.spring.schema(DubboBeanDefinitionParser.class[DubboBeanDefinitionParser~DubboBeanDefinitionParser~Ljava.lang.Class\&lt;*&gt;;~Z"/>
+<attrib name="org.eclipse.jdt.debug.core.native" value="false"/>
+<attrib name="charEnd" value="2966"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="4"/>
+<attrib name="message" value="Method breakpoint:DubboBeanDefinitionParser [entry] - DubboBeanDefinitionParser(Class&lt;?&gt;, boolean)"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="charStart" value="2941"/>
+<attrib name="org.eclipse.jdt.debug.core.entry" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.methodSignature" value="(Ljava/lang/Class;Z)V"/>
+<attrib name="org.eclipse.jdt.debug.core.methodName" value="&lt;init&gt;"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="com.alibaba.dubbo.config.spring.schema.DubboBeanDefinitionParser"/>
+<attrib name="org.eclipse.jdt.debug.core.exit" value="false"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=boot-order-service-consumer/D:\/devsoft\/apache-maven-3.3.9\/repository\/com\/alibaba\/dubbo\/2.6.2\/dubbo-2.6.2.jar&lt;com.alibaba.dubbo.config.spring.schema(DubboBeanDefinitionParser.class"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="3153" lineNumber="-1" type="org.eclipse.jdt.debug.javaMethodBreakpointMarker">
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=boot-order-service-consumer/D:\/devsoft\/apache-maven-3.3.9\/repository\/com\/alibaba\/dubbo\/2.6.2\/dubbo-2.6.2.jar&lt;com.alibaba.dubbo.config.spring.schema(DubboBeanDefinitionParser.class[DubboBeanDefinitionParser~parse~Lorg.w3c.dom.Element;~Lorg.springframework.beans.factory.xml.ParserContext;~Ljava.lang.Class\&lt;*&gt;;~Z"/>
+<attrib name="org.eclipse.jdt.debug.core.native" value="false"/>
+<attrib name="charEnd" value="3158"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="message" value="Method breakpoint:DubboBeanDefinitionParser [entry] - parse(Element, ParserContext, Class&lt;?&gt;, boolean)"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="4"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="charStart" value="3153"/>
+<attrib name="org.eclipse.jdt.debug.core.entry" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.methodSignature" value="(Lorg/w3c/dom/Element;Lorg/springframework/beans/factory/xml/ParserContext;Ljava/lang/Class;Z)Lorg/springframework/beans/factory/config/BeanDefinition;"/>
+<attrib name="org.eclipse.jdt.debug.core.methodName" value="parse"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="com.alibaba.dubbo.config.spring.schema.DubboBeanDefinitionParser"/>
+<attrib name="org.eclipse.jdt.debug.core.exit" value="false"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=boot-order-service-consumer/D:\/devsoft\/apache-maven-3.3.9\/repository\/com\/alibaba\/dubbo\/2.6.2\/dubbo-2.6.2.jar&lt;com.alibaba.dubbo.config.spring.schema(DubboBeanDefinitionParser.class"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="12556" lineNumber="-1" type="org.eclipse.jdt.debug.javaMethodBreakpointMarker">
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=boot-order-service-consumer/D:\/devsoft\/apache-maven-3.3.9\/repository\/com\/alibaba\/dubbo\/2.6.2\/dubbo-2.6.2.jar&lt;com.alibaba.dubbo.rpc.protocol.dubbo(DubboProtocol.class[DubboProtocol~createServer~Lcom.alibaba.dubbo.common.URL;"/>
+<attrib name="org.eclipse.jdt.debug.core.native" value="false"/>
+<attrib name="charEnd" value="12568"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="2"/>
+<attrib name="message" value="Method breakpoint:DubboProtocol [entry] - createServer(URL)"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="charStart" value="12556"/>
+<attrib name="org.eclipse.jdt.debug.core.entry" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.methodSignature" value="(Lcom/alibaba/dubbo/common/URL;)Lcom/alibaba/dubbo/remoting/exchange/ExchangeServer;"/>
+<attrib name="org.eclipse.jdt.debug.core.methodName" value="createServer"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="com.alibaba.dubbo.rpc.protocol.dubbo.DubboProtocol"/>
+<attrib name="org.eclipse.jdt.debug.core.exit" value="false"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=boot-order-service-consumer/D:\/devsoft\/apache-maven-3.3.9\/repository\/com\/alibaba\/dubbo\/2.6.2\/dubbo-2.6.2.jar&lt;com.alibaba.dubbo.rpc.protocol.dubbo(DubboProtocol.class"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="10687" lineNumber="-1" type="org.eclipse.jdt.debug.javaMethodBreakpointMarker">
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=boot-order-service-consumer/D:\/devsoft\/apache-maven-3.3.9\/repository\/com\/alibaba\/dubbo\/2.6.2\/dubbo-2.6.2.jar&lt;com.alibaba.dubbo.rpc.protocol.dubbo(DubboProtocol.class[DubboProtocol~export~Lcom.alibaba.dubbo.rpc.Invoker\&lt;TT;&gt;;"/>
+<attrib name="org.eclipse.jdt.debug.core.native" value="false"/>
+<attrib name="charEnd" value="10693"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="2"/>
+<attrib name="message" value="Method breakpoint:DubboProtocol [entry] - export(Invoker&lt;T&gt;)"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="charStart" value="10687"/>
+<attrib name="org.eclipse.jdt.debug.core.entry" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.methodSignature" value="(Lcom/alibaba/dubbo/rpc/Invoker;)Lcom/alibaba/dubbo/rpc/Exporter;"/>
+<attrib name="org.eclipse.jdt.debug.core.methodName" value="export"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="com.alibaba.dubbo.rpc.protocol.dubbo.DubboProtocol"/>
+<attrib name="org.eclipse.jdt.debug.core.exit" value="false"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=boot-order-service-consumer/D:\/devsoft\/apache-maven-3.3.9\/repository\/com\/alibaba\/dubbo\/2.6.2\/dubbo-2.6.2.jar&lt;com.alibaba.dubbo.rpc.protocol.dubbo(DubboProtocol.class"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="11971" lineNumber="-1" type="org.eclipse.jdt.debug.javaMethodBreakpointMarker">
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=boot-order-service-consumer/D:\/devsoft\/apache-maven-3.3.9\/repository\/com\/alibaba\/dubbo\/2.6.2\/dubbo-2.6.2.jar&lt;com.alibaba.dubbo.rpc.protocol.dubbo(DubboProtocol.class[DubboProtocol~openServer~Lcom.alibaba.dubbo.common.URL;"/>
+<attrib name="org.eclipse.jdt.debug.core.native" value="false"/>
+<attrib name="charEnd" value="11981"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="2"/>
+<attrib name="message" value="Method breakpoint:DubboProtocol [entry] - openServer(URL)"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="charStart" value="11971"/>
+<attrib name="org.eclipse.jdt.debug.core.entry" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.methodSignature" value="(Lcom/alibaba/dubbo/common/URL;)V"/>
+<attrib name="org.eclipse.jdt.debug.core.methodName" value="openServer"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="com.alibaba.dubbo.rpc.protocol.dubbo.DubboProtocol"/>
+<attrib name="org.eclipse.jdt.debug.core.exit" value="false"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=boot-order-service-consumer/D:\/devsoft\/apache-maven-3.3.9\/repository\/com\/alibaba\/dubbo\/2.6.2\/dubbo-2.6.2.jar&lt;com.alibaba.dubbo.rpc.protocol.dubbo(DubboProtocol.class"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="5095" lineNumber="-1" type="org.eclipse.jdt.debug.javaMethodBreakpointMarker">
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=boot-order-service-consumer/D:\/devsoft\/apache-maven-3.3.9\/repository\/com\/alibaba\/dubbo\/2.6.2\/dubbo-2.6.2.jar&lt;com.alibaba.dubbo.registry.integration(RegistryProtocol.class[RegistryProtocol~export~Lcom.alibaba.dubbo.rpc.Invoker\&lt;TT;&gt;;"/>
+<attrib name="org.eclipse.jdt.debug.core.native" value="false"/>
+<attrib name="charEnd" value="5101"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="2"/>
+<attrib name="message" value="Method breakpoint:RegistryProtocol [entry] - export(Invoker&lt;T&gt;)"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="charStart" value="5095"/>
+<attrib name="org.eclipse.jdt.debug.core.entry" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.methodSignature" value="(Lcom/alibaba/dubbo/rpc/Invoker;)Lcom/alibaba/dubbo/rpc/Exporter;"/>
+<attrib name="org.eclipse.jdt.debug.core.methodName" value="export"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="com.alibaba.dubbo.registry.integration.RegistryProtocol"/>
+<attrib name="org.eclipse.jdt.debug.core.exit" value="false"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=boot-order-service-consumer/D:\/devsoft\/apache-maven-3.3.9\/repository\/com\/alibaba\/dubbo\/2.6.2\/dubbo-2.6.2.jar&lt;com.alibaba.dubbo.registry.integration(RegistryProtocol.class"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="5333" lineNumber="-1" type="org.eclipse.jdt.debug.javaMethodBreakpointMarker">
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=boot-order-service-consumer/D:\/devsoft\/apache-maven-3.3.9\/repository\/com\/alibaba\/dubbo\/2.6.2\/dubbo-2.6.2.jar&lt;com.alibaba.dubbo.config.spring(ServiceBean.class[ServiceBean~afterPropertiesSet"/>
+<attrib name="org.eclipse.jdt.debug.core.native" value="false"/>
+<attrib name="charEnd" value="5351"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="message" value="Method breakpoint:ServiceBean [entry] - afterPropertiesSet()"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="2"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="charStart" value="5333"/>
+<attrib name="org.eclipse.jdt.debug.core.entry" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.methodSignature" value="()V"/>
+<attrib name="org.eclipse.jdt.debug.core.methodName" value="afterPropertiesSet"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="com.alibaba.dubbo.config.spring.ServiceBean"/>
+<attrib name="org.eclipse.jdt.debug.core.exit" value="false"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=boot-order-service-consumer/D:\/devsoft\/apache-maven-3.3.9\/repository\/com\/alibaba\/dubbo\/2.6.2\/dubbo-2.6.2.jar&lt;com.alibaba.dubbo.config.spring(ServiceBean.class"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+</marker>
+</breakpoint>
+<breakpoint enabled="true" persistant="true" registered="true">
+<resource path="/" type="8"/>
+<marker charStart="4626" lineNumber="-1" type="org.eclipse.jdt.debug.javaMethodBreakpointMarker">
+<attrib name="org.eclipse.jdt.debug.core.suspendPolicy" value="2"/>
+<attrib name="org.eclipse.jdt.debug.ui.JAVA_ELEMENT_HANDLE_ID" value="=boot-order-service-consumer/D:\/devsoft\/apache-maven-3.3.9\/repository\/com\/alibaba\/dubbo\/2.6.2\/dubbo-2.6.2.jar&lt;com.alibaba.dubbo.config.spring(ServiceBean.class[ServiceBean~onApplicationEvent~Lorg.springframework.context.event.ContextRefreshedEvent;"/>
+<attrib name="org.eclipse.jdt.debug.core.native" value="false"/>
+<attrib name="charEnd" value="4644"/>
+<attrib name="org.eclipse.debug.core.enabled" value="true"/>
+<attrib name="message" value="Method breakpoint:ServiceBean [entry] - onApplicationEvent(ContextRefreshedEvent)"/>
+<attrib name="org.eclipse.jdt.debug.core.installCount" value="2"/>
+<attrib name="org.eclipse.debug.core.id" value="org.eclipse.jdt.debug"/>
+<attrib name="charStart" value="4626"/>
+<attrib name="org.eclipse.jdt.debug.core.entry" value="true"/>
+<attrib name="org.eclipse.jdt.debug.core.methodSignature" value="(Lorg/springframework/context/event/ContextRefreshedEvent;)V"/>
+<attrib name="org.eclipse.jdt.debug.core.methodName" value="onApplicationEvent"/>
+<attrib name="org.eclipse.jdt.debug.core.typeName" value="com.alibaba.dubbo.config.spring.ServiceBean"/>
+<attrib name="org.eclipse.jdt.debug.core.exit" value="false"/>
+<attrib name="org.eclipse.jdt.internal.core.JavaModelManager.handleId" value="=boot-order-service-consumer/D:\/devsoft\/apache-maven-3.3.9\/repository\/com\/alibaba\/dubbo\/2.6.2\/dubbo-2.6.2.jar&lt;com.alibaba.dubbo.config.spring(ServiceBean.class"/>
+<attrib name="workingset_name" value=""/>
+<attrib name="workingset_id" value="org.eclipse.debug.ui.breakpointWorkingSet"/>
+</marker>
+</breakpoint>
+</breakpoints>
