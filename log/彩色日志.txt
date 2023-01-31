@@ -1,0 +1,2 @@
+  <property name="CONSOLE_LOG_PATTERN"
+              value="%date{yyyy-MM-dd HH:mm:ss} | %highlight(%-5level) | %boldYellow(%thread) | %boldGreen(%logger) | %msg%n"/>
