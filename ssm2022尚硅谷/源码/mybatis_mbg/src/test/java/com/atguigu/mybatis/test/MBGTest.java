@@ -27,11 +27,11 @@ public class MBGTest {
         /*List<Emp> list = mapper.selectByExample(null);
         list.forEach(System.out::println);*/
         //根据条件查询数据
-        /*EmpExample example = new EmpExample();
+        EmpExample example = new EmpExample();
         example.createCriteria().andEmpNameEqualTo("张三").andAgeGreaterThanOrEqualTo(20);
         example.or().andGenderEqualTo("男");
         List<Emp> list = mapper.selectByExample(example);
-        list.forEach(System.out::println);*/
+        list.forEach(System.out::println);
         Emp emp = new Emp(1, "小黑", null, "女");
         //测试普通修改功能
         //mapper.updateByPrimaryKey(emp);
