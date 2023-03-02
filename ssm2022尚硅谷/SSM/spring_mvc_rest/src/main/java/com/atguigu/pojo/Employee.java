@@ -4,7 +4,8 @@ package com.atguigu.pojo;
  * @author maomao
  * @create 2022-07-26 16:57
  */
-public class Employee {
+public class
+Employee {
     private Integer id;
     private String lastName;
     private String email;

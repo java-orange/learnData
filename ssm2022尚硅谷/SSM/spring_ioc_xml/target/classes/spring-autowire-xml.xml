@@ -4,27 +4,27 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="userController"
-          class="com.atguigu.spring.controller.UserController" autowire="byType">
+          class="com.atguigu.UserController" autowire="byType">
     </bean>
     <bean id="userService"
-          class="com.atguigu.spring.service.impl.UserServiceImpl" autowire="byType">
+          class="com.atguigu.UserServiceImpl" autowire="byType">
     </bean>
-    <bean id="userDao" class="com.atguigu.spring.dao.impl.UserDaoImpl"></bean>
+    <bean id="userDao" class="com.atguigu.UserDaoImpl"></bean>
 
 
 
 
 <!--    <bean id="userController"-->
-<!--          class="com.atguigu.spring.controller.UserController" autowire="byName">-->
+<!--          class="com.atguigu.UserController" autowire="byName">-->
 <!--    </bean>-->
 <!--    <bean id="userService"-->
-<!--          class="com.atguigu.spring.service.impl.UserServiceImpl" autowire="byName">-->
+<!--          class="com.atguigu.UserServiceImpl" autowire="byName">-->
 <!--    </bean>-->
 <!--    <bean id="userServiceImpl"-->
-<!--          class="com.atguigu.spring.service.impl.UserServiceImpl" autowire="byName">-->
+<!--          class="com.atguigu.UserServiceImpl" autowire="byName">-->
 <!--    </bean>-->
-<!--    <bean id="userDao" class="com.atguigu.spring.dao.impl.UserDaoImpl"></bean>-->
-<!--    <bean id="userDaoImpl" class="com.atguigu.spring.dao.impl.UserDaoImpl">-->
+<!--    <bean id="userDao" class="com.atguigu.UserDaoImpl"></bean>-->
+<!--    <bean id="userDaoImpl" class="com.atguigu.UserDaoImpl">-->
 <!--    </bean>-->
 
 </beans>
