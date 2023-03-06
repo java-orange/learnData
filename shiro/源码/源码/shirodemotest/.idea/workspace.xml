@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="ALL" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="81cf6efc-5bbf-4725-ba0e-f363e2e8ebb8" name="Default Changelist" comment="" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <list default="true" id="81cf6efc-5bbf-4725-ba0e-f363e2e8ebb8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/shiro_login/shiro_login.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shiro_login/target/classes/com/atguigu/shirotest/MyRealm.class" beforeDir="false" afterPath="$PROJECT_DIR$/shiro_login/target/classes/com/atguigu/shirotest/MyRealm.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shiro_login/target/classes/com/atguigu/shirotest/ShiroMD5.class" beforeDir="false" afterPath="$PROJECT_DIR$/shiro_login/target/classes/com/atguigu/shirotest/ShiroMD5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shiro_login/target/classes/com/atguigu/shirotest/ShiroRun.class" beforeDir="false" afterPath="$PROJECT_DIR$/shiro_login/target/classes/com/atguigu/shirotest/ShiroRun.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shiro_springboot/src/main/java/com/atguigu/shiro/controller/MyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/shiro_springboot/src/main/java/com/atguigu/shiro/controller/MyController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shiro_springboot/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/shiro_springboot/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shiro_springboot/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/shiro_springboot/target/classes/application.yml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FavoritesManager">
-    <favorites_list name="shirodemotest" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -19,42 +26,48 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
-        <option name="localRepository" value="C:\Users\xialei\.m2\repository" />
-        <option name="mavenHome" value="$PROJECT_DIR$/../../../apache-maven-3.5.2" />
-        <option name="userSettingsFile" value="C:\ProgramCode\apache-maven-3.5.2\conf\settings.xml" />
+        <option name="localRepository" value="D:\Program Files (x86)\maven\maven_repository" />
+        <option name="mavenHome" value="$PROJECT_DIR$/../../../../../../Program Files (x86)/maven/apache-maven-3.8.1" />
+        <option name="userSettingsFile" value="D:\Program Files (x86)\maven\apache-maven-3.8.1\conf\settings.xml" />
       </MavenGeneralSettings>
-    </option>
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
-      </MavenImportingSettings>
     </option>
   </component>
   <component name="ProjectId" id="2ExwxXNMHbNKyg9bYpTLoEudapn" />
-  <component name="PropertiesComponent">
-    <property name="RequestMappingsPanelOrder0" value="0" />
-    <property name="RequestMappingsPanelOrder1" value="1" />
-    <property name="RequestMappingsPanelWidth0" value="75" />
-    <property name="RequestMappingsPanelWidth1" value="75" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.go.format.on.save.advertiser.fired": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "go.import.settings.migrated": "true",
+    "last_opened_file_path": "D:/hvsions_code/iot-thing-data-service",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "Console",
+    "spring.configuration.checksum": "a6ee0ccbf9f7b5fc6a9c7afdfb39cc50"
+  }
+}]]></component>
   <component name="RunManager" selected="Spring Boot.ShiroApplication">
     <configuration name="ShiroMD5" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.atguigu.shirotest.ShiroMD5" />
@@ -97,13 +110,13 @@
     </configuration>
     <configuration name="ShiroApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="shiro_springboot" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.atguigu.shiro.ShiroApplication" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.atguigu.shiro.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.atguigu.shiro.ShiroApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -111,12 +124,13 @@
     <recent_temporary>
       <list>
         <item itemvalue="Spring Boot.ShiroApplication" />
-        <item itemvalue="Application.TestEH" />
         <item itemvalue="Application.ShiroRun" />
         <item itemvalue="Application.ShiroMD5" />
+        <item itemvalue="Application.TestEH" />
       </list>
     </recent_temporary>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -132,10 +146,36 @@
       <workItem from="1663721572283" duration="1207000" />
       <workItem from="1663723640049" duration="3601000" />
       <workItem from="1663727390999" duration="5935000" />
+      <workItem from="1678020091594" duration="589000" />
+      <workItem from="1678020686259" duration="5284000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
+  </component>
+  <component name="VgoProject">
+    <settings-migrated>true</settings-migrated>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/shiro_login/src/main/java/com/atguigu/shirotest/MyRealm.java</url>
+          <line>18</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/shiro_login/src/main/java/com/atguigu/shirotest/MyRealm.java</url>
+          <line>26</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/shiro_login/src/main/java/com/atguigu/shirotest/MyRealm.java</url>
+          <line>31</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

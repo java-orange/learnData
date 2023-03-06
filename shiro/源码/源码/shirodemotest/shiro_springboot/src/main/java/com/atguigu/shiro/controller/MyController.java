@@ -30,7 +30,7 @@ public class MyController {
 
     @GetMapping("userLogin")
     public String userLogin(String name, String pwd,
-                            @RequestParam(defaultValue = "false")boolean rememberMe,
+                            @RequestParam(defaultValue = "false") boolean rememberMe,
                             HttpSession session){
         //1获取subject对象
         Subject subject  = SecurityUtils.getSubject();
