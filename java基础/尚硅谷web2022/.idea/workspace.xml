@@ -1,9 +1,126 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="f48ec330-2f27-45d2-8fb1-2db11e752b7d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../ssm2022尚硅谷/源码/mybatis_helloworld/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ssm2022尚硅谷/源码/mybatis_helloworld/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../ssm2022尚硅谷/源码/mybatis_parameter/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../ssm2022尚硅谷/源码/mybatis_parameter/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/intellij-javadocs-4.0.1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jdbc/3-资料/6-JDBC全程复习.edf" beforeDir="false" afterPath="$PROJECT_DIR$/../jdbc/3-资料/6-JDBC全程复习.edf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../jdbc/3-资料/6-JDBC全程复习Blank.edf" beforeDir="false" afterPath="$PROJECT_DIR$/../jdbc/3-资料/6-JDBC全程复习Blank.edf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day1-HTML/代码/01.java/pro05-fruit1.3-jdbc/src/com/atguigu/fruit/controller/Menu(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day1-HTML/代码/01.java/pro05-fruit1.3-jdbc/src/com/atguigu/fruit/dao/FruitDAO(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day1-HTML/代码/01.java/pro05-fruit1.3-jdbc/src/com/atguigu/fruit/dao/base/BaseDAO(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day1-HTML/代码/01.java/pro05-fruit1.3-jdbc/src/com/atguigu/fruit/dao/impl/FruitDAOImpl(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day1-HTML/代码/01.java/pro05-fruit1.3-jdbc/src/com/atguigu/fruit/pojo/Fruit(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day1-HTML/代码/01.java/pro05-fruit1.3-jdbc/src/com/atguigu/fruit/view/Client(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day11-book/素材/01.数据库设计(1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day11-book/素材/bookdb(1).sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day11-book/素材/idea中导出jar(1).txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day11-book/素材/myssm0.1(1).jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day11-book/素材/书城页面原型v2(1).rar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day11-book/素材/书城项目原型v1(1).rar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day16-vue_axios/代码/pro29-book-cart-vue-axios/src/com/atguigu/book/dao/impl/BookDAOImpl(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day16-vue_axios/代码/pro29-book-cart-vue-axios/src/com/atguigu/book/dao/impl/CartItemDAOImpl(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day16-vue_axios/代码/pro29-book-cart-vue-axios/src/com/atguigu/book/dao/impl/OrderDAOImpl(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day16-vue_axios/代码/pro29-book-cart-vue-axios/src/com/atguigu/book/dao/impl/OrderItemDAOImpl(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day16-vue_axios/代码/pro29-book-cart-vue-axios/src/com/atguigu/book/dao/impl/UserDAOImpl(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day16-vue_axios/代码/pro29-book-cart-vue-axios/src/com/atguigu/book/service/impl/BookServiceImpl(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day16-vue_axios/代码/pro29-book-cart-vue-axios/src/com/atguigu/book/service/impl/CartItemServiceImpl(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day16-vue_axios/代码/pro29-book-cart-vue-axios/src/com/atguigu/book/service/impl/OrderServiceImpl(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day16-vue_axios/代码/pro29-book-cart-vue-axios/src/com/atguigu/book/service/impl/UserServiceImpl(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day3-tomcat-servlet/代码/01.事务的基本概念和操作(1).sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day3-tomcat-servlet/代码/02.数据库的三大并发问题(1).sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day3-tomcat-servlet/代码/pro07-javaweb-begin/src/com/atguigu/fruit/dao/base/BaseDAO(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day3-tomcat-servlet/代码/pro07-javaweb-begin/src/com/atguigu/fruit/dao/impl/FruitDAOImpl(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day3-tomcat-servlet/资料/01.BS和CS(1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day3-tomcat-servlet/资料/01.review(1).txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day3-tomcat-servlet/资料/02.server_Tomcat_deploy(1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day3-tomcat-servlet/资料/03.第一次使用Servlet(1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day3-tomcat-servlet/资料/04.数据库的事务概念和基本操作(1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day3-tomcat-servlet/资料/05.数据库并发问题-脏读(1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day3-tomcat-servlet/资料/06.数据库并发问题-不可重复读(1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day3-tomcat-servlet/资料/07.数据库并发问题-幻读(1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day4-servlet-http-session/代码/pro07-javaweb-begin/src/com/atguigu/fruit/dao/base/BaseDAO(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day4-servlet-http-session/代码/pro07-javaweb-begin/src/com/atguigu/fruit/dao/impl/FruitDAOImpl(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day4-servlet-http-session/代码/pro09-fruit1.4-thymeleaf/src/com/atguigu/fruit/dao/impl/FruitDAOImpl(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day4-servlet-http-session/素材/00.回顾(1).txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day4-servlet-http-session/素材/01.Servlet是线程不安全的(1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day4-servlet-http-session/素材/02.会话跟踪技术(1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day4-servlet-http-session/素材/03.session保存作用域(1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day4-servlet-http-session/素材/04.服务器内部转发(1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day4-servlet-http-session/素材/05.客户端重定向(1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day4-servlet-http-session/素材/06.水果库存系统首页实现思路(1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day5-thymeleaf-fruit/代码/pro10-fruit1.5-thymeleaf/src/com/atguigu/fruit/dao/impl/FruitDAOImpl(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day5-thymeleaf-fruit/代码/pro11-fruit1.6-pagination/src/com/atguigu/fruit/dao/impl/FruitDAOImpl(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day5-thymeleaf-fruit/代码/pro12-fruit1.7-keyword/src/com/atguigu/fruit/dao/impl/FruitDAOImpl(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day5-thymeleaf-fruit/素材/01.Request保存作用域(1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day5-thymeleaf-fruit/素材/02.Session保存作用域(1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day5-thymeleaf-fruit/素材/03.Application保存作用域(1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day5-thymeleaf-fruit/素材/04.相对路径_绝对路径_base标签_@{}(1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day6-servlet-mvc/代码/pro13-fruit1.8-mvc/src/com/atguigu/fruit/dao/impl/FruitDAOImpl(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day6-servlet-mvc/代码/pro14-fruit1.9-mvc-reflect/src/com/atguigu/fruit/dao/impl/FruitDAOImpl(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day6-servlet-mvc/代码/pro15-fruit2.0-mvc-dispatcherServlet/src/com/atguigu/fruit/dao/impl/FruitDAOImpl(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day6-servlet-mvc/代码/pro16-fruit2.1-mvc-controller/src/com/atguigu/fruit/dao/impl/FruitDAOImpl(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day7-mvc-ioc-servlet/代码/pro17-fruit2.2-mvc-service-ioc/src/com/atguigu/fruit/dao/impl/FruitDAOImpl(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day7-mvc-ioc-servlet/代码/pro17-fruit2.2-mvc-service-ioc/src/com/atguigu/fruit/service/impl/FruitServiceImpl(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day7-mvc-ioc-servlet/代码/pro17-fruit2.2-mvc-service-ioc/src/com/atguigu/myssm/io/BeanFactory(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day7-mvc-ioc-servlet/代码/pro17-fruit2.2-mvc-service-ioc/src/com/atguigu/myssm/io/ClassPathXmlApplicationContext(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day7-mvc-ioc-servlet/代码/pro17-fruit2.2-mvc-service-ioc/src/com/atguigu/myssm/myspringmvc/DispatcherServlet(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day7-mvc-ioc-servlet/代码/pro17-fruit2.2-mvc-service-ioc/src/com/atguigu/myssm/myspringmvc/ViewBaseServlet(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day7-mvc-ioc-servlet/代码/pro17-fruit2.2-mvc-service-ioc/src/com/atguigu/myssm/util/StringUtil(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day8-mvc-filter-transaction-listener/代码/pro20-fruit2.3-mvc-transaction/src/com/atguigu/fruit/controllers/FruitController(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day8-mvc-filter-transaction-listener/代码/pro20-fruit2.3-mvc-transaction/src/com/atguigu/fruit/dao/FruitDAO(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day8-mvc-filter-transaction-listener/代码/pro20-fruit2.3-mvc-transaction/src/com/atguigu/fruit/dao/impl/FruitDAOImpl(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day8-mvc-filter-transaction-listener/代码/pro20-fruit2.3-mvc-transaction/src/com/atguigu/fruit/pojo/Fruit(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day8-mvc-filter-transaction-listener/代码/pro20-fruit2.3-mvc-transaction/src/com/atguigu/fruit/service/FruitService(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day8-mvc-filter-transaction-listener/代码/pro20-fruit2.3-mvc-transaction/src/com/atguigu/fruit/service/impl/FruitServiceImpl(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day8-mvc-filter-transaction-listener/代码/pro20-fruit2.3-mvc-transaction/src/com/atguigu/myssm/basedao/BaseDAO(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day8-mvc-filter-transaction-listener/代码/pro20-fruit2.3-mvc-transaction/src/com/atguigu/myssm/basedao/ConnUtil(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day8-mvc-filter-transaction-listener/代码/pro20-fruit2.3-mvc-transaction/src/com/atguigu/myssm/basedao/DAOException(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day8-mvc-filter-transaction-listener/代码/pro20-fruit2.3-mvc-transaction/src/com/atguigu/myssm/filters/CharacterEncodingFilter(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day8-mvc-filter-transaction-listener/代码/pro20-fruit2.3-mvc-transaction/src/com/atguigu/myssm/filters/OpenSessionInViewFilter(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day8-mvc-filter-transaction-listener/代码/pro20-fruit2.3-mvc-transaction/src/com/atguigu/myssm/ioc/BeanFactory(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day8-mvc-filter-transaction-listener/代码/pro20-fruit2.3-mvc-transaction/src/com/atguigu/myssm/ioc/ClassPathXmlApplicationContext(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day8-mvc-filter-transaction-listener/代码/pro20-fruit2.3-mvc-transaction/src/com/atguigu/myssm/listeners/ContextLoaderListener(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day8-mvc-filter-transaction-listener/代码/pro20-fruit2.3-mvc-transaction/src/com/atguigu/myssm/myspringmvc/DispatcherServlet(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day8-mvc-filter-transaction-listener/代码/pro20-fruit2.3-mvc-transaction/src/com/atguigu/myssm/myspringmvc/DispatcherServletException(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day8-mvc-filter-transaction-listener/代码/pro20-fruit2.3-mvc-transaction/src/com/atguigu/myssm/myspringmvc/ViewBaseServlet(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day8-mvc-filter-transaction-listener/代码/pro20-fruit2.3-mvc-transaction/src/com/atguigu/myssm/trans/TransactionManager(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day8-mvc-filter-transaction-listener/代码/pro20-fruit2.3-mvc-transaction/src/com/atguigu/myssm/util/StringUtil(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day9-qqzone/代码/pro21-qqzone1.0/src/com/atguigu/myssm/basedao/BaseDAO(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day9-qqzone/代码/pro21-qqzone1.0/src/com/atguigu/myssm/basedao/ConnUtil(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day9-qqzone/代码/pro21-qqzone1.0/src/com/atguigu/myssm/basedao/DAOException(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day9-qqzone/代码/pro21-qqzone1.0/src/com/atguigu/myssm/filters/CharacterEncodingFilter(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day9-qqzone/代码/pro21-qqzone1.0/src/com/atguigu/myssm/filters/OpenSessionInViewFilter(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day9-qqzone/代码/pro21-qqzone1.0/src/com/atguigu/myssm/ioc/BeanFactory(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day9-qqzone/代码/pro21-qqzone1.0/src/com/atguigu/myssm/ioc/ClassPathXmlApplicationContext(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day9-qqzone/代码/pro21-qqzone1.0/src/com/atguigu/myssm/listeners/ContextLoaderListener(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day9-qqzone/代码/pro21-qqzone1.0/src/com/atguigu/myssm/myspringmvc/DispatcherServlet(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day9-qqzone/代码/pro21-qqzone1.0/src/com/atguigu/myssm/myspringmvc/DispatcherServletException(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day9-qqzone/代码/pro21-qqzone1.0/src/com/atguigu/myssm/myspringmvc/PageController(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day9-qqzone/代码/pro21-qqzone1.0/src/com/atguigu/myssm/myspringmvc/ViewBaseServlet(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day9-qqzone/代码/pro21-qqzone1.0/src/com/atguigu/myssm/trans/TransactionManager(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day9-qqzone/代码/pro21-qqzone1.0/src/com/atguigu/myssm/util/StringUtil(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day9-qqzone/代码/pro21-qqzone1.0/src/com/atguigu/qqzone/controller/UserController(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day9-qqzone/代码/pro21-qqzone1.0/src/com/atguigu/qqzone/dao/HostReplyDAO(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day9-qqzone/代码/pro21-qqzone1.0/src/com/atguigu/qqzone/dao/ReplyDAO(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day9-qqzone/代码/pro21-qqzone1.0/src/com/atguigu/qqzone/dao/TopicDAO(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day9-qqzone/代码/pro21-qqzone1.0/src/com/atguigu/qqzone/dao/UserBasicDAO(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day9-qqzone/代码/pro21-qqzone1.0/src/com/atguigu/qqzone/dao/impl/TopicDAOImpl(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day9-qqzone/代码/pro21-qqzone1.0/src/com/atguigu/qqzone/dao/impl/UserBasicDAOImpl(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day9-qqzone/代码/pro21-qqzone1.0/src/com/atguigu/qqzone/pojo/HostReply(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day9-qqzone/代码/pro21-qqzone1.0/src/com/atguigu/qqzone/pojo/Reply(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day9-qqzone/代码/pro21-qqzone1.0/src/com/atguigu/qqzone/pojo/Topic(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day9-qqzone/代码/pro21-qqzone1.0/src/com/atguigu/qqzone/pojo/UserBasic(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day9-qqzone/代码/pro21-qqzone1.0/src/com/atguigu/qqzone/pojo/UserDetail(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day9-qqzone/代码/pro21-qqzone1.0/src/com/atguigu/qqzone/service/TopicService(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day9-qqzone/代码/pro21-qqzone1.0/src/com/atguigu/qqzone/service/UserBasicService(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day9-qqzone/代码/pro21-qqzone1.0/src/com/atguigu/qqzone/service/impl/TopicServiceImpl(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Day9-qqzone/代码/pro21-qqzone1.0/src/com/atguigu/qqzone/service/impl/UserBasicServiceImpl(1).java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../小工具/复习ediary/Config.ini" beforeDir="false" afterPath="$PROJECT_DIR$/../../小工具/复习ediary/Config.ini" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +138,11 @@
         <option name="userSettingsFile" value="D:\Program Files (x86)\maven\apache-maven-3.8.1\conf\settings.xml" />
       </MavenGeneralSettings>
     </option>
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="jdkForImporter" value="#JAVA_HOME" />
+      </MavenImportingSettings>
+    </option>
   </component>
   <component name="ProjectId" id="2EtMKKW2bV6ZAQ16zcvaWffe0lw" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -28,16 +150,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
-  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/personal_space/编程学习/后端java-尚硅谷路线/7_maven/代码/代码/pro05-demo-all-in-one&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.build&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -48,10 +176,19 @@
       <updated>1663410362310</updated>
       <workItem from="1663410363663" duration="391000" />
       <workItem from="1665914985848" duration="6000" />
+      <workItem from="1697103790470" duration="3137000" />
+      <workItem from="1699153361853" duration="26000" />
+      <workItem from="1699159446979" duration="34000" />
+      <workItem from="1699159499112" duration="1445000" />
+      <workItem from="1699185936365" duration="5000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

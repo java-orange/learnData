@@ -1,0 +1,12 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.baizhi.dao.UserDAO">
+
+
+
+    <!--这里就写的简单点了毕竟不是重点-->
+    <select id="login" parameterType="User" resultType="User">
+        select * from user where name=#{name} and password = #{password}
+    </select>
+
+
+</mapper>
