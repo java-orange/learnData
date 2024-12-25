@@ -110,6 +110,10 @@ Docker 使用 Google 公司推出的 Go 语言 进行开发实现，基于 Linux
   $ sudo yum-config-manager \
       --add-repo \
       https://download.docker.com/linux/centos/docker-ce.repo
+
+
+  # Step 2: 添加软件源信息
+sudo yum-config-manager --add-repo https://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
   ```
 
 - 安装最新版的docker
